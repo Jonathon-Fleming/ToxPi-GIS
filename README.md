@@ -2,17 +2,17 @@
 Production of shareable, interactive feature layers from the output of the ToxPi GUI  
 Requires ArcGIS Pro license  
 
-Steps to run from the command line:  
+* Steps to run from the command line:  
   * Access environment using command:  
     * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
     * Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
   * Run script with required parameters:  
     * python ToxPiModel.py location\infile location\outfile.lyrx  
     * Note: Script will not work without the lyrx extension on the desired output file  
-OutPut:  
+* OutPut:  
   * Script makes a geodatabase in the outfile path called ToxPiAuto.gdb  
   * Script outputs a layer file at location\outfile  
-Sharing:  
+* Sharing:  
   * Using ArcGIS Pro:  
     * Open lyrx file in ArcGIS Pro  
       * Double click (or right click and open with) from file explorer  
@@ -34,7 +34,7 @@ Sharing:
       * Ex: https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec  
       * The id is 0cbac968eb7544a98761a13ba9b312ec  
     * Sharing this id with anyone allows the to view the map  
-Viewing the map using ToxPiGIS: https://toxpi.org/gis/webapp/  
+* Viewing the map using ToxPiGIS: https://toxpi.org/gis/webapp/  
   * Select Map  
   * Select Web Map  
   * Insert id  
