@@ -3,7 +3,7 @@ Production of shareable, interactive feature layers from the output of the ToxPi
 Requires ArcGIS Pro license  
 
 Steps to run from the command line:  
-  Access environment using command:  
+	Access environment using command:  
     "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
     Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
   Run script with required parameters:  
