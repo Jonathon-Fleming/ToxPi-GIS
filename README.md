@@ -1,12 +1,12 @@
 # ToxPi-GIS
-Production of shareable, interactive feature layers from the output of the ToxPi GUI  return
-Requires ArcGIS Pro license  return
+Production of shareable, interactive feature layers from the output of the ToxPi GUI  
+Requires ArcGIS Pro license  
 
-Steps to run from the command line:  return
-  Access environment using command:  return
-    "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  return
-    Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  return
-  Run script with required parameters:  return
+Steps to run from the command line:  
+  Access environment using command:  
+    "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
+    Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
+  Run script with required parameters:  
     python ToxPiModel.py location\infile location\outfile.lyrx  
     Note: Script will not work without the lyrx extension on the desired output file  
 OutPut:  
