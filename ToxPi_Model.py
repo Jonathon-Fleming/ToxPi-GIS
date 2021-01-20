@@ -8,6 +8,8 @@ import csv
 import xlwt
 import math
 import numpy
+import pandas
+import statistics
 
 def convertLength(radiusUnits):
     if radiusUnits.upper() == "METERS":
@@ -27,7 +29,7 @@ def maxvalue(fclass, field):
 def bearings(tmpFeatures, uniqueID, a, scaler):
     '''calculate the radius and bearings for each sector.'''
     b=len(a)
-    with arcpy.da.UpdateCursor(tmpFeatures, [uniqueID, "VALUE_", 'BEARING_a', 'BEARING_b', 'RADIUS_']) as cursor:
+    with arcpy.da.UpdateCursor(tmpFeatures, [uniqueID, "ToxpiScore", 'BEARING_a', 'BEARING_b', 'RADIUS_']) as cursor:
         for i, row in enumerate(cursor):
             id_ = row[0]
             val = row[1]
@@ -88,7 +90,7 @@ def create_sector(pt, radius, ang1, ang2):
 
 
 
-def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights):
+def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, ranks, medians, statemedians):
     """
     coxcombs: In a Coxcomb chart (or rose diagram), each category is represented by a
     segment, each of which has the same angle. The area of a segment represents the value
@@ -115,13 +117,12 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
         # Process: Copy Features to output feature class.
         # Create a temp feature class.
         outTmp = "TempFeatures"
-        tmpFeatures = arcpy.management.CreateFeatureclass(arcpy.env.scratchGDB,
+        tmpFeatures = arcpy.management.CreateFeatureclass(os.path.dirname(inFeatures),
                                                           outTmp,
                                                           'POINT',
                                                           spatial_reference=sr)
 
         # List of all input fields
-        
         fldList = inFields.split(";")
         numFlds = len(fldList)
         allFlds = list(fldList)
@@ -137,9 +138,13 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                                   field_alias = field_obj[0].aliasName)
 
         # Add fields to store bearings and radius.
-        arcpy.AddField_management(tmpFeatures, "VALUE_", "DOUBLE")
-        arcpy.AddField_management(tmpFeatures, "CATEGORY_", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "ToxpiScore", "DOUBLE")
+        arcpy.AddField_management(tmpFeatures, "CATEGORY", "TEXT")
         arcpy.AddField_management(tmpFeatures, "CLASS_", "LONG")
+        arcpy.AddField_management(tmpFeatures, "WEIGHT", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "RANK", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "MEDIAN", "FLOAT")
+        arcpy.AddField_management(tmpFeatures, "STATEMEDIAN", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "BEARING_a", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "BEARING_b", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "RADIUS_", "FLOAT")
@@ -151,16 +156,20 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                 x1,y1 = row[0]
                 id_ = row[1]
 
-                for f in fldList:
+                for j, f in enumerate(fldList):
                     v = row[count+2]
+                    weight = str(inputWeights[count]*100/360) + "%"
+                    rank = str(ranks[j][i]) + "/" + str(len(ranks[j]))
+                    median = medians[j]
+                    statemedian = statemedians[j][id_.split(",")[0]]
                     count = count + 1
-                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"VALUE_","CATEGORY_","CLASS_")) as poly_cursor:
-                        poly_cursor.insertRow(([x1,y1],id_,v,f,count))
+                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"ToxpiScore","CATEGORY","CLASS_", "WEIGHT","RANK","MEDIAN", "STATEMEDIAN")) as poly_cursor:
+                        poly_cursor.insertRow(([x1,y1],id_,v,f,count,weight,rank, median,statemedian))
 
         # Find the max values to scale the output features
         if inputRadius == "" or inputRadius == 0:
             inputRadius = 1
-        maxRadius = math.sqrt((maxvalue(tmpFeatures, "VALUE_"))/math.pi)
+        maxRadius = math.sqrt((maxvalue(tmpFeatures, "ToxpiScore"))/math.pi)
         convMax = float(maxRadius) * float(sr.metersPerUnit)
         scaler = (float(inputRadius)*convertLength(radiusUnits))/float(convMax)
 
@@ -182,15 +191,8 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
         bearing_b_loc = search_fields.index("BEARING_b")+1
         radius_loc = search_fields.index("RADIUS_")+1
 
-        # Get the angle for each coxcomb
-        weightList = inputWeights.split(";")
-        allWeights = list(weightList)
-        for i in range(len(allWeights)):
-            allWeights[i] = int(allWeights[i])
-        a = allWeights
-
         # Process: Calculate bearings and radii
-        bearings(tmpFeatures, uniqueID, a, float(scaler))
+        bearings(tmpFeatures, uniqueID, inputWeights, float(scaler))
 
         # Report progress for each coxcomb.
         cnt = arcpy.management.GetCount(tmpFeatures)
@@ -229,6 +231,7 @@ def adjustinput(infile, outfile):
   newstring = ""
   headerlist = fstring[0]
   headerlist = headerlist.replace("\"","")
+  #headerlist = headerlist.replace(" ","_")
   headerlist = headerlist.split(",")
   possource = headerlist.index("Source")
   headerlist.remove("Source")
@@ -236,14 +239,13 @@ def adjustinput(infile, outfile):
   headerlist.insert(possource+1, "Latitude,")
   resultheader = []
   colors = []
-  weights = ""
+  weights = []
   infields = ""
   keywords = ["ToxPi Score", "HClust Group", "KMeans Group", "Name", "Source"]
   for i in range(len(headerlist)):
     if headerlist[i] not in  keywords:
       data = ""
       temp = ""
-      #i.replace(":",)
       headerlist[i] = headerlist[i].replace("&", "and")
       headerlist[i] = headerlist[i].replace("\"", "")
       headerlist[i] = headerlist[i].replace(":","")
@@ -253,7 +255,7 @@ def adjustinput(infile, outfile):
       for j in range(len(headerlist[i])):
         if headerlist[i][j] == "!":
           data = headerlist[i][j:]
-          headerlist[i] = headerlist[i][:j] + ", "
+          headerlist[i] = headerlist[i][:j] + ","
           infields = infields + headerlist[i] + ";"
           break
         else:
@@ -261,13 +263,12 @@ def adjustinput(infile, outfile):
       data = data[1:]
       for j in range(len(data)):
         if data[j] == "!":
-          weights = weights + data[:j] + ";"
+          weights.append(float(data[:j]))
         if data[j] == "x":
           colors.append(data[j+1:-2])
     else:
       headerlist[i] = headerlist[i] + ","
-  infields = infields[:-1].replace(", ","")
-  weights = weights[:-1]
+  infields = infields[:-1].replace(",","")
   newstring = newstring.join(headerlist)
   newstring = newstring + "\n"
   for j in range(1,len(fstring)):    
@@ -279,13 +280,11 @@ def adjustinput(infile, outfile):
     for i in range(len(datalist)-1):
         datalist[i] = datalist[i] + "\","
     newstring = newstring + "".join(datalist) + "\n"
-  outfilecsv = outfile + "\ToxPiResultsAdjusted.csv"
-  fnew = open(outfilecsv, "w")
+  fnew = open(outfile, "w")
   fnew.write(newstring)
   f.close()
   fnew.close()
   return weights, colors, infields
-
 
 def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     
@@ -302,11 +301,8 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
 
     #create path for output if it doesn't exist
     #outpath = r"C:\Users\Jonathon\Documents\ArcGIS\Projects\ToxPiguitest\guitest.lyrx"
-    tmpoutput = outpath.split("\\")
-    outfile = tmpoutput[-1]
-    del tmpoutput[-1]
-    sep = "\\"
-    outpathtmp = sep.join(tmpoutput)
+
+    outpathtmp = os.path.dirname(outpath)
     if not os.path.exists(outpathtmp):
         os.makedirs(outpathtmp)
 
@@ -316,11 +312,70 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
         arcpy.CreateFileGDB_management(str(outpathtmp), "ToxPiAuto.gdb")
 
     #adjust input file for required parameters
-    inweights, colors, infields = adjustinput(inputdata, outpathtmp)
+    outfilecsv = outpathtmp + "\ToxPiResultsAdjusted.csv"
+    inweights, colors, infields = adjustinput(inputdata, outfilecsv)
+    
+    #adjust weights to fit a circle (360 deg)
+    total = 0
+    for i in range(len(inweights)):
+      total = total + inweights[i]
+    for i in range(len(inweights)):
+      inweights[i] = inweights[i]*360/total
+    
+    #Get ranks and medians
+    rankList = []
+    medianList = []
+    category_names = infields.split(";")
+    fh = open(outfilecsv, 'rU')
+    # read the file as a dictionary for each row ({header : value})
+    reader = csv.DictReader(fh)
+    data = {}
+    for row in reader:
+      for header, value in row.items():
+        try:
+          data[header].append(value)
+        except KeyError:
+          data[header] = [value]
+    fh.close()
+    # extract the variables you want
+    name = data["Name"]
+    statename = [i.split(",")[0] for i in name]
+    statemedians = []
+    for cat in category_names:
+      a = data[cat]
+      n = len(a)
+      statedata = {}
+      for index in range(n):
+        if statename[index] in statedata.keys(): 
+          statedata[statename[index]].append(float(a[index]))
+        else:
+          statedata[statename[index]] = [float(a[index])]
+      key_list = list(statedata)
+      dic = {}
+      for index in range(len(statedata)):
+        dic[key_list[index]] = statistics.median(statedata[key_list[index]])
+      statemedians.append(dic)  
+      #statemedians[cat][key_list[index]] = statistics.median(statedata[key_list[index]])
+      ivec=sorted(range(n), key=a.__getitem__)
+      svec=[float(a[rank]) for rank in ivec]
+      medianList.append(statistics.median(svec))
+      sumranks = 0
+      dupcount = 0
+      newarray = [0]*n
+      for i in range(n):
+        sumranks += i
+        dupcount += 1
+        if i==n-1 or svec[i] != svec[i+1]:
+            averank = int(sumranks / dupcount) + 1
+            for j in range(i-dupcount+1,i+1):
+                newarray[ivec[j]] = averank
+            sumranks = 0
+            dupcount = 0
+      rankList.append(newarray)
 
     # Process: XY Table To Point (Convert csv file to xy point data) 
     tmpfilepoint = geopath + "\pointfeature"
-    arcpy.XYTableToPoint_management(in_table=outpathtmp + "\ToxPiResultsAdjusted.csv", out_feature_class=tmpfilepoint, x_field="Longitude", y_field="Latitude", z_field="", coordinate_system="PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision")
+    arcpy.XYTableToPoint_management(in_table=outfilecsv, out_feature_class=tmpfilepoint, x_field="Longitude", y_field="Latitude", z_field="", coordinate_system="PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision")
 
     # Process: Convert Coordinate Notation (Convert coordinates to projected instead of geographic) 
     tmpfileremapped = geopath + "\pointfeatureremapped"
@@ -329,7 +384,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     # Process: ToxPi construction (ToxPi construction)     
     radius = 5
     tmpfileToxPi = geopath + "\ToxPifeature"
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID="Name", inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID="Name", inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, ranks = rankList, medians = medianList, statemedians = statemedians)
 
     #make toxpifeatures into feature layer
     #tmpfeaturelyr = r"C:\Users\Jonathon\Documents\ArcGIS\Projects\ToxPiAuto\ToxPiAuto.gdb\ToxPifeaturelayer"
@@ -345,6 +400,51 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     fh = open(outpath, "r")
     data = fh.read()
     y = json.loads(data)
+
+    # ##popups
+    popupstring = """{
+        "type" : "CIMPopupInfo",
+        "title" : "{Name}",
+        "mediaInfos" : [
+          {
+            "type" : "CIMTextMediaInfo",
+            "row" : 1,
+            "column" : 1,
+            "refreshRateUnit" : "esriTimeUnitsSeconds",
+            "text" : "Text"
+          },
+          {
+            "type" : "CIMTableMediaInfo",
+            "row" : 2,
+            "column" : 1,
+            "refreshRateUnit" : "esriTimeUnitsSeconds",
+            "fields" : [
+              "Name",
+              "CATEGORY",
+              "ToxpiScore",
+              "WEIGHT",
+              "RANK",
+              "MEDIAN",
+              "STATEMEDIAN"
+            ]
+          },
+          {
+            "type" : "CIMBarChartMediaInfo",
+            "row" :3,
+            "column" : 1,
+            "refreshRateUnit" : "esriTimeUnitsSeconds",
+            "fields" : [
+              "ToxpiScore",
+              "MEDIAN",
+              "STATEMEDIAN"
+            ],
+            "caption" : "Average Comparison",
+            "title" : "{CATEGORY}"
+          }
+        ]
+      }
+    """
+    y["layerDefinitions"][0]["popupInfo"] = json.loads(popupstring)
 
     renderer = """{
         "type" : "CIMUniqueValueRenderer",
@@ -418,7 +518,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
         },
         "defaultSymbolPatch" : "Default",
         "fields" : [
-          "CATEGORY_"
+          "CATEGORY"
         ],
         "groups" : [
           {
@@ -485,7 +585,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     renderer = renderer[:-1]
     rendererend = """            
             ],
-            "heading" : "CATEGORY_"
+            "heading" : "CATEGORY"
           }
         ],
         "useDefaultSymbol" : true,
