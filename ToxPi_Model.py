@@ -29,7 +29,7 @@ def maxvalue(fclass, field):
 def bearings(tmpFeatures, uniqueID, a, scaler):
     '''calculate the radius and bearings for each sector.'''
     b=len(a)
-    with arcpy.da.UpdateCursor(tmpFeatures, [uniqueID, "ToxpiScore", 'BEARING_a', 'BEARING_b', 'RADIUS_']) as cursor:
+    with arcpy.da.UpdateCursor(tmpFeatures, [uniqueID, "ToxPiScore", 'BEARING_a', 'BEARING_b', 'RADIUS_']) as cursor:
         for i, row in enumerate(cursor):
             id_ = row[0]
             val = row[1]
@@ -75,17 +75,45 @@ def generate_angles(ang1, ang2):
         ang1 += 1
 # End generate_angles function
 
+def generate_anglesreverse(ang2, ang1):
+    #print(ang1)
+    yield (ang2-90) * -1
+    true = True
+    while true:
+        #print(ang2)
+        if ang1 == ang2:
+            break
+        if ang2 == 0:
+            ang2 = 360
+        yield (ang2-90) * -1
+        if ang1 == ang2:
+            break
+        ang2 += -1
+# End generate_angles function
 
 
-def create_sector(pt, radius, ang1, ang2):
+def create_sector(pt, radius, ang1, ang2, innerradius=0):
     '''Return a point collection to create polygons from.'''
     pointcoll = arcpy.Array()
     pointcoll.add(arcpy.Point(pt.X, pt.Y),)
-    for i in generate_angles(ang1, ang2):
+    #print(ang1)
+    #print(ang2)
+    for index, i in enumerate(generate_angles(ang1, ang2)):
         x = pt.X + (radius*math.cos(math.radians(i)))
         y = pt.Y + (radius*math.sin(math.radians(i)))
+        if index ==0:
+          firstx = x
+          firsty = y
+        #print(x)
+        #print(y)
         pointcoll.add(arcpy.Point(x, y),)
-    pointcoll.add(arcpy.Point(pt.X, pt.Y),)
+    if innerradius == 0:
+      return pointcoll
+    for i in generate_anglesreverse(ang2, ang1):
+        x = pt.X + (innerradius*math.cos(math.radians(i)))
+        y = pt.Y + (innerradius*math.sin(math.radians(i)))
+        pointcoll.add(arcpy.Point(x, y),)
+    pointcoll.add(arcpy.Point(firstx, firsty),)
     return pointcoll
 
 
@@ -138,13 +166,13 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                                   field_alias = field_obj[0].aliasName)
 
         # Add fields to store bearings and radius.
-        arcpy.AddField_management(tmpFeatures, "ToxpiScore", "DOUBLE")
-        arcpy.AddField_management(tmpFeatures, "CATEGORY", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "ToxPiScore", "DOUBLE")
+        arcpy.AddField_management(tmpFeatures, "SliceName", "TEXT")
         arcpy.AddField_management(tmpFeatures, "CLASS_", "LONG")
-        arcpy.AddField_management(tmpFeatures, "WEIGHT", "TEXT")
-        arcpy.AddField_management(tmpFeatures, "RANK", "TEXT")
-        arcpy.AddField_management(tmpFeatures, "MEDIAN", "FLOAT")
-        arcpy.AddField_management(tmpFeatures, "STATEMEDIAN", "FLOAT")
+        arcpy.AddField_management(tmpFeatures, "Weight", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "Rank", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "USAMedian", "FLOAT")
+        arcpy.AddField_management(tmpFeatures, "StateMedian", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "BEARING_a", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "BEARING_b", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "RADIUS_", "FLOAT")
@@ -163,13 +191,13 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                     median = medians[j]
                     statemedian = statemedians[j][id_.split(",")[0]]
                     count = count + 1
-                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"ToxpiScore","CATEGORY","CLASS_", "WEIGHT","RANK","MEDIAN", "STATEMEDIAN")) as poly_cursor:
+                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"ToxPiScore","SliceName","CLASS_", "Weight","Rank","USAMedian", "StateMedian")) as poly_cursor:
                         poly_cursor.insertRow(([x1,y1],id_,v,f,count,weight,rank, median,statemedian))
 
         # Find the max values to scale the output features
         if inputRadius == "" or inputRadius == 0:
             inputRadius = 1
-        maxRadius = math.sqrt((maxvalue(tmpFeatures, "ToxpiScore"))/math.pi)
+        maxRadius = math.sqrt((maxvalue(tmpFeatures, "ToxPiScore"))/math.pi)
         convMax = float(maxRadius) * float(sr.metersPerUnit)
         scaler = (float(inputRadius)*convertLength(radiusUnits))/float(convMax)
 
@@ -185,6 +213,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                                                         spatial_reference=sr)
         # Get all attribute fields.
         search_fields = [f.name for f in arcpy.ListFields(tmpFeatures)]
+        #print(search_fields)
 
        # Get the locations in the list for bearings and radius.
         bearing_a_loc = search_fields.index("BEARING_a")+1
@@ -214,9 +243,26 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                 # Create the coxcomb polygons.
                 with arcpy.da.InsertCursor(cox_polys, ['SHAPE@'] + search_fields[2:]) as poly_cursor:
                     l = len(search_fields) + 1
-                    if radius != 0:
-                        poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), radius, int(b_a), int(b_b)), sr),] + list(row[3:l]))
-
+                    #print("i = ", i)
+                    #print("poly = ", poly_cursor)
+                    #print(i%(numFlds-1))
+                    #print(b_a)
+                    #print(b_b)
+                    innerradius = 100
+                    if (i+1)%numFlds == 0:
+                        poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), innerradius, 0, 360), sr,),] + list(row[3:l]))
+                    else:
+                        if radius != 0:
+                            #outercirc = create_sector(arcpy.Point(x1, y1), radius, int(b_a), int(b_b))
+                            #innercirc = create_sector(arcpy.Point(x1, y1), innerradius, int(b_a), int(b_b))
+                            #print(outercirc)
+                            #print(innercirc)
+                            #print(outercirc.add(innercirc,))
+                            #print(outercirc.append(innercirc,))
+                            #sys.exit()
+                            ###try adding just outer circ and see what happens
+                            poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), radius, int(b_a), int(b_b), innerradius), sr,),] + list(row[3:l]))
+            #def create_sector(pt, radius, ang1, ang2):
             arcpy.SetProgressorPosition(100)
             del poly_cursor
         del scur, row
@@ -237,7 +283,6 @@ def adjustinput(infile, outfile):
   headerlist.remove("Source")
   headerlist.insert(possource, "Longitude,")
   headerlist.insert(possource+1, "Latitude,")
-  resultheader = []
   colors = []
   weights = []
   infields = ""
@@ -267,7 +312,7 @@ def adjustinput(infile, outfile):
         if data[j] == "x":
           colors.append(data[j+1:-2])
     else:
-      headerlist[i] = headerlist[i] + ","
+      headerlist[i] = headerlist[i].replace(" ","_") + ","
   infields = infields[:-1].replace(",","")
   newstring = newstring.join(headerlist)
   newstring = newstring + "\n"
@@ -314,13 +359,17 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     #adjust input file for required parameters
     outfilecsv = outpathtmp + "\ToxPiResultsAdjusted.csv"
     inweights, colors, infields = adjustinput(inputdata, outfilecsv)
-    
+
     #adjust weights to fit a circle (360 deg)
     total = 0
     for i in range(len(inweights)):
       total = total + inweights[i]
     for i in range(len(inweights)):
       inweights[i] = inweights[i]*360/total
+
+    inweights.append(360)
+    colors.append("FFFFFF")
+    infields  = infields  + ";ToxPi_Score"
     
     #Get ranks and medians
     rankList = []
@@ -381,16 +430,31 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     tmpfileremapped = geopath + "\pointfeatureremapped"
     arcpy.ConvertCoordinateNotation_management(in_table=tmpfilepoint, out_featureclass=tmpfileremapped, x_field="Longitude", y_field="Latitude", input_coordinate_format="DD_2", output_coordinate_format="DD_2", id_field="", spatial_reference="PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision", in_coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]", exclude_invalid_records="INCLUDE_INVALID")
 
+    #fileremapped = geopath + "\convertedpointfeature"
+    #arcpy.management.MakeFeatureLayer(tmpfileremapped, fileremapped)
+    #lyrremapped = outpathtmp + "\convertedlyr.lyrx"
+    #arcpy.management.SaveToLayerFile(fileremapped, lyrremapped)
+    # fh = open(lyrremapped, "r")
+    # data = fh.read()
+    # y = json.loads(data)
+    # fh = open(outpath, "r")
+    # data = fh.read()
+    # y = json.loads(data)
+    # layerdef = y["layerDefinitions"]
+    # print(layerdef)
+    # fh.close()
+
     # Process: ToxPi construction (ToxPi construction)     
-    radius = 5
+    radius = 1
     tmpfileToxPi = geopath + "\ToxPifeature"
     ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID="Name", inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, ranks = rankList, medians = medianList, statemedians = statemedians)
 
     #make toxpifeatures into feature layer
     #tmpfeaturelyr = r"C:\Users\Jonathon\Documents\ArcGIS\Projects\ToxPiAuto\ToxPiAuto.gdb\ToxPifeaturelayer"
     tmpfeaturelyr = geopath + "\ToxPifeaturelayer"
+    #arcpy.management.Merge([tmpfileToxPi, tmpfileremapped], tmpfeaturelyr)
+    #featurelyr = geopath + "\ToxPifeaturelayer"
     arcpy.management.MakeFeatureLayer(tmpfileToxPi, tmpfeaturelyr)
-    
     #getsymbology(tmpfeaturelyr, outpath)
     arcpy.management.SaveToLayerFile(tmpfeaturelyr, outpath)
     
@@ -411,22 +475,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
             "row" : 1,
             "column" : 1,
             "refreshRateUnit" : "esriTimeUnitsSeconds",
-            "text" : "Text"
-          },
-          {
-            "type" : "CIMTableMediaInfo",
-            "row" : 2,
-            "column" : 1,
-            "refreshRateUnit" : "esriTimeUnitsSeconds",
-            "fields" : [
-              "Name",
-              "CATEGORY",
-              "ToxpiScore",
-              "WEIGHT",
-              "RANK",
-              "MEDIAN",
-              "STATEMEDIAN"
-            ]
+            "text" : "<div><p><span style=\\\"font-weight:bold;\\\">Slice Statistics</span></p><p><span>Name: {Name}</span></p><p><span>SliceName: {SliceName}</span></p><p><span>Weight: {Weight}</span></p><p><span>ToxPiScore: {ToxPiScore}</span></p><p><span>USAMedian: {USAMedian}</span></p><p><span>StateMedian: {StateMedian}</span></p><p><span>Rank(1 Lowest Risk): {Rank}</span></p></div>"
           },
           {
             "type" : "CIMBarChartMediaInfo",
@@ -434,12 +483,12 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
             "column" : 1,
             "refreshRateUnit" : "esriTimeUnitsSeconds",
             "fields" : [
-              "ToxpiScore",
-              "MEDIAN",
-              "STATEMEDIAN"
+              "ToxPiScore",
+              "USAMedian",
+              "StateMedian"
             ],
-            "caption" : "Average Comparison",
-            "title" : "{CATEGORY}"
+            "caption" : "Comparison of Medians",
+            "title" : "{SliceName}"
           }
         ]
       }
@@ -518,7 +567,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
         },
         "defaultSymbolPatch" : "Default",
         "fields" : [
-          "CATEGORY"
+          "SliceName"
         ],
         "groups" : [
           {
@@ -585,7 +634,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     renderer = renderer[:-1]
     rendererend = """            
             ],
-            "heading" : "CATEGORY"
+            "heading" : "SliceName"
           }
         ],
         "useDefaultSymbol" : true,
@@ -593,6 +642,8 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
       }"""
     renderer = renderer + rendererend
     y["layerDefinitions"][0]["renderer"] = json.loads(renderer)
+
+    #y["layerDefinitions"][1] = json.loads(layerdef)
     dump = json.dumps(y)
     fh.close()
     fh = open(outpath, "w")
