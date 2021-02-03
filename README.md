@@ -1,7 +1,12 @@
 # ToxPi-GIS
 Production of shareable, interactive feature layers from the output of the ToxPi GUI  
 Requires ArcGIS Pro license  
+Important Notes:  
+Currently only for use with USA data  
+State/County names in ToxPi output must be formatted as State, County and not County, State  
+Special Steps are required to run with mac or linux  
 
+Output
 * Steps to run from the command line:  
   * Access environment using command:  
     * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
@@ -30,15 +35,14 @@ Requires ArcGIS Pro license
     * Sign in to Account  
     * Select Content  
     * Select the shared web map  
-    * Obtain sharing id from web URL  
-      * Ex: https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec  
-      * The id is 0cbac968eb7544a98761a13ba9b312ec  
-    * Sharing this id with anyone allows the to view the map  
-* Viewing the map using ToxPiGIS: https://toxpi.org/gis/webapp/  
+    * Obtain  web URL  
+      * Ex: https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec    
+    * Sharing this with anyone allows them to view the map via opening in web viewer  
+* Alternate Viewing Path: Viewing the map using ToxPiGIS: https://toxpi.org/gis/webapp/  
   * Select Map  
   * Select Web Map  
-  * Insert id  
-  * Change Map
+  * Insert id at end of shared web url  
+  * Change Map  
 
     
     
