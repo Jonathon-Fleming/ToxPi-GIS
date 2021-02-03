@@ -76,11 +76,9 @@ def generate_angles(ang1, ang2):
 # End generate_angles function
 
 def generate_anglesreverse(ang2, ang1):
-    #print(ang1)
     yield (ang2-90) * -1
     true = True
     while true:
-        #print(ang2)
         if ang1 == ang2:
             break
         if ang2 == 0:
@@ -96,16 +94,12 @@ def create_sector(pt, radius, ang1, ang2, innerradius=0):
     '''Return a point collection to create polygons from.'''
     pointcoll = arcpy.Array()
     pointcoll.add(arcpy.Point(pt.X, pt.Y),)
-    #print(ang1)
-    #print(ang2)
     for index, i in enumerate(generate_angles(ang1, ang2)):
         x = pt.X + (radius*math.cos(math.radians(i)))
         y = pt.Y + (radius*math.sin(math.radians(i)))
         if index ==0:
           firstx = x
           firsty = y
-        #print(x)
-        #print(y)
         pointcoll.add(arcpy.Point(x, y),)
     if innerradius == 0:
       return pointcoll
@@ -118,18 +112,16 @@ def create_sector(pt, radius, ang1, ang2, innerradius=0):
 
 
 
-def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, ranks, medians, statemedians):
+def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, ranks, medians, statemedians,innerradius,Large = False):
     """
     coxcombs: In a Coxcomb chart (or rose diagram), each category is represented by a
     segment, each of which has the same angle. The area of a segment represents the value
     of the corresponding category.
-
     Required arguments:
     inFeatures -- Input point features containing the data to be displayed as a coxcomb feature.
     outFeatures -- The output coxcomb feature class (polygon).
     uniqueID -- A unique identifier for each coxcomb.
     inFields -- List of fields used to create the categories to be displayed on the coxcomb
-
     """
     try:
         # Temp for testing
@@ -178,7 +170,29 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
         arcpy.AddField_management(tmpFeatures, "RADIUS_", "FLOAT")
 
         # Insert pivoted data from input Feature Class.
-        with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY'] + allFlds) as scur:
+        if Large:
+          #for slices in fldList:
+            #arcpy.AddField_management(tmpFeatures, str(slices), "TEXT")
+          with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY', uniqueID]) as scur:
+            for i, row in enumerate(scur):
+                count = 0
+                x1,y1 = row[0]
+                id_ = row[1]
+
+                for j, f in enumerate(fldList):
+                    #v = row[count+2]
+                    weight = str(inputWeights[count]*100/360) + "%"
+                    #rank = str(ranks[j][i]) + "/" + str(len(ranks[j]))
+                    median = medians[j]
+                    if id_.split(",")[0].lower() in list(statemedians[j]):
+                      statemedian = statemedians[j][id_.split(",")[0].lower()]
+                    else:
+                      statemedian = -1
+                    count = count + 1
+                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"ToxPiScore","SliceName","CLASS_", "Weight","USAMedian")) as poly_cursor:
+                        poly_cursor.insertRow(([x1,y1],id_,statemedian,f,count,weight, median))
+        else:  
+          with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY'] + allFlds) as scur:
             for i, row in enumerate(scur):
                 count = 0
                 x1,y1 = row[0]
@@ -189,7 +203,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                     weight = str(inputWeights[count]*100/360) + "%"
                     rank = str(ranks[j][i]) + "/" + str(len(ranks[j]))
                     median = medians[j]
-                    statemedian = statemedians[j][id_.split(",")[0]]
+                    statemedian = statemedians[j][id_.split(",")[0].lower()]
                     count = count + 1
                     with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"ToxPiScore","SliceName","CLASS_", "Weight","Rank","USAMedian", "StateMedian")) as poly_cursor:
                         poly_cursor.insertRow(([x1,y1],id_,v,f,count,weight,rank, median,statemedian))
@@ -213,7 +227,6 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                                                         spatial_reference=sr)
         # Get all attribute fields.
         search_fields = [f.name for f in arcpy.ListFields(tmpFeatures)]
-        #print(search_fields)
 
        # Get the locations in the list for bearings and radius.
         bearing_a_loc = search_fields.index("BEARING_a")+1
@@ -243,24 +256,10 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                 # Create the coxcomb polygons.
                 with arcpy.da.InsertCursor(cox_polys, ['SHAPE@'] + search_fields[2:]) as poly_cursor:
                     l = len(search_fields) + 1
-                    #print("i = ", i)
-                    #print("poly = ", poly_cursor)
-                    #print(i%(numFlds-1))
-                    #print(b_a)
-                    #print(b_b)
-                    innerradius = 100
                     if (i+1)%numFlds == 0:
                         poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), innerradius, 0, 360), sr,),] + list(row[3:l]))
                     else:
                         if radius != 0:
-                            #outercirc = create_sector(arcpy.Point(x1, y1), radius, int(b_a), int(b_b))
-                            #innercirc = create_sector(arcpy.Point(x1, y1), innerradius, int(b_a), int(b_b))
-                            #print(outercirc)
-                            #print(innercirc)
-                            #print(outercirc.add(innercirc,))
-                            #print(outercirc.append(innercirc,))
-                            #sys.exit()
-                            ###try adding just outer circ and see what happens
                             poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), radius, int(b_a), int(b_b), innerradius), sr,),] + list(row[3:l]))
             #def create_sector(pt, radius, ang1, ang2):
             arcpy.SetProgressorPosition(100)
@@ -388,7 +387,14 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     fh.close()
     # extract the variables you want
     name = data["Name"]
-    statename = [i.split(",")[0] for i in name]
+    statename = [i.split(",")[0].lower() for i in name]
+    if name[0].split(",")[1][0] == " ":
+      countyname = [i.split(",")[1][1:].lower() for i in name]
+    else:
+      countyname = [i.split(",")[1].lower() for i in name]
+    #might need to add county name here
+
+    #contains dictionaries of state medians for each category name
     statemedians = []
     for cat in category_names:
       a = data[cat]
@@ -422,6 +428,13 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
             dupcount = 0
       rankList.append(newarray)
 
+      if cat == "ToxPi_Score":
+        countytoxpidata = {}
+        for index in range(n):
+          if statename[index] not in countytoxpidata.keys():
+            countytoxpidata[statename[index]] = {}
+          countytoxpidata[statename[index]][countyname[index]] = float(a[index])
+
     # Process: XY Table To Point (Convert csv file to xy point data) 
     tmpfilepoint = geopath + "\pointfeature"
     arcpy.XYTableToPoint_management(in_table=outfilecsv, out_feature_class=tmpfilepoint, x_field="Longitude", y_field="Latitude", z_field="", coordinate_system="PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision")
@@ -430,25 +443,12 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     tmpfileremapped = geopath + "\pointfeatureremapped"
     arcpy.ConvertCoordinateNotation_management(in_table=tmpfilepoint, out_featureclass=tmpfileremapped, x_field="Longitude", y_field="Latitude", input_coordinate_format="DD_2", output_coordinate_format="DD_2", id_field="", spatial_reference="PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision", in_coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]", exclude_invalid_records="INCLUDE_INVALID")
 
-    #fileremapped = geopath + "\convertedpointfeature"
-    #arcpy.management.MakeFeatureLayer(tmpfileremapped, fileremapped)
-    #lyrremapped = outpathtmp + "\convertedlyr.lyrx"
-    #arcpy.management.SaveToLayerFile(fileremapped, lyrremapped)
-    # fh = open(lyrremapped, "r")
-    # data = fh.read()
-    # y = json.loads(data)
-    # fh = open(outpath, "r")
-    # data = fh.read()
-    # y = json.loads(data)
-    # layerdef = y["layerDefinitions"]
-    # print(layerdef)
-    # fh.close()
-
     # Process: ToxPi construction (ToxPi construction)     
     radius = 1
+    innerradius = 100
     tmpfileToxPi = geopath + "\ToxPifeature"
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID="Name", inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, ranks = rankList, medians = medianList, statemedians = statemedians)
-
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID="Name", inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, ranks = rankList, medians = medianList, statemedians = statemedians, innerradius = innerradius)
+    
     #make toxpifeatures into feature layer
     #tmpfeaturelyr = r"C:\Users\Jonathon\Documents\ArcGIS\Projects\ToxPiAuto\ToxPiAuto.gdb\ToxPifeaturelayer"
     tmpfeaturelyr = geopath + "\ToxPifeaturelayer"
@@ -457,6 +457,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     arcpy.management.MakeFeatureLayer(tmpfileToxPi, tmpfeaturelyr)
     #getsymbology(tmpfeaturelyr, outpath)
     arcpy.management.SaveToLayerFile(tmpfeaturelyr, outpath)
+
     
     for j in range(len(colors)):
         colors[j] = tuple(int(colors[j][i:i+2], 16) for i in (0, 2, 4))
@@ -497,34 +498,6 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
 
     renderer = """{
         "type" : "CIMUniqueValueRenderer",
-        "visualVariables" : [
-          {
-            "type" : "CIMSizeVisualVariable",
-            "authoringInfo" : {
-              "type" : "CIMVisualVariableAuthoringInfo",
-              "minSliderValue" : 0.10000000000000001,
-              "maxSliderValue" : 0.10000000000000001,
-              "heading" : "Custom"
-            },
-            "randomMax" : 1,
-            "minSize" : 1,
-            "maxSize" : 13,
-            "minValue" : 0.10000000000000001,
-            "maxValue" : 0.10000000000000001,
-            "valueRepresentation" : "Radius",
-            "variableType" : "Graduated",
-            "valueShape" : "Unknown",
-            "axis" : "HeightAxis",
-            "target" : "outline",
-            "normalizationType" : "Nothing",
-            "valueExpressionInfo" : {
-              "type" : "CIMExpressionInfo",
-              "title" : "Custom",
-              "expression" : ".1",
-              "returnType" : "Default"
-            }
-          }
-        ],
         "defaultLabel" : "<all other values>",
         "defaultSymbol" : {
           "type" : "CIMSymbolReference",
@@ -592,8 +565,8 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
                         "capStyle" : "Round",
                         "joinStyle" : "Round",
                         "lineStyle3D" : "Strip",
-                        "miterLimit" : 10,
-                        "width" : 0.10000000000000001,
+                        "miterLimit" : 1,
+                        "width" : 0.5,
                         "color" : {{
                           "type" : "CIMRGBColor",
                           "values" : [
@@ -642,12 +615,511 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
       }"""
     renderer = renderer + rendererend
     y["layerDefinitions"][0]["renderer"] = json.loads(renderer)
+    y["layerDefinitions"][0]["minScale"] = "5000000"
+    #y["layerDefinitions"][0]["minscale"] = " : 5000000"
 
     #y["layerDefinitions"][1] = json.loads(layerdef)
-    dump = json.dumps(y)
+    mainlyr = json.dumps(y)
     fh.close()
     fh = open(outpath, "w")
-    fh.write(dump)
+    fh.write(mainlyr)
+    fh.close()
+    
+    #arcpy.management.SaveToLayerFile(outpath, outpath)
+    countytoxpilyr = arcpy.mp.LayerFile(outpath)
+
+    arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0", geopath + "\statepolylayer")
+    arcpy.management.AddField(geopath + "\statepolylayer", "ToxPiScore", "Float")
+    with arcpy.da.UpdateCursor(geopath+"\statepolylayer", ["STATE_NAME","ToxPiScore",]) as scur:
+        for row in scur:
+          if row[0].lower() in list(statedata):
+            row[1] = statemedians[-1][row[0].lower()]
+            scur.updateRow(row)
+    featureLayer=arcpy.management.MakeFeatureLayer(geopath+"\statepolylayer","statepolygons")
+    arcpy.management.SaveToLayerFile(featureLayer, outpathtmp + "\statepolygons")
+
+    arcpy.management.FeatureToPoint(featureLayer, geopath + "\statepointstmp", "INSIDE")
+    tmpfileToxPiLg = geopath + "\ToxPifeatureLg"
+    ToxPiFeatures(inFeatures=geopath + "\statepointstmp", outFeatures=tmpfileToxPiLg, uniqueID="STATE_NAME", inFields=infields, inputRadius=int(radius)*30, radiusUnits="MILES", inputWeights=inweights, ranks = rankList, medians = medianList, statemedians = statemedians, innerradius = innerradius*30, Large = True)
+    arcpy.management.MakeFeatureLayer(tmpfileToxPiLg, geopath + "\stateToxPi")
+    arcpy.management.SaveToLayerFile(geopath + "\stateToxPi", outpathtmp + "\stateToxPi")
+
+    rendererbackground = """{
+        "type" : "CIMClassBreaksRenderer",
+        "barrierWeight" : "High",
+        "breaks" : [
+          {
+            "type" : "CIMClassBreak",
+            "label" : "1",
+            "patch" : "Default",
+            "symbol" : {
+              "type" : "CIMSymbolReference",
+              "symbol" : {
+                "type" : "CIMPolygonSymbol",
+                "symbolLayers" : [
+                  {
+                    "type" : "CIMSolidStroke",
+                    "enable" : true,
+                    "capStyle" : "Round",
+                    "joinStyle" : "Round",
+                    "lineStyle3D" : "Strip",
+                    "miterLimit" : 10,
+                    "width" : 0.5,
+                    "color" : {
+                      "type" : "CIMRGBColor",
+                      "values" : [
+                        130,
+                        130,
+                        130,
+                        100
+                      ]
+                    }
+                  },
+                  {
+                    "type" : "CIMSolidFill",
+                    "enable" : true,
+                    "color" : {
+                      "type" : "CIMRGBColor",
+                      "values" : [
+                        130,
+                        130,
+                        130,
+                        0
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "upperBound" : 1
+          }
+        ],
+        "classBreakType" : "UnclassedColor",
+        "classificationMethod" : "DefinedInterval",
+        "colorRamp" : {
+          "type" : "CIMMultipartColorRamp",
+          "colorSpace" : {
+            "type" : "CIMICCColorSpace",
+            "url" : "Default RGB"
+          },
+          "colorRamps" : [
+            {
+              "type" : "CIMLinearContinuousColorRamp",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "fromColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  13,
+                  38,
+                  68,
+                  100
+                ]
+              },
+              "toColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  56,
+                  98,
+                  122,
+                  100
+                ]
+              }
+            },
+            {
+              "type" : "CIMLinearContinuousColorRamp",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "fromColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  56,
+                  98,
+                  122,
+                  100
+                ]
+              },
+              "toColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  98,
+                  158,
+                  176,
+                  100
+                ]
+              }
+            },
+            {
+              "type" : "CIMLinearContinuousColorRamp",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "fromColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  98,
+                  158,
+                  176,
+                  100
+                ]
+              },
+              "toColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  177,
+                  205,
+                  194,
+                  100
+                ]
+              }
+            },
+            {
+              "type" : "CIMLinearContinuousColorRamp",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "fromColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  177,
+                  205,
+                  194,
+                  100
+                ]
+              },
+              "toColor" : {
+                "type" : "CIMRGBColor",
+                "colorSpace" : {
+                  "type" : "CIMICCColorSpace",
+                  "url" : "Default RGB"
+                },
+                "values" : [
+                  255,
+                  252,
+                  212,
+                  100
+                ]
+              }
+            }
+          ],
+          "weights" : [
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "field" : "ToxPiScore",
+        "minimumBreak" : 0,
+        "numberFormat" : {
+          "type" : "CIMNumericFormat",
+          "alignmentOption" : "esriAlignRight",
+          "alignmentWidth" : 0,
+          "roundingOption" : "esriRoundNumberOfDecimals",
+          "roundingValue" : 2,
+          "useSeparator" : true
+        },
+        "showInAscendingOrder" : true,
+        "heading" : "ToxPiScore",
+        "sampleSize" : 10000,
+        "useDefaultSymbol" : true,
+        "defaultSymbolPatch" : "Default",
+        "defaultSymbol" : {
+          "type" : "CIMSymbolReference",
+          "symbol" : {
+            "type" : "CIMPolygonSymbol",
+            "symbolLayers" : [
+              {
+                "type" : "CIMSolidStroke",
+                "enable" : true,
+                "capStyle" : "Round",
+                "joinStyle" : "Round",
+                "lineStyle3D" : "Strip",
+                "miterLimit" : 10,
+                "width" : 0.5,
+                "color" : {
+                  "type" : "CIMRGBColor",
+                  "values" : [
+                    110,
+                    110,
+                    110,
+                    100
+                  ]
+                }
+              },
+              {
+                "type" : "CIMSolidFill",
+                "enable" : true,
+                "color" : {
+                  "type" : "CIMRGBColor",
+                  "values" : [
+                    130,
+                    130,
+                    130,
+                    100
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "minimumLabel" : "0",
+        "defaultLabel" : "<null>",
+        "polygonSymbolColorTarget" : "Fill",
+        "normalizationType" : "Nothing",
+        "useExclusionSymbol" : false,
+        "exclusionSymbolPatch" : "Default",
+        "visualVariables" : [
+          {
+            "type" : "CIMColorVisualVariable",
+            "expression" : "[ToxPiScore]",
+            "minValue" : 0,
+            "maxValue" : 1,
+            "colorRamp" : {
+              "type" : "CIMMultipartColorRamp",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "colorRamps" : [
+                {
+                  "type" : "CIMLinearContinuousColorRamp",
+                  "colorSpace" : {
+                    "type" : "CIMICCColorSpace",
+                    "url" : "Default RGB"
+                  },
+                  "fromColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      13,
+                      38,
+                      68,
+                      100
+                    ]
+                  },
+                  "toColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      56,
+                      98,
+                      122,
+                      100
+                    ]
+                  }
+                },
+                {
+                  "type" : "CIMLinearContinuousColorRamp",
+                  "colorSpace" : {
+                    "type" : "CIMICCColorSpace",
+                    "url" : "Default RGB"
+                  },
+                  "fromColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      56,
+                      98,
+                      122,
+                      100
+                    ]
+                  },
+                  "toColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      98,
+                      158,
+                      176,
+                      100
+                    ]
+                  }
+                },
+                {
+                  "type" : "CIMLinearContinuousColorRamp",
+                  "colorSpace" : {
+                    "type" : "CIMICCColorSpace",
+                    "url" : "Default RGB"
+                  },
+                  "fromColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      98,
+                      158,
+                      176,
+                      100
+                    ]
+                  },
+                  "toColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      177,
+                      205,
+                      194,
+                      100
+                    ]
+                  }
+                },
+                {
+                  "type" : "CIMLinearContinuousColorRamp",
+                  "colorSpace" : {
+                    "type" : "CIMICCColorSpace",
+                    "url" : "Default RGB"
+                  },
+                  "fromColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      177,
+                      205,
+                      194,
+                      100
+                    ]
+                  },
+                  "toColor" : {
+                    "type" : "CIMRGBColor",
+                    "colorSpace" : {
+                      "type" : "CIMICCColorSpace",
+                      "url" : "Default RGB"
+                    },
+                    "values" : [
+                      255,
+                      252,
+                      212,
+                      100
+                    ]
+                  }
+                }
+              ],
+              "weights" : [
+                0.25,
+                0.25,
+                0.25,
+                0.25
+              ]
+            },
+            "normalizationType" : "Nothing",
+            "polygonSymbolColorTarget" : "Fill"
+          }
+        ]
+      }"""
+
+    fh = open(outpathtmp + "\statepolygons.lyrx", "r")
+    data = fh.read()
+    y = json.loads(data)
+    y["layerDefinitions"][0]["renderer"] = json.loads(rendererbackground)
+    y["layerDefinitions"][0]["maxScale"] = "5000000"
+    mainlyr = json.dumps(y)
+    fh.close()
+    fh = open(outpathtmp + "\statepolygons.lyrx", "w")
+    fh.write(mainlyr)
+    fh.close()
+
+    statepolylyr = arcpy.mp.LayerFile(outpathtmp + "\statepolygons.lyrx")
+    #statepolylyr.maxScale = 5000000
+    countytoxpilyr.addLayer(statepolylyr, "TOP")
+
+    #y["layerDefinitions"][1] = json.loads(layerdef)
+    
+    
+    fh = open(outpathtmp + "\stateToxPi.lyrx", "r")
+    data = fh.read()
+    y = json.loads(data)
+    y["layerDefinitions"][0]["renderer"] = json.loads(renderer)
+    y["layerDefinitions"][0]["maxScale"] = "5000000"
+    mainlyr = json.dumps(y)
+    fh.close()
+    fh = open(outpathtmp + "\stateToxPi.lyrx", "w")
+    fh.write(mainlyr)
+    fh.close()
+
+    statetoxpilyr = arcpy.mp.LayerFile(outpathtmp + "\stateToxPi.lyrx")
+    countytoxpilyr.addLayer(statetoxpilyr, "TOP")
+
+    #featureLayer2=arcpy.management.MakeFeatureLayer("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0", "countypolygons")
+    arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0", geopath + "\countypolylayer")
+    arcpy.management.AddField(geopath + "\countypolylayer", "ToxPiScore", "Float")
+    with arcpy.da.UpdateCursor(geopath+"\countypolylayer", ["STATE_NAME","NAME","ToxPiScore",]) as scur:
+        for row in scur:
+          if row[0].lower() in list(statedata):
+            if row[1].lower() in list(countytoxpidata[row[0].lower()]):
+              row[2] = countytoxpidata[row[0].lower()][row[1].lower()]
+            scur.updateRow(row)
+    featureLayer2=arcpy.management.MakeFeatureLayer(geopath+"\countypolylayer","countypolygons")
+    arcpy.management.SaveToLayerFile(featureLayer2, outpathtmp + "\countypolygons")
+
+    fh = open(outpathtmp + "\countypolygons.lyrx", "r")
+    data = fh.read()
+    y = json.loads(data)
+    y["layerDefinitions"][0]["renderer"] = json.loads(rendererbackground)
+    y["layerDefinitions"][0]["minScale"] = "5000000"
+    mainlyr = json.dumps(y)
+    fh.close()
+    fh = open(outpathtmp + "\countypolygons.lyrx", "w")
+    fh.write(mainlyr)
+    fh.close()
+    countypolylyr = arcpy.mp.LayerFile(outpathtmp + "\countypolygons.lyrx")
+    countytoxpilyr.addLayer(countypolylyr, "BOTTOM")
+    countytoxpilyr.save()
+
     sys.exit()
 
 if __name__ == '__main__':
