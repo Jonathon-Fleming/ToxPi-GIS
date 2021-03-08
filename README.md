@@ -3,7 +3,7 @@ Production of shareable, interactive feature layers from the output of the ToxPi
 Requires ArcGIS Pro license  
 Important Notes:  
 Currently only for use with USA data  
-Requires column named FIPS with corresponding identifiers 
+Requires column named FIPS with corresponding identifiers  
 Special Steps are required to run with mac or linux  
 
 Output
