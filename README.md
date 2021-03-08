@@ -6,8 +6,7 @@ Currently only for use with USA data
 Requires column named FIPS with corresponding identifiers  
 Special Steps are required to run with mac or linux  
 
-Output
-* Steps to run from the command line:  
+* Steps to run from windows command prompt:  
   * Access environment using command:  
     * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
     * Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
