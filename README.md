@@ -3,7 +3,7 @@ Production of shareable, interactive feature layers from the output of the ToxPi
 Requires ArcGIS Pro license  
 Important Notes:  
 Currently only for use with USA data  
-State/County names in ToxPi output must be formatted as State, County and not County, State  
+Requires column named FIPS with corresponding identifiers 
 Special Steps are required to run with mac or linux  
 
 Output
@@ -12,7 +12,8 @@ Output
     * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
     * Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
   * Run script with required parameters:  
-    * python ToxPiModel.py location\infile location\outfile.lyrx  
+    * python ToxPi_Model.py location\infile location\outfile.lyrx
+    * If location is your current directoy, replace location with .
     * Note: Script will not work without the lyrx extension on the desired output file  
 * OutPut:  
   * Script makes a geodatabase in the outfile path called ToxPiAuto.gdb  
