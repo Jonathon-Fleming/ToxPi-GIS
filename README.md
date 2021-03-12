@@ -2,7 +2,7 @@
 Production of shareable, interactive feature layers from the output of the ToxPi GUI   
 
 Important Notes:  
-Requires ArcGIS Pro license and download
+Requires ArcGIS Pro license and download  
 Currently only for use with USA data  
 Requires column named FIPS with corresponding identifiers  
 Source column expected to be formatted Latitude, Longitude  
