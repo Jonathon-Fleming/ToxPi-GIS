@@ -112,7 +112,7 @@ def create_sector(pt, radius, ang1, ang2, innerradius=0):
 
 
 
-def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inputRadius, radiusUnits, inputWeights, ranks, medians,innerradius,statemedians = None, stateranks=None, Large = False):
+def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inputRadius, radiusUnits, inputWeights, ranks = None, medians=None ,statemedians = None, stateranks=None, Large = False):
     """
     Required arguments:
     inFeatures -- Input point features containing the data to be displayed as a coxcomb feature.
@@ -143,13 +143,10 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
 
         # Add fields required for output to temp feature class
         arcpy.AddField_management(tmpFeatures, uniqueID, "TEXT")
-        arcpy.AddField_management(tmpFeatures, "Name", "TEXT")
         arcpy.AddField_management(tmpFeatures, "Score", "DOUBLE")
         arcpy.AddField_management(tmpFeatures, "SliceName", "TEXT")
         arcpy.AddField_management(tmpFeatures, "CLASS_", "LONG")
         arcpy.AddField_management(tmpFeatures, "Weight", "TEXT")
-        arcpy.AddField_management(tmpFeatures, "Rank", "TEXT")
-        arcpy.AddField_management(tmpFeatures, "USAMedian", "DOUBLE")
         arcpy.AddField_management(tmpFeatures, "BEARING_a", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "BEARING_b", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "RADIUS_", "FLOAT")
@@ -157,6 +154,9 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
         # Insert pivoted data from input Feature Class.
 
         if Large: # If drawing the state averages of data
+          arcpy.AddField_management(tmpFeatures, "Name", "TEXT")
+          arcpy.AddField_management(tmpFeatures, "Rank", "TEXT")
+          arcpy.AddField_management(tmpFeatures, "USAMedian", "DOUBLE")
           with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY', "STATE_FIPS", "STATE_NAME"]) as scur:
             for i, row in enumerate(scur): #for each input data point
                 count = 0
@@ -173,7 +173,10 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
                     with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', "Name", uniqueID, "Score","SliceName","CLASS_", "Weight", "Rank", "USAMedian")) as poly_cursor:
                       poly_cursor.insertRow(([x1,y1],name,id_, statemedian,f,count,weight, staterank, median))
 
-        else:  #If drawing the input data
+        elif ranks != None:  #If drawing the input data
+            arcpy.AddField_management(tmpFeatures, "Name", "TEXT")
+            arcpy.AddField_management(tmpFeatures, "Rank", "TEXT")
+            arcpy.AddField_management(tmpFeatures, "USAMedian", "DOUBLE")
             arcpy.AddField_management(tmpFeatures, "StateMedian", "DOUBLE")
             with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY', "Name", "STATE_FIPS"] + allFlds) as scur:
               for i, row in enumerate(scur): #for each input data point
@@ -192,6 +195,22 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
                     count = count + 1
                     with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', "Name", uniqueID,"Score","SliceName","CLASS_", "Weight","Rank","USAMedian", "StateMedian")) as poly_cursor:
                         poly_cursor.insertRow(([x1,y1],name,id_,v,f,count,weight,rank, median,statemedian))
+        else:
+          if uniqueid != "Name":
+            arcpy.AddField_management(tmpFeatures, "Name", "TEXT")
+          with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY', "Name"] + allFlds) as scur:
+              for i, row in enumerate(scur): #for each input data point
+                count = 0
+                x1,y1 = row[0] #get coordinates for point
+                name = row[1]          
+                id_ = row[2] #get county or census FIPS for point
+
+                for j, f in enumerate(inFields): #loop through slice fields
+                    v = round(row[count+3], 2) #get toxpi score for slice
+                    weight = str(inputWeights[count]*100/360) + "%" #get weight for slice as percentage
+                    count = count + 1
+                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', "Name", uniqueID,"Score","SliceName","CLASS_", "Weight")) as poly_cursor:
+                        poly_cursor.insertRow(([x1,y1],name, id_,v,f,count,weight))
             
         # Find the max values to scale the output features
         if inputRadius == "" or inputRadius == 0:
@@ -199,7 +218,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
         maxRadius = math.sqrt((maxvalue(tmpFeatures, "Score"))/math.pi)
         convMax = float(maxRadius) * float(sr.metersPerUnit)
         scaler = (float(inputRadius)*convertLength(radiusUnits))/float(convMax)
-
+        innerradius = scaler/30
         # Create an empty Feature Class to store toxpi figures
         outFolder = os.path.dirname(outFeatures)
         outName = os.path.basename(outFeatures)
@@ -261,16 +280,21 @@ def adjustinput(infile, outfile):
       df["FIPS"] = df["FIPS"].apply(str)
       digits = len(df["FIPS"][1])
       #determine if the data is at the county or census tract level
-      if digits <= 5:
+      if digits <= 5 and digits > 2:
         uniqueidtype = "FIPS"
-      else: 
+      elif digits > 5: 
         uniqueidtype = "Tract"
+      else: 
+        uniqueidtype = "None"
     else: #throw an error if FIPS are not present
-        print("Error: FIPS column is not present in the input data. Please add a column labeled FIPS with the corresponding identifiers.")
-        sys.exit()
+      uniqueid = "Name"
+      uniqueidtype = "None"
+        #print("Error: FIPS column is not present in the input data. Please add a column labeled FIPS with the corresponding identifiers.")
+        #sys.exit()
 
     #add zeros to start of FIPS if they are not present
-    for i in range(len(df["FIPS"])):
+    if uniqueidtype != "None":
+      for i in range(len(df["FIPS"])):
         if uniqueidtype == "FIPS": 
           digits = len(df.at[i, uniqueid])
           while digits < 5:
@@ -307,7 +331,7 @@ def adjustinput(infile, outfile):
                         weightendpos = i
                         weights.append(float(name[weightstartpos + 1: weightendpos]))                
     df.to_csv(outfile)
-    return weights, colors, infields, uniqueidtype
+    return weights, colors, infields, uniqueidtype, uniqueid
 
 
 def GetSymbology(colors, infields, location):
@@ -900,8 +924,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
 
     #adjust input file for required parameters and get required information
     outfilecsv = outpathtmp + "\ToxPiResultsAdjusted.csv"
-    inweights, colors, infields, uniqueidtype = adjustinput(inputdata, outfilecsv)
-    uniqueid = "FIPS"
+    inweights, colors, infields, uniqueidtype, uniqueid = adjustinput(inputdata, outfilecsv)
 
     #adjust weights to fit a circle (360 deg)
     total = 0
@@ -928,24 +951,6 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     geopath = outpathtmp + "\ToxPiAuto.gdb"
     if not os.path.exists(geopath):
         arcpy.CreateFileGDB_management(str(outpathtmp), "ToxPiAuto.gdb")
-
-    #adjust input file for required parameters and get required information
-    outfilecsv = outpathtmp + "\ToxPiResultsAdjusted.csv"
-    inweights, colors, infields, uniqueidtype = adjustinput(inputdata, outfilecsv)
-    uniqueid = "FIPS"
-
-    #adjust weights to fit a circle (360 deg)
-    total = 0
-    for i in range(len(inweights)):
-      total = total + inweights[i]
-    for i in range(len(inweights)):
-      inweights[i] = inweights[i]*360/total
-
-    #append info for adding a center dot with overall score
-    inweights.append(360)
-    colors.append("FFFFFF")
-    infields.append("ToxPi_Score")
-    category_names = infields
     
     #Convert csv file to xy point data 
     tmpfilepoint = geopath + "\pointfeature"
@@ -956,7 +961,8 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     arcpy.ConvertCoordinateNotation_management(in_table=tmpfilepoint, out_featureclass=tmpfileremapped, x_field="Longitude", y_field="Latitude", input_coordinate_format="DD_2", output_coordinate_format="DD_2", id_field="", spatial_reference="PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision", in_coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]", exclude_invalid_records="INCLUDE_INVALID")
 
     #remove quotes used to force identifier to a string
-    with arcpy.da.UpdateCursor(tmpfileremapped, uniqueid) as scur:
+    if uniqueidtype != "None":
+      with arcpy.da.UpdateCursor(tmpfileremapped, uniqueid) as scur:
         for row in scur:
           row[0] = row[0].replace("\"","")
           scur.updateRow(row)
@@ -969,10 +975,39 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     elif uniqueidtype == "Tract":
       boundaries = arcpy.management.CopyFeatures("https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CensusTracts/FeatureServer/0", geopath + "\censusypolylayer")
       arcpy.management.JoinField(tmpfileremapped, uniqueid, boundaries, "FIPS", ["STATE_FIPS", "CNTY_FIPS"])
-      
       # joinstatename = arcpy.management.JoinField(countyboundaries, "TRACT", tmpfileremapped, uniqueid, list(category_names))
       # countyFIPS = arcpy.analysis.Select(joinstatename, geopath + "\censusFIPS", '"ToxPi_Score" IS NOT NULL')
+    elif uniqueidtype == "None":
+      radius = 1
+      tmpfileToxPi = geopath + "\ToxPifeature"
+      ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = uniqueid, uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights)
+      #make toxpifeatures into feature layer
+      countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "County ToxPi")
+      arcpy.management.SaveToLayerFile(countytoxpilyr, outpath)
+
+      #get color rgb codes from hex codes
+      for j in range(len(colors)):
+        colors[j] = tuple(int(colors[j][i:i+2], 16) for i in (0, 2, 4))
     
+      #open county toxpi feature layer file for editing
+      fh = open(outpath, "r")
+      data = fh.read()
+      y = json.loads(data)
+
+      #alter popups for county toxpi feature layer
+      y["layerDefinitions"][0]["popupInfo"] = json.loads(GetPopupInfo("County", position = "foreground"))
+
+      #alter symbology for county toxpi feature layer
+      y["layerDefinitions"][0]["renderer"] = json.loads(GetSymbology(colors, infields, "foreground"))
+
+      #write the edits to the county toxpi layer file
+      mainlyr = json.dumps(y)
+      fh.close()
+      fh = open(outpath, "w")
+      fh.write(mainlyr)
+      fh.close()
+      sys.exit()
+      
     #store toxpi scores as a list of slices, where each index contains a dictionary of states, and each dictionary contains a dictionary of county values
     sectionedtoxpidata = []
 
@@ -1053,12 +1088,10 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
 
     # Process: ToxPi construction (ToxPi construction)     
     radius = 1
-    innerradius = 100
     tmpfileToxPi = geopath + "\ToxPifeature"
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = uniqueid, uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, innerradius = innerradius, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = uniqueid, uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
 
     #make toxpifeatures into feature layer
-    tmpfeaturelyr = geopath + "\ToxPifeaturelayer"
     countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "County ToxPi")
     arcpy.management.SaveToLayerFile(countytoxpilyr, outpath)
 
@@ -1092,7 +1125,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
 
     #Construct medium county toxpi figures 
     tmpfileToxPi = geopath + "\ToxPifeaturemid"
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID=uniqueid, uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius)*5, radiusUnits="MILES", inputWeights=inweights, innerradius = innerradius*5, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID=uniqueid, uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius)*5, radiusUnits="MILES", inputWeights=inweights, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
 
     #make toxpifeatures into feature layer
     countytoxpilyrmid = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "County ToxPi Mid")
@@ -1139,7 +1172,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     
     #create state toxpi features from point data
     tmpfileToxPiLg = geopath + "\ToxPifeatureLg"
-    ToxPiFeatures(inFeatures=geopath + "\statepointstmp", outFeatures=tmpfileToxPiLg, uniqueID="STATE_FIPS", uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius)*30, radiusUnits="MILES", inputWeights=inweights, innerradius = innerradius*30, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist, Large = True)
+    ToxPiFeatures(inFeatures=geopath + "\statepointstmp", outFeatures=tmpfileToxPiLg, uniqueID="STATE_FIPS", uniqueidtype = uniqueidtype, inFields=infields, inputRadius=int(radius)*30, radiusUnits="MILES", inputWeights=inweights, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist, Large = True)
 
     #save state toxpi features to a feature layer file
     statetoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPiLg, "State ToxPi")
