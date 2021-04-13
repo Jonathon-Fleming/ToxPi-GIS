@@ -1,10 +1,12 @@
 # Vignette 1: Using county or census tract data with FIPS
 
-Important Notes:  
-* Requires ArcGIS Pro license and download  
-* Currently only for use with USA data   
-* Source column expected to be formatted Latitude, Longitude  
-* Special Steps are required to run with mac or linux  
+Steps:
+* Run the script using the vignette 1 test data  
+    python ToxPi_Model.py .\vignette1.csv .\vignette1.lyrx  
+* Open vignette1.lyrx in ArcGIS Pro  
+* Share as a web map to ArcGIS Online  
+* Obtain web link from ArcGIS Online or view previously hosted map here (insert link at here)  
+
 
 **Workflow:**  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" data-canonical-  
