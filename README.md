@@ -13,7 +13,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" width
 
 1. Use the [ToxPi GUI](https://toxpi.org/) to analyze your data and obtain an output csv file.  
 2. Run ToxPi_Model.py using the ToxPi output. Alternatively, experienced ArcGIS users may use ToxPi.tbx from within ArcGIS Pro.  
-3. Open the resulting layer file in ArcGIS Pro and share the layer files to ArcGIS Online publically.  
+3. Open the resulting layer file in ArcGIS Pro and share the layer files as a web map to ArcGIS Online publically.  
 4. Obtain the shareable web link for the hosted layer from ArcGIS Online, which anyone can use to view the layer.  
 
 **Script Instructions:**   
@@ -53,7 +53,7 @@ OutPut:
 **Viewing Options:**  
 ArcGIS Viewing Path:  
 * Go to shared web link  
-* 
+* Select Open in Map Viewer
 ToxPi Viewing Path: https://toxpi.org/gis/webapp/  
   * Select Map  
   * Select Web Map  
