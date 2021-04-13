@@ -25,6 +25,7 @@ Steps to run from windows command prompt:
   * python ToxPi_Model.py location\infile location\outfile.lyrx
   * If location is your current directoy, replace location with .
   * Note: Script will not work without the lyrx extension on the desired output file  
+  
 OutPut:  
   * Script makes a geodatabase in the outfile path called ToxPiAuto.gdb  
   * Script outputs a layer file at location\outfile  
