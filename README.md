@@ -4,7 +4,8 @@ Production of shareable, interactive feature layers from the output of the ToxPi
 Important Notes:  
 * Requires ArcGIS Pro license and download  
 * Currently only for use with USA data   
-* Source column expected to be formatted Latitude, Longitude  
+* Source column expected to be formatted Latitude, Longitude 
+* Name column required   
 * Special Steps are required to run with mac or linux  
 
 **Workflow:**  
