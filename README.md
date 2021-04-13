@@ -8,9 +8,8 @@ Source column expected to be formatted Latitude, Longitude
 Special Steps are required to run with mac or linux  
 
 Workflow:  
-![Image of Workflow](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG | width=250)  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" data-canonical-
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" width="500" height="250" />
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" width="750" height="500" />
 * Steps to run from windows command prompt:  
   * Access environment using command:  
     * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
