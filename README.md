@@ -9,7 +9,7 @@ Special Steps are required to run with mac or linux
 
 Workflow:  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" data-canonical-
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" width="750" height="500" />
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG" width="600" height="250" />
 * Steps to run from windows command prompt:  
   * Access environment using command:  
     * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
