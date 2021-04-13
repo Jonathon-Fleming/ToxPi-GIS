@@ -8,7 +8,7 @@ Source column expected to be formatted Latitude, Longitude
 Special Steps are required to run with mac or linux  
 
 Workflow:  
-![Image of Workflow](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG =250x500)  
+![Image of Workflow](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Workflow.PNG | width=250)  
 
 * Steps to run from windows command prompt:  
   * Access environment using command:  
