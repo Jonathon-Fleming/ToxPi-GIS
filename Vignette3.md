@@ -3,9 +3,11 @@
 Accessing Map:  
 * Go to a shared map link(insert link here)  
 
-Map Viewing Functions:
-* Feature Selection
-  * Background
-  * Slices
-* Filtering
-* Layer Selection
+Map Viewing Functions:  
+* Feature Selection  
+  * Background  
+  * Slices  
+* Filtering  
+* Layer Selection  
+
+Data Analysis options exist for users with ArcGIS accounts
