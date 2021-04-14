@@ -12,3 +12,4 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Sharing.PNG">
 Multilayer visualization  
 Choropleth colored by ToxPi score  
 Interactive slices with custom popups  
+Colored slices based on ToxPi GUI choices
