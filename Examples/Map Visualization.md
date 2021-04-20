@@ -16,7 +16,9 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundsel
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" height = "325" width = "475" />
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" height = "325" width = "425" />
-* Layer Visibility  
+* Layer Visibility Toggling  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" height = "325" width = "425" />
 
 Data Analysis options exist for users with ArcGIS accounts  
 
