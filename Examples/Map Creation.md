@@ -30,8 +30,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
 * Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=2fe3c45a41c347d6b922993df9bd9f26) 
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG">    
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG">    
 * Optionally, edit descriptive elements and metadata for public viewing 
 
 **Map Details:**  
