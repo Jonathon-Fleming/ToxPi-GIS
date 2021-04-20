@@ -12,6 +12,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelec
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/BackgroundSelection.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "300" width = "400" />  
 * Filtering  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" height = "300" width = "400" />
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" height = "300" width = "400" />
 * Layer Selection  
 
 Data Analysis options exist for users with ArcGIS accounts  
