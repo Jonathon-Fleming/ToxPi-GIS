@@ -10,13 +10,13 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png
 
 **Map Details:**  
 Multilayer visualization  
+Choropleth colored by ToxPi score  
+Interactive slices with custom popups  
+Colored slices based on ToxPi GUI choices  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" width = "650" height = "300" />
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" width = "650" height = "300" />  
-Choropleth colored by ToxPi score  
-Interactive slices with custom popups  
-Colored slices based on ToxPi GUI choices  
 
 # Vignette 2: Using other geographic data
 
