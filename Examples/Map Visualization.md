@@ -5,12 +5,12 @@ Accessing Map:
 
 Map Viewing Functions:  
 * Feature Selection  
-  * Slices
+  * Slices  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG">  
-  * Background
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" height = "300" width = "300" />  
+  * Background  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/BackgroundSelection.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG">  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "300" width = "300" />  
 * Filtering  
 * Layer Selection  
 
