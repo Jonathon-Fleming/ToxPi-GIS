@@ -6,7 +6,7 @@
 * Open Vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Sharing.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Sharing.PNG">
-* Obtain web link from ArcGIS Online or view previously hosted map here(https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=56ebe2bf85a24995864b5eb833ba0b71)  
+* Obtain web link from ArcGIS Online or view previously hosted map [here](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=56ebe2bf85a24995864b5eb833ba0b71)  
 
 **Map Details:**  
 Multilayer visualization  
@@ -22,7 +22,7 @@ Colored slices based on ToxPi GUI choices
 * Open vignette2.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Sharing.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Sharing.PNG">
-* Obtain web link from ArcGIS Online or view previously hosted map here (insert link at here)  
+* Obtain web link from ArcGIS Online or view previously hosted map [here](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=2fe3c45a41c347d6b922993df9bd9f26)  
 
 **Map Details:**  
 Interactive slices with custom popups  
