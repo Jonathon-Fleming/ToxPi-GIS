@@ -20,7 +20,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" height = "325" width = "650" />
 
-Data Analysis options exist for users with ArcGIS accounts  
+Data Analysis options exist for users with ArcGIS accounts and proper licensing
 
 # Option 2: Visualizing Maps With ToxPI-GIS Website
 
