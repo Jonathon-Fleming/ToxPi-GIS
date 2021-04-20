@@ -2,7 +2,7 @@
 
 **Steps:**  
 * Run the script using the vignette 1 test data  
-    python ToxPi_Model.py .\vignette1.csv .\vignette1.lyrx  
+    python ToxPi_Model.py .\Vignette1_Partial.csv .\Vignette1.lyrx  
 * Open vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Sharing.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Sharing.PNG">
