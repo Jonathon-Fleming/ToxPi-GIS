@@ -6,7 +6,7 @@
 * Open Vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
-* Obtain web link from ArcGIS Online via My Content or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=56ebe2bf85a24995864b5eb833ba0b71)  
+* Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=56ebe2bf85a24995864b5eb833ba0b71)  
 
 **Map Details:**  
 Multilayer visualization  
@@ -26,7 +26,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.
 * Open Vignette2.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
-* Obtain web link from ArcGIS Online via My Content or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=2fe3c45a41c347d6b922993df9bd9f26)  
+* Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=2fe3c45a41c347d6b922993df9bd9f26)  
 
 **Map Details:**  
 Interactive slices with custom popups  
