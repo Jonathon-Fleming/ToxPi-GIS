@@ -6,6 +6,7 @@ Important Notes:
 * Currently only for use with USA data   
 * Source column expected to be formatted Latitude, Longitude 
 * Name column required   
+* Each time script is run to generate a map a different directory should be used unless overwriting a previous map    
 * Special Steps are required to run with mac or linux  
 
 **Workflow:**  
