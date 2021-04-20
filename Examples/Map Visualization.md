@@ -1,7 +1,7 @@
-# Vignette 3: Visualizing Maps With ArcGIS Online Map Viewer
+# Option 1: Visualizing Maps With ArcGIS Online Map Viewer
 
 Accessing Map:  
-* Go to a shared map link(insert link here)  
+* Go to a shared [map link](https://ncsu.maps.arcgis.com/home/item.html?id=56ebe2bf85a24995864b5eb833ba0b71)  
 
 Map Viewing Functions:  
 * Feature Selection  
@@ -12,7 +12,7 @@ Map Viewing Functions:
 
 Data Analysis options exist for users with ArcGIS accounts  
 
-# Vignette 4: Visualizing Maps With ToxPI-GIS Website
+# Option 2: Visualizing Maps With ToxPI-GIS Website
 
 Accessing Map:  
 * Go to [toxpi.org/gis/webapp](https://toxpi.org/gis/webapp/)
