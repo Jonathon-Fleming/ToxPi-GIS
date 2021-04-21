@@ -23,7 +23,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.
 Data Analysis options exist for users with ArcGIS accounts and proper licensing  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG">
-# Option 2: Visualizing Maps With ToxPI-GIS Website
+# Option 2: Visualizing Maps With ToxPi-GIS Website
 
 Accessing Map:  
 * Go to [toxpi.org/gis/webapp](https://toxpi.org/gis/webapp/)
