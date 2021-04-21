@@ -1,5 +1,5 @@
 # ToxPi-GIS
-T Production of shareable, interactive feature layers from the output of the ToxPi GUI   
+Production of shareable, interactive feature layers from the output of the ToxPi GUI   
 
 Important Notes:  
 * Requires ArcGIS Pro license and download  
