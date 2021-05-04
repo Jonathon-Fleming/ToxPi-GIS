@@ -1,8 +1,9 @@
 # ToxPi-GIS
 Production of shareable, interactive feature layers from the output of the ToxPi GUI   
+Examples of the process are contained in the Examples folder  
 
 Important Notes:  
-* Requires ArcGIS Pro license and download  
+* Requires ArcGIS Pro license and download, and must be logged into ArcGIS software    
 * Currently only for use with USA data   
 * Source column expected to be formatted Latitude, Longitude 
 * Name column required   
@@ -14,7 +15,7 @@ Important Notes:
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG" width="600" height="300" />  
 
 1. Use the [ToxPi GUI](https://toxpi.org/) to analyze your data and obtain an output csv file.  
-2. Run ToxPi_Model.py using the ToxPi output. Alternatively, experienced ArcGIS users may use Create ToxPi.tbx from within ArcGIS Pro for size customization.  
+2. Run ToxPi_Model.py using the ToxPi output. Alternatively, experienced ArcGIS users may use Create ToxPi.tbx from within ArcGIS Pro for size customization and a single layer of ToxPi figures.  
 3. Open the resulting layer file in ArcGIS Pro and share the layer files as a web map to ArcGIS Online publically.  
 4. Obtain the shareable web link for the hosted layer from ArcGIS Online, which anyone can use to view the layer.  
 
@@ -22,7 +23,9 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG
 Steps to run from windows command prompt:  
 * Access environment using command:  
   * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
-  * Note: If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
+  * Notes:  
+    * Quotes are required.  
+    * If you did a custom installation of ArcGIS Pro this location might be different(ie. not in program files)  
 * Run script with required parameters:  
   * python ToxPi_Model.py location\infile location\outfile.lyrx
   * If location is your current directoy, replace location with .
