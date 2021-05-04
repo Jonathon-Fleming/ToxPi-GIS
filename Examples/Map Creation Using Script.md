@@ -3,7 +3,9 @@
 **Steps:**
 * Download the root repository
 * Run the script using the vignette 1 subset test data(partial dataset is suggested to save user significant running time)  
+
     python ToxPi_Model.py Examples\PracticeData\Vignette1_Subset_100.csv Examples\Output\Vignette1\Vignette1.lyrx  
+
     Note: Script will procude ouput folder and vignette1 folder if they are not present  
 * Open Vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
