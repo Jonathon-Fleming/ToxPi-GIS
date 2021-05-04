@@ -1,8 +1,10 @@
 # Vignette 1: Using county or census tract data with FIPS
 
-**Steps:**  
-* Run the script using the vignette 1 partial test data(partial dataset is suggested to save user significant running time)  
-    python ToxPi_Model.py .\Vignette1_Partial.csv .\Vignette1.lyrx  
+**Steps:**
+* Download the root repository
+* Run the script using the vignette 1 subset test data(partial dataset is suggested to save user significant running time)  
+    python ToxPi_Model.py Examples\PracticeData\Vignette1_Subset_100.csv Examples\Output\Vignette1\Vignette1.lyrx  
+    Note: Script will procude ouput folder and vignette1 folder if they are not present  
 * Open Vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
@@ -25,7 +27,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.
 
 **Steps:**  
 * Run the script using the vignette 2 partial test data(partial dataset is suggested to save user significant running time)  
-    python ToxPi_Model.py .\Vignette2_Partial.csv .\Vignette2.lyrx  
+    python ToxPi_Model.py Examples\PracticeData\Vignette2_Subset_100.csv Examples\Output\Vignette2\Vignette2.lyrx  
 * Open Vignette2.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
