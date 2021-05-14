@@ -35,7 +35,7 @@ OutPut:
   * Script makes a geodatabase in the outfile path called ToxPiAuto.gdb  
   * Script outputs a layer file at location\outfile  
 
-**ALternate ToolBox Instructions**  
+**Alternate ToolBox Instructions:**  
 Temporary Placeholder  
 
 **Sharing Instructions:**   
