@@ -1,3 +1,7 @@
+# Description
+All Vignettes use data from ... insert more info about the data, where it comes from, why it is new, and how it is different  
+Add a nice image of slices and a legend for the slice info  
+
 # Vignette 1: Using county or census tract data with FIPS
 
 **Steps:**
