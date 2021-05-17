@@ -1,6 +1,6 @@
 # Description
-All Vignettes use data from ... insert more info about the data, where it comes from, why it is new, and how it is different  
-Add a nice image of slices and a legend for the slice info  
+All Vignettes use data from ... insert more info about the data, where it comes from, why it is new, and make a comparison of it to the current PVI Dashboard model, which might be useful for the paper  
+Add a nice image of slices and a legend for the slice info   
 
 # Vignette 1: Using county or census tract data with FIPS
 Description: Use this method with county or census tract data to automatically generate a layer file containing multiple layers that follow the predefined template and symbology shown in the example images below, as well as provide both state and local statistics   
