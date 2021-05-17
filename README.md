@@ -15,7 +15,7 @@ Important Notes:
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG" width="600" height="300" />  
 
 1. Use the [ToxPi GUI](https://toxpi.org/) to analyze your data and obtain an output csv file.  
-2. Run ToxPi_Model.py using the ToxPi output. Alternatively, experienced ArcGIS users may use Create ToxPi.tbx from within ArcGIS Pro for size customization and a single layer of ToxPi figures.  
+2. Run ToxPi_Model.py using the ToxPi output. Alternatively, experienced ArcGIS users may use ToxPiToolbox.tbx from within ArcGIS Pro for size customization and a single layer of ToxPi figures.  
 3. Open the resulting layer file in ArcGIS Pro and share the layer files as a web map to ArcGIS Online publically.  
 4. Obtain the shareable web link for the hosted layer from ArcGIS Online, which anyone can use to view the layer.  
 
