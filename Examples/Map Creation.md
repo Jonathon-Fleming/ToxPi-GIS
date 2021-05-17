@@ -3,7 +3,7 @@ All Vignettes use data from ... insert more info about the data, where it comes 
 Add a nice image of slices and a legend for the slice info  
 
 # Vignette 1: Using county or census tract data with FIPS
-
+Description: Use this method with county or census tract data to automatically generate a layer file containing multiple layers that follow the predefined template and symbology shown in the example images below, as well as provide both state and local statistics   
 **Steps:**
 * Download the root repository
 * Run the script using the vignette 1 subset test data(partial dataset will take roughly 5 minutes whereas entire dataset will be over an hour)  
@@ -30,6 +30,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.P
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" width = "500" height = "300" />  
 
 # Vignette 2: Using other geographic data
+Description: Use this method to generate a single layer automatically that has symbolized ToxPi figures for local statistics with predetermined size, as shown below  
 
 **Steps:**  
 * Run the script using the vignette 2 partial test data(partial dataset will take a few minutes whereas entire dataset will be roughly 20 minutes)
@@ -49,6 +50,7 @@ Colored slices based on ToxPi GUI choices
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "450" height = "300" />  
 
 # Vignette 3: Using the toolbox to generate feature layers
+Description: Use this method from within ArcGIS Pro to integrate ToxPi figures into your own analysis procedures that do not fit the above examples, as well as to allow custom ToxPi figure sizing on the map  
 
 **Steps:**
 * Split the source column for vignette 1 into latitude and longitude. Any preferred method will work, but split_coordinates.py was provided in the utilities folder for this  
