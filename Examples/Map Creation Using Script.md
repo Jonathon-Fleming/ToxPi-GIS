@@ -42,3 +42,31 @@ Interactive slices with custom popups
 Colored slices based on ToxPi GUI choices  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPSLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "600" height = "300" />  
+
+# Vignette 3: Using the toolbox to generate feature layers
+
+**Steps:**
+* Split the source column for vignette 1 into latitude and longitude. Any preferred method will work, but split_coordinates.py was provided in the utilities folder for this  
+* Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
+* Add altered Vignette1 test data to the map(Map, Add Data, Vignette1_Subset_NC.csv)  
+* Display data on the map using an equidistant projected coordinate system via the following tool and parameters:  
+    Tool: Convert Coordinate Notation  
+    Input Table: Vignette1_Subset_NC.csv  
+    Input Coordinate System: GCS_WGS_1984  
+    Output Feature Class: Vignette1_Displayed  
+    Output Coordinate System: USA_Contiguous_Equidistant_Conic  
+    Input Coordinate Format: DD2  
+    X: Longitude  
+    Y: Latitude  
+    Output Coordinate Format: DD2  
+* Add ToxPi Toolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
+* Turn on catalog pane(View, Catalog Pane)  
+* Open custom script called ToxPi Construction from within ToxPiToolbox  
+* Draw ToxPi Figures using desired parameters  
+    Tool: ToxPi Construction  
+    inFeatures: Vignette1_Displayed  
+    outFeatures: Covid_Risk  
+    uniqueID: FIPS(name should also work here)  
+    inFields: Select all desired fields to be included as slices  
+    inputWeights: Type in weights for each slice in order, separated by ; (Ex: 3;3;3;3;10;10;3;5;20;5;5;15;10;5)  
+* Symbolize the resulting layer as desired (right click layer, symbology)
