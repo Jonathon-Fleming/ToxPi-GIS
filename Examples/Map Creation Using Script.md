@@ -62,8 +62,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG"
 * Add ToxPi Toolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
 * Turn on catalog pane(View, Catalog Pane)  
 * Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below:  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPSLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "600" height = "300" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "600" height = "300" />  
     inFeatures: Input feature layer to draw ToxPi figures from  
     outFeatures: The desired name for the output feature layer  
     uniqueID: The column name for the unique identifier for locations  
