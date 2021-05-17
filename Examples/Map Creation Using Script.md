@@ -61,12 +61,11 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG"
     Output Coordinate Format: DD2  
 * Add ToxPi Toolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
 * Turn on catalog pane(View, Catalog Pane)  
-* Open custom script called ToxPi Construction from within ToxPiToolbox  
-* Draw ToxPi Figures using desired parameters  
-    Tool: ToxPi Construction  
-    inFeatures: Vignette1_Displayed  
-    outFeatures: Covid_Risk  
-    uniqueID: FIPS(name should also work here)  
-    inFields: Select all desired fields to be included as slices  
-    inputWeights: Type in weights for each slice in order, separated by ; (Ex: 3;3;3;3;10;10;3;5;20;5;5;15;10;5)  
+* Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below:  
+
+    inFeatures: Input feature layer to draw ToxPi figures from.
+    outFeatures: The desired name for the output feature layer
+    uniqueID: The column name for the unique identifier for locations
+    inFields: The list of all desired fields to be included as slices  
+    inputWeights: A string of weights for determining each slices radial width in order, separated by ;  
 * Symbolize the resulting layer as desired (right click layer, symbology)
