@@ -5,7 +5,7 @@ Examples of the process are contained in the Examples folder
 Important Notes:  
 * Requires ArcGIS Pro license and download, and must be logged into ArcGIS software    
 * Script currently only for use with USA data, tool is universal  
-* Source column expected to be formatted Latitude, Longitude for script
+* Source column expected to be formatted Latitude, Longitude for script, script is provided in utilites called swap_coordinates.py to swap coordinate format if Longitude, Latitude
 * Name column required for script  
 * Each time script is run to generate a map a different directory should be used unless overwriting a previous map    
 * Special Steps are required to run with mac or linux  
