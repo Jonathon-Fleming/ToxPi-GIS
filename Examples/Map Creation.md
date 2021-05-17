@@ -46,7 +46,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG
 Interactive slices with custom popups  
 Colored slices based on ToxPi GUI choices  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPSLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "570" height = "300" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "450" height = "300" />  
 
 # Vignette 3: Using the toolbox to generate feature layers
 
