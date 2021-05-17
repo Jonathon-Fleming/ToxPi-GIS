@@ -36,7 +36,7 @@ OutPut:
   * Script outputs a layer file at location\outfile  
 
 **Alternate ToolBox Instructions:**  
-Temporary Placeholder  
+The ToxPiToolbox.tbx file contains a tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of layers for specific data, and the toolbox allows for more customization than the script, including size of ToxPi figures. This, along with a walkthrough example, are described under Vignette 3 in the Examples section.
 
 **Sharing Instructions:**   
 * Using ArcGIS Pro:  
