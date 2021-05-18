@@ -63,7 +63,7 @@ The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for d
 **Viewing Options:**  
 ArcGIS Viewing Path:  
 * Go to shared web link  
-* Select Open in Map Viewer
+* Select Open in Map Viewer  
 ToxPi Viewing Path: https://toxpi.org/gis/webapp/  
   * Select Map  
   * Select Web Map  
