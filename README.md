@@ -59,6 +59,7 @@ The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for d
   * Obtain web URL  
     * Ex: [https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec](https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec)  
   * Sharing this with anyone allows them to view the map via opening in web viewer  
+
 **Viewing Options:**  
 ArcGIS Viewing Path:  
 * Go to shared web link  
