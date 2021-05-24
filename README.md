@@ -54,7 +54,7 @@ The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for d
   * WebMap  
   * Populate with desired parameters and click share  
     * Note: To share with those who do not have ArcGIS accounts, set Share With to Everyone  
-* From ArcGIS Online: https://www.arcgis.com/home/index.html  
+* From [ArcGIS Online:](https://www.arcgis.com/home/index.html)   
   * Sign in to Account  
   * Select Content  
   * Select the shared web map  
