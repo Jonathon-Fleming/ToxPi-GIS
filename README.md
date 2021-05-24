@@ -73,7 +73,7 @@ ToxPi Viewing Path: https://toxpi.org/gis/webapp/
   * Insert id at end of shared web url  
   * Change Map  
 
-Utilities Folder:
+**Utilities Folder:**  
 This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the file path within the script to reference the file to be altered and then running the script.  
 
     
