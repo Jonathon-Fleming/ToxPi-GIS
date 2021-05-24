@@ -26,6 +26,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG">   
 </p>  
 * Optionally, edit descriptive elements and metadata for public viewing  
+  
 
 **Map Details:**  
 Multilayer visualization  
