@@ -25,8 +25,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG">   
 </p>  
-* Optionally, edit descriptive elements and metadata for public viewing
-
+* Optionally, edit descriptive elements and metadata for public viewing  
 
 **Map Details:**  
 Multilayer visualization  
@@ -58,8 +57,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG">    
 </p>  
-* Optionally, edit descriptive elements and metadata for public viewing 
-
+* Optionally, edit descriptive elements and metadata for public viewing  
 
 **Map Details:**  
 Interactive slices with custom popups  
