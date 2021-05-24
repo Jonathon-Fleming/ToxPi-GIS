@@ -89,7 +89,6 @@ Description: Use this method from within ArcGIS Pro to integrate ToxPi figures i
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "300" height = "500" />  
 </p>  
-
     inFeatures: Input feature layer to draw ToxPi figures from  
     outFeatures: The desired name for the output feature layer  
     uniqueID: The column name for the unique identifier for locations  
