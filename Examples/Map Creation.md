@@ -88,6 +88,7 @@ Description: Use this method from within ArcGIS Pro to integrate ToxPi figures i
 <p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "300" height = "500" />  
+    </p>  
     <b>  
     inFeatures: Input feature layer to draw ToxPi figures from  
     outFeatures: The desired name for the output feature layer  
@@ -96,5 +97,5 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
     inputWeights: A string of weights for determining each slices radial width in order, separated by ;  
     inputRadius: A numerical value for determining the size of the drawn figures. The default is 1 
     </b>  
-</p>  
+
 * Symbolize the resulting layer as desired (right click layer, symbology)
