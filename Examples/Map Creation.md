@@ -50,7 +50,7 @@ Description: Use this method to generate a single layer automatically that has s
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
 </p>  
-* Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map]<https://ncsu.maps.arcgis.com/home/webmap/viewer.html?useExisting=1&layers=31cacdce95904f799cca1891ab213ba6>  
+* Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?useExisting=1&layers=31cacdce95904f799cca1891ab213ba6)  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG">    
