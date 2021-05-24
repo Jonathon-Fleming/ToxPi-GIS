@@ -87,7 +87,7 @@ Description: Use this method from within ArcGIS Pro to integrate ToxPi figures i
 * Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below: 
 <p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "300" height = "500" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "350" height = "500" />  
 </p>   
 <p align = "center">  
     inFeatures: Input feature layer to draw ToxPi figures from  <br>
