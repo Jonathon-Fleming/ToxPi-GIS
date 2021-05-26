@@ -1,7 +1,7 @@
 # Option 1: Visualizing Maps With ArcGIS Online Map Viewer
 
 Accessing Map:  
-* Go to a shared [map link](https://ncsu.maps.arcgis.com/home/item.html?id=56ebe2bf85a24995864b5eb833ba0b71) and if necessary open in map viewer  
+* Go to a shared [map link](https://ncsu.maps.arcgis.com/home/item.html?id=27e222bd708a45deb10186eccd96bb77) and if necessary open in map viewer  
 
 Map Viewing Functionality:  
 * Feature Selection  
