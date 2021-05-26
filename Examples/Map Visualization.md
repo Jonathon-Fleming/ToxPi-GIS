@@ -18,10 +18,16 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundsel
 </p>  
 
 * Filtering  
+<p align = "center"> 
+Filtering UI<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" height = "325" width = "450" />
+<br>
+Example Result<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" height = "325" width = "450" />
+</p>  
+
 * Extent Based Visibility  
 * Layer Visibility Toggling  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
