@@ -6,13 +6,13 @@ Accessing Map:
 Map Viewing Functionality:  
 * Feature Selection  
 <p align = "center"> 
-Slices   
+Slices<br>  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" height = "300" width = "500" />  
 </p>  
 
 <p align = "center"> 
-Background   
+Background<br>  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/BackgroundSelection.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "300" width = "500" />  
 </p>  
