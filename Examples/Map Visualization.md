@@ -19,9 +19,9 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundsel
 
 * Filtering  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" height = "325" width = "475" />
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" height = "325" width = "450" />
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" height = "325" width = "425" />
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" height = "325" width = "450" />
 * Extent Based Visibility  
 * Layer Visibility Toggling  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
