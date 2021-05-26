@@ -5,14 +5,14 @@ Accessing Map:
 
 Map Viewing Functionality:  
 * Feature Selection  
-  * Slices  
-<p align = "center">  
+<p align = "center"> 
+Slices   
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" height = "300" width = "500" />  
 </p>  
 
-  * Background  
-<p align = "center">  
+<p align = "center"> 
+Background   
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/BackgroundSelection.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "300" width = "500" />  
 </p>  
