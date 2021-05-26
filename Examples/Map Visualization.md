@@ -31,21 +31,29 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG
 * Extent Based Visibility  
 <p align = "center"> 
 State Median Layer<br>  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StaetLayer.PNG" height = "300" width = "500" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State" height = "300" width = "500" />  
 <br> 
 Two Different Sized Local Layers<br>
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" height = "300" width = "500" /> 
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" height = "300" width = "500" /> 
+<br>
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" height = "300" width = "500" /> 
 </p>  
 
 * Layer Visibility Toggling  
+<p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" height = "325" width = "650" />
+</p>
 
 Data Analysis options exist for users with ArcGIS accounts and proper licensing  
+<p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG">
+</p>
+
 # Option 2: Visualizing Maps With ToxPi-GIS Website
 
 Accessing Map:  
