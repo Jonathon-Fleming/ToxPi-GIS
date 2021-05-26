@@ -29,6 +29,16 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG
 </p>  
 
 * Extent Based Visibility  
+<p align = "center"> 
+State Median Layer<br>  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StaetLayer.PNG" height = "300" width = "500" />  
+<br> 
+Two Different Sized Local Layers<br>
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" height = "300" width = "500" /> 
+</p>  
+
 * Layer Visibility Toggling  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" height = "325" width = "650" />
