@@ -25,31 +25,34 @@ def maxvalue(fclass, field):
     na = arcpy.da.FeatureClassToNumPyArray(fclass, field)
     return numpy.max(na[field])
 
-
 def bearings(tmpFeatures, uniqueID, a, scaler):
     '''calculate the radius and bearings for each sector.'''
     b=len(a)
     with arcpy.da.UpdateCursor(tmpFeatures, [uniqueID, "Score", 'BEARING_a', 'BEARING_b', 'RADIUS_']) as cursor:
-        for i, row in enumerate(cursor):
+        for i, row in enumerate(cursor): 
             id_ = row[0]
             val = row[1]
 
-            # Increment angles only within each unique coxcomb
+            # Increment angles only within each unique toxpi figure
             if i == 0:
                  p_id = 0
             if id_ != p_id:
-                p_v = 0
+                p_v = 90
                 p_id = 0
             # Calculate from and to bearing in Feature Class
-            if p_v == 0:
-                row[2] = 0
-                row[3] = a[0]
+            if p_v == 90:
+                row[2] = 90
+                row[3] = 90 - a[0]
+                if row[3] < 0:
+                    row[3] = row[3]+360
             else:
                 row[2] = p_v
-                row[3] = p_v+a[i%b]
+                row[3] = p_v-a[i%b]
+                if row[3] < 0:
+                    row[3] = row[3]+360
             # Calculate radius (based on value)
             if val > 0:
-                row[4] = math.sqrt((val)/math.pi) * scaler
+                row[4] = val * scaler
             else:
                 row[4] = 0
             # Update row in Feature Class
@@ -57,43 +60,41 @@ def bearings(tmpFeatures, uniqueID, a, scaler):
 
              # Previous x,y and bearing angle
             p_id = id_
-            p_v += a[i%b]
+            p_v += -a[i%b]
+            if p_v < 0:
+                p_v = p_v+360
     del cursor, row
-
-
 
 def generate_angles(ang1, ang2):
     '''Generate angles for points closing of the sectors.'''
     yield (ang1-90) * -1
     true = True
     while true:
-        if ang1 == 361:
-            ang1 = 1
+        if ang1 == -1:
+            ang1 = 359
         yield (ang1-90) * -1
         if ang1 == ang2:
             break
-        ang1 += 1
-# End generate_angles function
-
+        ang1 += -1
+        
 def generate_anglesreverse(ang2, ang1):
     yield (ang2-90) * -1
     true = True
     while true:
         if ang1 == ang2:
             break
-        if ang2 == 0:
-            ang2 = 360
+        if ang2 == 360:
+            ang2 = 0
         yield (ang2-90) * -1
         if ang1 == ang2:
             break
-        ang2 += -1
-# End generate_angles function
+        ang2 += 1
 
-
-def create_sector(pt, radius, ang1, ang2, innerradius=0):
+def create_sector(pt, radius, ang1, ang2, innerradius=0, ring=False):
     '''Return a point collection to create polygons from.'''
     pointcoll = arcpy.Array()
-    pointcoll.add(arcpy.Point(pt.X, pt.Y),)
+    if ring==False:
+        pointcoll.add(arcpy.Point(pt.X, pt.Y),)
     for index, i in enumerate(generate_angles(ang1, ang2)):
         x = pt.X + (radius*math.cos(math.radians(i)))
         y = pt.Y + (radius*math.sin(math.radians(i)))
@@ -111,14 +112,13 @@ def create_sector(pt, radius, ang1, ang2, innerradius=0):
     return pointcoll
 
 
-
 def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inputRadius, radiusUnits, inputWeights, ranks = None, medians=None ,statemedians = None, stateranks=None, Large = False):
     """
     Required arguments:
-    inFeatures -- Input point features containing the data to be displayed as a coxcomb feature.
-    outFeatures -- The output coxcomb feature class (polygon).
-    uniqueID -- A unique identifier for each coxcomb.
-    inFields -- List of fields used to create the categories to be displayed on the coxcomb
+    inFeatures -- Input point features containing the data to be displayed as a toxpi feature.
+    outFeatures -- The output toxpi feature class (polygon).
+    uniqueID -- A unique identifier for each toxpi drawing.
+    inFields -- List of fields used to create the categories to be displayed on the toxpi figures
     """
     try:
 
@@ -215,7 +215,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
         # Find the max values to scale the output features
         if inputRadius == "" or inputRadius == 0:
             inputRadius = 1
-        maxRadius = math.sqrt((maxvalue(tmpFeatures, "Score"))/math.pi)
+        maxRadius = math.sqrt(1/math.pi)
         convMax = float(maxRadius) * float(sr.metersPerUnit)
         scaler = (float(inputRadius)*convertLength(radiusUnits))/float(convMax)
         innerradius = scaler/30
@@ -224,7 +224,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
         outName = os.path.basename(outFeatures)
         arcpy.env.workspace = outFolder
 
-        cox_polys = arcpy.management.CreateFeatureclass(outFolder,
+        tox_polys = arcpy.management.CreateFeatureclass(outFolder,
                                                         outName,
                                                         'POLYGON',
                                                         tmpFeatures,
@@ -251,14 +251,29 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
                 radius = row[radius_loc]
 
                 # Create the toxpi slice polygons
-                with arcpy.da.InsertCursor(cox_polys, ['SHAPE@'] + search_fields[2:]) as poly_cursor:
+                with arcpy.da.InsertCursor(tox_polys, ['SHAPE@'] + search_fields[2:]) as poly_cursor:
                     l = len(search_fields) + 1
                     if (i+1)%numFlds == 0:
-                        poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), innerradius, 0, 360), sr,),] + list(row[3:l]))
+                        poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), innerradius, 360, 0), sr,),] + list(row[3:l]))
                     else:
                         if radius != 0:
                             poly_cursor.insertRow([arcpy.Polygon(create_sector(arcpy.Point(x1, y1), radius, int(b_a), int(b_b), innerradius), sr,),] + list(row[3:l]))
         arcpy.Delete_management(tmpFeatures)
+
+        outName = os.path.basename(outFeatures) + "Rings"
+        Tox_Rings = arcpy.management.CreateFeatureclass(outFolder,
+                                                        outName,
+                                                        'POLYLINE',
+                                                        spatial_reference=sr)
+        arcpy.AddField_management(Tox_Rings, uniqueID, "TEXT")
+        with arcpy.da.SearchCursor(inFeatures, ['SHAPE@XY', uniqueID, 'OID@']) as scur:
+            for i, row in enumerate(scur): #for each input data point
+                count = 0
+                x1,y1 = row[0] #get coordinates for point
+                id_ = row[1]          
+                with arcpy.da.InsertCursor(Tox_Rings, ('Shape@', uniqueID)) as poly_cursor:
+                    poly_cursor.insertRow([arcpy.Polyline(create_sector(arcpy.Point(x1, y1), scaler, 360, 0, ring = True), sr,), id_])
+        
     except arcpy.ExecuteError:
         print (arcpy.GetMessages(2))
   
@@ -1006,6 +1021,19 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
       fh = open(outpath, "w")
       fh.write(mainlyr)
       fh.close()
+
+      finallyr = arcpy.mp.LayerFile(outpath)
+
+      countytoxpilyrrings = arcpy.management.MakeFeatureLayer(tmpfileToxPi + "Rings", "County ToxPi Rings")
+      arcpy.management.SaveToLayerFile(countytoxpilyrrings, outpathtmp + r"\rings")
+      y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][0] = "0"
+      y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][1] = "0"
+      y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][2] = "0"
+      y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][3] = "100"   
+      countyrings = arcpy.mp.LayerFile(outpathtmp + r"\rings.lyrx")
+      finallyr.addLayer(countyrings, "BOTTOM")
+      
+      finallyr.save()
       sys.exit()
       
     #store toxpi scores as a list of slices, where each index contains a dictionary of states, and each dictionary contains a dictionary of county values
@@ -1094,6 +1122,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     #make toxpifeatures into feature layer
     countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "County ToxPi")
     arcpy.management.SaveToLayerFile(countytoxpilyr, outpath)
+    
 
     #get color rgb codes from hex codes
     for j in range(len(colors)):
@@ -1122,6 +1151,28 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     
     #get county toxpi layer as an object for adding other layers to
     finallyr = arcpy.mp.LayerFile(outpath)
+
+    countytoxpilyrrings = arcpy.management.MakeFeatureLayer(tmpfileToxPi + "Rings", "County ToxPi Rings")
+    arcpy.management.SaveToLayerFile(countytoxpilyrrings, outpathtmp + r"\countyrings")
+
+    fh = open(outpathtmp + r"\countyrings.lyrx", "r")
+    data = fh.read()
+    y = json.loads(data)
+    #set that minimum extent for county toxpi ring feature layer
+    y["layerDefinitions"][0]["minScale"] = "500000"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][0] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][1] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][2] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][3] = "100"   
+    #write the edits to the county toxpi layer file
+    mainlyr = json.dumps(y)
+    fh.close()
+    fh = open(outpathtmp + r"\countyrings.lyrx", "w")
+    fh.write(mainlyr)
+    fh.close()
+
+    countytoxpirings = arcpy.mp.LayerFile(outpathtmp + r"\countyrings.lyrx")
+    finallyr.addLayer(countytoxpirings, "BOTTOM") 
 
     #Construct medium county toxpi figures 
     tmpfileToxPi = geopath + "\ToxPifeaturemid"
@@ -1153,9 +1204,33 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     fh.write(mainlyr)
     fh.close()
 
+    midtoxpilyrrings = arcpy.management.MakeFeatureLayer(tmpfileToxPi + "Rings", "Mid ToxPi Rings")
+    arcpy.management.SaveToLayerFile(midtoxpilyrrings, outpathtmp + r"\midrings")
+    
+    fh = open(outpathtmp + r"\midrings.lyrx", "r")
+    data = fh.read()
+    y = json.loads(data)
+    #set that minimum extent for county toxpi ring feature layer
+    y["layerDefinitions"][0]["minScale"] = "2000000"
+    y["layerDefinitions"][0]["maxScale"] = "500000"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][0] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][1] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][2] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][3] = "100"   
+
+    #write the edits to the county toxpi layer file
+    mainlyr = json.dumps(y)
+    fh.close()
+    fh = open(outpathtmp + r"\midrings.lyrx", "w")
+    fh.write(mainlyr)
+    fh.close()
+
     #get county toxpi layer as an object and add to final lyr
     midcountytoxpilyr = arcpy.mp.LayerFile(outpathtmp + "\MidSizedToxpi.lyrx")
     finallyr.addLayer(midcountytoxpilyr, "BOTTOM")  
+
+    midtoxpilyrrings = arcpy.mp.LayerFile(outpathtmp + r"\midrings.lyrx")
+    finallyr.addLayer(midtoxpilyrrings, "BOTTOM")
 
     #retrieve state polygon boundaries from web url
     stateboundaries = arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0", geopath + "\statepolylayer")
@@ -1177,6 +1252,25 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     #save state toxpi features to a feature layer file
     statetoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPiLg, "State ToxPi")
     arcpy.management.SaveToLayerFile(statetoxpilyr, outpathtmp + "\StateToxPi")
+
+    statetoxpilyrrings = arcpy.management.MakeFeatureLayer(tmpfileToxPiLg + "Rings", "State ToxPi Rings")
+    arcpy.management.SaveToLayerFile(statetoxpilyrrings, outpathtmp + r"\staterings")
+
+    fh = open(outpathtmp + r"\staterings.lyrx", "r")
+    data = fh.read()
+    y = json.loads(data)
+    #set that minimum extent for county toxpi ring feature layer
+    y["layerDefinitions"][0]["maxScale"] = "2000000"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][0] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][1] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][2] = "0"
+    y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][3] = "100"   
+    #write the edits to the county toxpi layer file
+    mainlyr = json.dumps(y)
+    fh.close()
+    fh = open(outpathtmp + r"\staterings.lyrx", "w")
+    fh.write(mainlyr)
+    fh.close()
 
     #add overall toxpi info to state boundaries and save to a layer file
     statetoxpiinfo = arcpy.analysis.Select(statetoxpilyr, "statetoxpiinfo", '"SliceName" = \'ToxPi_Score\'')
@@ -1260,6 +1354,9 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     #Get state boundaries as an object and add to final lyr
     statepolylyr = arcpy.mp.LayerFile(outpathtmp + "\statepolygons.lyrx")
     finallyr.addLayer(statepolylyr, "BOTTOM")
+
+    staterings = arcpy.mp.LayerFile(outpathtmp + r"\staterings.lyrx")
+    finallyr.addLayer(staterings, "BOTTOM")
 
     #get state toxpi feature layer as an object and add to final lyr
     statetoxpilyr = arcpy.mp.LayerFile(outpathtmp + "\stateToxPi.lyrx")
