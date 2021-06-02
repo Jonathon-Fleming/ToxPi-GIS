@@ -1,5 +1,5 @@
 # ToxPi-GIS
-**Description:**  
+**ToxPi Description:**  
 Production of shareable, interactive feature layers from the output of the ToxPi GUI   
 Examples of the process are contained in the Examples folder  
 
@@ -15,6 +15,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG
 4. Obtain the shareable web link for the hosted layer from ArcGIS Online, which anyone can use to view the layer.  
 
 **Script Instructions(Path 1):**   
+Description: Use the script to produce  
 Steps to run from windows command prompt:  
 * Access environment using command:  
   * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
