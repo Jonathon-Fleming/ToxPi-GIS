@@ -1,7 +1,6 @@
 # ToxPi-GIS
-**ToxPi Description:**  
-Production of shareable, interactive feature layers from the output of the ToxPi GUI   
-Examples of the process are contained in the Examples folder  
+**Description:**  
+The following methods are used for the production and visualization of shareable, interactive feature layers containing ToxPi features using ArcGIS Pro. Two methods are provided for production, labeled as 1 and 2 in the Map Creation Workflow. Method 1 uses a customized python script that can be run on the Windows Command Prompt to automatically produce a predesigned layer file of ToxPi features symbolized based on the ToxPi GUI output that can be opened within ArcGIS Pro and is ready to be shared to ArcGIS Online for visualization. Examples of this process can be seen under Vignette 1 and Vignette 2 located within the [Example Folder Map Creation file](). For users looking for a more customizable experience, method 2 is provided which uses a custom ArcToolbox that can be added to ArcGIS Pro and used to produce unsymbolized ToxPi features. Use this method if you want customizability in ToxPi feature size or number of layers output, want to develop your own pipeline within ArcGIS Pro, or your data does not fit the formatting required for use of the python script. Examples of this process can be seen under Vignette 3 within the [Example Folder Map Creation file](). If you are a user looking only to visualize maps created by other users, please see the examples within the [Example Folder Map Visualiztion file]().  
 
 **Map Creation Workflow:**  
 <p align = "center">
@@ -15,7 +14,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG
 4. Obtain the shareable web link for the hosted layer from ArcGIS Online, which anyone can use to view the layer.  
 
 **Script Instructions(Path 1):**   
-Description: Use the script to produce  
+Description: Use the script to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. 
 Steps to run from windows command prompt:  
 * Access environment using command:  
   * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
