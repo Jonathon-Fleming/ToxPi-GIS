@@ -1,16 +1,9 @@
 # ToxPi-GIS
+**Description:**  
 Production of shareable, interactive feature layers from the output of the ToxPi GUI   
 Examples of the process are contained in the Examples folder  
 
-Important Notes:  
-* Requires ArcGIS Pro license and download, and must be logged into ArcGIS software    
-* Script currently only for use with USA data, tool is universal  
-* Source column expected to be formatted Latitude, Longitude for script, script is provided in utilites called swap_coordinates.py to swap coordinate format if Longitude, Latitude
-* Name column required for script  
-* Each time script is run to generate a map a different directory should be used unless overwriting a previous map    
-* Special Steps are required to run with mac or linux  
-
-**Workflow:**  
+**Map Creation Workflow:**  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG" width="600" height="300" />  
@@ -21,7 +14,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG
 3. Open the resulting layer file in ArcGIS Pro and share the layer files as a web map to ArcGIS Online publically.  
 4. Obtain the shareable web link for the hosted layer from ArcGIS Online, which anyone can use to view the layer.  
 
-**Script Instructions:**   
+**Script Instructions(Path 1):**   
 Steps to run from windows command prompt:  
 * Access environment using command:  
   * "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"  
@@ -36,6 +29,14 @@ Steps to run from windows command prompt:
 OutPut:  
   * Script makes a geodatabase in the outfile path called ToxPiAuto.gdb  
   * Script outputs a layer file at location\outfile  
+
+Important Notes:  
+* Requires ArcGIS Pro license and download, and must be logged into ArcGIS software    
+* Script currently only for use with USA data, tool is universal  
+* Source column expected to be formatted Latitude, Longitude for script, script is provided in utilites called swap_coordinates.py to swap coordinate format if Longitude, Latitude
+* Name column required for script  
+* Each time script is run to generate a map a different directory should be used unless overwriting a previous map    
+* Special Steps are required to run with mac or linux  
 
 **Alternate ToolBox Instructions:**  
 The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of layers for specific data, and the toolbox allows for more customization than the script, including size of ToxPi figures. This, along with a walkthrough example, are described under Vignette 3 in the Examples section.
