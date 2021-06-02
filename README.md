@@ -12,6 +12,15 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG
 </p>  
 
 **Script Instructions(Path 1):**   
+Use the script to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input.  
+
+Steps:
+1A. Load raw data into the [ToxPi GUI](https://toxpi.org/)
+2A. Analyze data and output results file to a CSV
+3A. Run ToxPi_Model.py using the ToxPi GUI CSV output as input
+* 
+
+
 1. Use the [ToxPi GUI](https://toxpi.org/) to analyze your data and obtain an output csv file.  
 2. Run ToxPi_Model.py using the ToxPi output. Alternatively, experienced ArcGIS users may use ToxPiToolbox.tbx from within ArcGIS Pro for size customization and a single layer of ToxPi figures.  
 3. Open the resulting layer file in ArcGIS Pro and share the layer files as a web map to ArcGIS Online publically.  
