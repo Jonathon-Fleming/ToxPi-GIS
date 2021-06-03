@@ -18,7 +18,7 @@ Steps:
 1A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
 2A. Analyze data and output results file to a CSV  
 3A. Run ToxPi_Model.py from windows command prompt using the following commands and the ToxPi GUI CSV output as input  
-'''"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
+''' "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
     python ToxPi_Model.py location\infile location\outfile.lyrx (Used to run script)'''  
 General Troubleshooting:  
 * Error when accessing environment
