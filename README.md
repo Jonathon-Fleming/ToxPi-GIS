@@ -48,7 +48,7 @@ General Troubleshooting:
   * Make sure you are logged into ArcGIS Portal and have required ArcGIS Pro licensing  
   * Make sure nonessential columns are not present in data  
 * Mapping Incorrect
-  * Ensure source is formatted latitude, longitude. swap_coordinates.py is provided in Utilities folder if coordinates need to be swapped  
+  * Ensure source is formatted latitude, longitude. [swap_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Swap_Coordinates.py) is provided in Utilities folder if coordinates need to be swapped  
   * Each time script is run to generate a map a different directory should be used unless overwriting a previous map     
 
 **ArcToolBox Instructions(Path 2):**  
