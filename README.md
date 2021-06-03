@@ -7,8 +7,8 @@ The following methods are used for the production and visualization of shareable
  
 **Map Creation Workflow:**  
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Workflow.PNG" width="600" height="300" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
 
 **Script Instructions(Path 1):**   
