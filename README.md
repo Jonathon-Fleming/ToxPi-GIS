@@ -85,6 +85,13 @@ General Troubleshooting:
   * Ensure slices and weights are in proper corresponding order   
   * Ensure an equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
 
+**Utilities Folder:**  
+This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the file path within the script to reference the file to be altered and then running the script.  
+
+**Visualization Instructions:**  
+(Discuss paths here, need to finalize what these are and the best way to present these)
+
+**Temporary Stuff that was left in case its useful for other sections, will be deleted when done or used elsewhere**
 **Sharing Instructions:**   
 * Using ArcGIS Pro:  
   * Open lyrx file in ArcGIS Pro  
@@ -118,8 +125,7 @@ ToxPi Viewing Path: https://toxpi.org/gis/webapp/
   * Insert id at end of shared web url  
   * Change Map  
 
-**Utilities Folder:**  
-This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the file path within the script to reference the file to be altered and then running the script.  
+
 
     
     
