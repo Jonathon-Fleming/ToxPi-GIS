@@ -91,7 +91,7 @@ This folder contains python scripts that may be useful for data manipulation and
 **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
 
-**Temporary Stuff that was left in case its useful for other sections, will be deleted when done or used elsewhere**
+**Temporary Stuff that was left in case its useful for other sections, will be deleted when done or used elsewhere**  
 **Sharing Instructions:**   
 * Using ArcGIS Pro:  
   * Open lyrx file in ArcGIS Pro  
