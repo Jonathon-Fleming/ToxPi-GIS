@@ -83,7 +83,7 @@ General Troubleshooting:
 * Mapping Incorrect  
   * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Split_Coordinates.py) is provided in Utilities folder to help with splitting coordinates  
   * Ensure slices and weights are in proper corresponding order   
-  * Ensure a equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
+  * Ensure an equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
 
 **Sharing Instructions:**   
 * Using ArcGIS Pro:  
