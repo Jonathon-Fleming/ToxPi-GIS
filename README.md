@@ -28,6 +28,7 @@ python ToxPi_Model.py location\infile.csv location\outfile.lyrx (Used to run scr
 Output:  
   * Script makes a geodatabase in the location folder called ToxPiAuto.gdb  
   * Script outputs a layer file at location\outfile.lyrx  
+  * Sharing provides a web URL for the public to view your map  
 
 Requirements: 
 * ArcGIS Pro licensing  
@@ -62,6 +63,28 @@ Steps:
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
 2E. Run required analysis steps including the ToxPi tool, symbolize the layer, and share resulting map to ArcGIS Online  
   
+Output:  
+  * Toolbox generates an unsymbolized feature layer of ToxPi figures     
+  * Sharing provides a web URL for the public to view your map  
+
+Requirements: 
+* ArcGIS Pro licensing  
+* Requires being logged into ArcGIS Portal  
+* Basic knowledge of ArcGIS tools    
+* Source column will likely need to be split into two separate coordinate columns  
+* Windows Operating System  
+* Use of other tools for data manipulation and feature layer preparation. Example walkthrough is provided under Vignette 3 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) to help with this.  
+
+General Troubleshooting:  
+* Error when running tool   
+  * Ensure input feature layer is in a projected coordinate system  
+  * Ensure a proper unique identifier is referenced  
+  * Ensure the number of slice categories and number of weights provided correspond   
+* Mapping Incorrect  
+  * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Split_Coordinates.py) is provided in Utilities folder to help with splitting coordinates  
+  * Ensure slices and weights are in proper corresponding order   
+  * Ensure a equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
+
 **Sharing Instructions:**   
 * Using ArcGIS Pro:  
   * Open lyrx file in ArcGIS Pro  
