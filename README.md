@@ -111,7 +111,7 @@ This folder contains python scripts that may be useful for data manipulation and
   * Select Content  
   * Select the shared web map  
   * Obtain web URL  
-    * Ex: [https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec](https://ncsu.maps.arcgis.com/home/item.html?id=0cbac968eb7544a98761a13ba9b312ec)  
+    * Ex: [https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=9d1dd6fa6a4844cea8dc94e17232ffe2](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=9d1dd6fa6a4844cea8dc94e17232ffe2)  
   * Sharing this with anyone allows them to view the map via opening in web viewer  
 
 **Viewing Options:**  
