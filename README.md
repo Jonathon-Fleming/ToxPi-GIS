@@ -80,6 +80,7 @@ General Troubleshooting:
   * Ensure input feature layer is in a projected coordinate system  
   * Ensure a proper unique identifier is referenced  
   * Ensure the number of slice categories and number of weights provided correspond   
+  * Make sure slice names do not contain a special character followed by a number(ArcGIS Pro Tools do not support special characters in fields).
 * Mapping Incorrect  
   * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Split_Coordinates.py) is provided in Utilities folder to help with splitting coordinates  
   * Ensure slices and weights are in proper corresponding order   
