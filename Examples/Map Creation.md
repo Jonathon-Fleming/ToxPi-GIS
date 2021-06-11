@@ -72,7 +72,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG"
 Description: Use this method from within ArcGIS Pro to integrate ToxPi figures into your own analysis procedures that do not fit the above examples, as well as to allow custom ToxPi figure sizing on the map  
 
 **Steps:**
-* Split the source column for vignette 1 into latitude and longitude. Any preferred method will work, but split_coordinates.py was provided in the utilities folder for this  
+* Split the source column for vignette 1 into latitude and longitude. Any preferred method will work, but split_coordinates.py was provided in the utilities folder for this and only requires changing the file paths in the script before running  
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add altered Vignette1 test data to the map(Map, Add Data, Vignette1_Subset_NC.csv)  
 * Display data on the map using an equidistant projected coordinate system via the following tool and parameters:  
@@ -94,11 +94,11 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
 </p>   
 <p align = "center">  
     inFeatures: Input feature layer to draw ToxPi figures from  <br>
-    outFeatures: The desired name for the output feature layer  <br>
+    outFeatures: The desired name for the output ToxPi feature layer  <br>
     uniqueID: The column name for the unique identifier for locations  <br>
     inFields: The list of all desired fields to be included as slices  <br>
     inputWeights: A string of weights for determining each slices radial width in order, separated by ;  <br>
     inputRadius: A numerical value for determining the size of the drawn figures. The default is 1  <br>
+    outFeaturesRings: The desired name for the max radius ring feature layer(optional) <br>
     </p>   
 
-* Symbolize the resulting layer as desired (right click layer, symbology)
