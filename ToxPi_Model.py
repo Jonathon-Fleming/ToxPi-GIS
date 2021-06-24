@@ -288,7 +288,7 @@ def adjustinput(infile, outfile):
 
     #read in csv file, split the coordinates, and replace special characters from the header
     df = pd.read_csv(infile)
-    df[['Longitude','Latitude']] = df.Source.str.split(",",expand = True,)
+    df[['Latitude','Longitude']] = df.Source.str.split(",",expand = True,)
     del df['Source']
 
     #determine if required columns are present
