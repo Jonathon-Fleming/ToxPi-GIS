@@ -36,6 +36,7 @@ Requirements:
 * Data must be limited to the USA  
 * Source column for data must be formatted Latitude, Longitude  
 * Column labeled Name must be present in data  
+* Slice names must not contain a special character followed by a number  
 * Windows Operating System  
 * Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
 
