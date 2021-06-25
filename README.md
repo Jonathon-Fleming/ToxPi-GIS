@@ -20,7 +20,7 @@ Steps:
 1C. Run [ToxPi_Model.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_Model.py) from windows command prompt using the following commands and the ToxPi GUI CSV output as input  
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
-python ToxPi_Model.py location\infile.csv location\outfile.lyrx (Used to run script)
+python ToxPi_Model.py location\infile.csv location\outfile.lyrx (Used to run script, replace location with path to file)
 ```
 1D. Open output layer file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
