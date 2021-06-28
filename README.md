@@ -35,7 +35,7 @@ python location\ToxPi_Model.py location\infile.csv fullfilepath\outfile.lyrx (Us
 Example:  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="50" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="75" />  
 </p>  
 
 1D. Open output layer file in ArcGIS Pro  
