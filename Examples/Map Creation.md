@@ -9,9 +9,11 @@ Although the demos use Model 12.4, these methods are compatible with any results
 # Vignette 1: Using county or census tract data with FIPS
 Description: Use this method with county or census tract data to automatically generate a layer file containing multiple layers that follow the predefined template and symbology shown in the example images below, as well as provide both state and local statistics   
 **Steps:**
-* Download the root repository
+* Download the root repository  
+* Load the ArcGIS Pro environment using the following commmand  
+    "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"
 * Run the script using the vignette 1 subset test data(partial dataset will take roughly 5 minutes whereas entire dataset will be over an hour)  
-    python ToxPi_Model.py Examples\PracticeData\Vignette1_Subset_NC.csv Examples\Output\Vignette1\Vignette1.lyrx  
+    python ToxPi_Model.py Examples\PracticeData\Vignette1_Subset_NC.csv C:\Users\InputUser\Documents\Examples\Output\Vignette1\Vignette1.lyrx  
     
     Note: Script will produce ouput folder and vignette1 folder if they are not present  
 * Open Vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
