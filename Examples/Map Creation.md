@@ -103,4 +103,4 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
     inputRadius: A numerical value for determining the size of the drawn figures. The default is 1  <br>
     outFeaturesRings: The desired name for the max radius ring feature layer(optional) <br>
     </p>   
-
+ * Complete further analysis or share your map to ArcGIS Online  
