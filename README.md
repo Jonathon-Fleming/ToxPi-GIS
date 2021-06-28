@@ -14,14 +14,30 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationW
 **Script Instructions(Path 1):**   
 Use the script to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input.  
 
+Requirements: 
+* ArcGIS Pro licensing  
+* Source column for data must be formatted Latitude, Longitude(See Utilites Folder section for help if coordinates need to be swapped)
+* Requires being logged into ArcGIS Portal  
+* Data must be limited to the USA  
+* Column labeled Name must be present in data  
+* Slice names must not contain a special character followed by a number  
+* Windows Operating System  
+* Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
+
 Steps:  
 1A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
 1B. Analyze data and output results file to a CSV  
 1C. Run [ToxPi_Model.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_Model.py) from windows command prompt using the following commands and the ToxPi GUI CSV output as input  
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
-python ToxPi_Model.py location\infile.csv location\outfile.lyrx (Used to run script, replace location with path to file)
+python location\ToxPi_Model.py location\infile.csv fullfilepath\outfile.lyrx (Used to run script, replace location with path to file)
 ```
+Example:  
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="300" />  
+</p>  
+
 1D. Open output layer file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
 
@@ -29,16 +45,6 @@ Output:
   * Script makes a geodatabase in the location folder called ToxPiAuto.gdb  
   * Script outputs a layer file at location\outfile.lyrx  
   * Sharing provides a web URL for the public to view your map  
-
-Requirements: 
-* ArcGIS Pro licensing  
-* Requires being logged into ArcGIS Portal  
-* Data must be limited to the USA  
-* Source column for data must be formatted Latitude, Longitude  
-* Column labeled Name must be present in data  
-* Slice names must not contain a special character followed by a number  
-* Windows Operating System  
-* Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
 
 General Troubleshooting:  
 * Error when accessing environment  
@@ -88,7 +94,7 @@ General Troubleshooting:
   * Ensure an equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
 
 **Utilities Folder:**  
-This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the file path within the script to reference the file to be altered and then running the script.  
+This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the input and output file path within the script to reference the file to be altered and then running the script.  
 
 **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
