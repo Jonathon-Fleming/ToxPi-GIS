@@ -26,7 +26,7 @@ Requirements:
 
 Steps:  
 1A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
-1B. Analyze data and output results file to a CSV  
+1B. Analyze data and output results file to a CSV, and make sure file meets requirements above  
 1C. Run [ToxPi_Model.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_Model.py) from windows command prompt using the following commands and the ToxPi GUI CSV output as input  
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
