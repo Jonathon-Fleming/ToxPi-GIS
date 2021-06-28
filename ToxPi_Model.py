@@ -994,12 +994,14 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
           scur.updateRow(row)
     
     if uniqueidtype == "FIPS":
-      boundaries = arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0", geopath + "\countypolylayer")
+      boundariestmp = arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0", geopath + "\countypolylayertmp")
+      boundaries = arcpy.management.Project(boundariestmp, geopath + "\countypolylayer", "PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision")
       arcpy.management.JoinField(tmpfileremapped, uniqueid, boundaries, "FIPS", ["STATE_FIPS", "CNTY_FIPS"])
       #joinstatename = arcpy.management.JoinField(countyboundaries, "FIPS", tmpfileremapped, uniqueid, list(category_names))
       #countyFIPS = arcpy.analysis.Select(joinstatename, geopath + "\countyFIPS", '"ToxPi_Score" IS NOT NULL')
     elif uniqueidtype == "Tract":
-      boundaries = arcpy.management.CopyFeatures("https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CensusTracts/FeatureServer/0", geopath + "\censusypolylayer")
+      boundariestmp = arcpy.management.CopyFeatures("https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CensusTracts/FeatureServer/0", geopath + "\censusypolylayertmp")
+      boundaries = arcpy.management.Project(boundariestmp, geopath + "\censuspolylayer", "PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision")
       arcpy.management.JoinField(tmpfileremapped, uniqueid, boundaries, "FIPS", ["STATE_FIPS", "CNTY_FIPS"])
       # joinstatename = arcpy.management.JoinField(countyboundaries, "TRACT", tmpfileremapped, uniqueid, list(category_names))
       # countyFIPS = arcpy.analysis.Select(joinstatename, geopath + "\censusFIPS", '"ToxPi_Score" IS NOT NULL')
@@ -1255,10 +1257,10 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     finallyr.addLayer(midtoxpilyrrings, "BOTTOM")
 
     #retrieve state polygon boundaries from web url
-    stateboundaries = arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0", geopath + "\statepolylayer")
-
+    stateboundariestmp = arcpy.management.CopyFeatures("https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0", geopath + "\statepolylayertmp")
+    stateboundaries = arcpy.management.Project(stateboundariestmp, geopath +"\statepolylayer", "PROJCS['USA_Contiguous_Equidistant_Conic',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Equidistant_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-96.0],PARAMETER['Standard_Parallel_1',33.0],PARAMETER['Standard_Parallel_2',45.0],PARAMETER['Latitude_Of_Origin',39.0],UNIT['Meter',1.0]];-22178400 -14320600 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision")
     #save state boundaries to a feature layer
-    statebackground=arcpy.management.MakeFeatureLayer(geopath+"\statepolylayer","State Boundaries")
+    statebackground = arcpy.management.MakeFeatureLayer(geopath+"\statepolylayer","State Boundaries")
     countytoxpiinfo = arcpy.analysis.Select(countytoxpilyr, "countytoxpiinfo", '"SliceName" = \'ToxPi_Score\'')
 
     statebackgroundpartial = arcpy.management.SelectLayerByLocation(statebackground, overlap_type = "CONTAINS", select_features = countytoxpiinfo)
