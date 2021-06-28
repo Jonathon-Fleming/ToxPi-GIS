@@ -94,7 +94,7 @@ General Troubleshooting:
   * Ensure an equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
 
 **Utilities Folder:**  
-This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the input and output file path within the script to reference the file to be altered and then running the script.  
+This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the input and output file path within the script to reference the file to be altered and then running the script. A possible path to edit these files consists of opening notepad(or another text editor) and navigating to the file location for the script. Ensure all files is selected if the file can't be seen, and then open the file in notepad and edit the two file paths present.  
 
 **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
