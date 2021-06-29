@@ -78,12 +78,12 @@ Description: Use this method from within ArcGIS Pro to integrate ToxPi figures i
 * Split the source column for vignette 1 into latitude and longitude. Any preferred method will work, but split_coordinates.py was provided in the utilities folder for this and only requires changing the file paths in the script before running  
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add altered Vignette1 test data to the map(Map, Add Data, Vignette1_Subset_NC.csv)  
-* Display data on the map using an equidistant projected coordinate system via the following tool and parameters:  
+* Display data on the map using a projected coordinate system via the following tool and parameters:  
     Tool: Convert Coordinate Notation  
     Input Table: Vignette1_Subset_NC.csv  
     Input Coordinate System: GCS_WGS_1984  
     Output Feature Class: Vignette1_Displayed  
-    Output Coordinate System: USA_Contiguous_Equidistant_Conic  
+    Output Coordinate System: WGS_1984_Web_Mercator_Auxiliary_Sphere(Coordinate system needs to be projected, not geographic)  
     Input Coordinate Format: DD2  
     X: Longitude  
     Y: Latitude  
