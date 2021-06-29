@@ -63,17 +63,6 @@ General Troubleshooting:
 **ArcToolBox Instructions(Path 2):**  
 The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of layers for specific data, and the toolbox allows for more customization than the script, including size of ToxPi figures. This, along with a walkthrough example, are described under Vignette 3 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md).  
 
-Steps:  
-2A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
-2B. Analyze data and output results file to a CSV  
-2C. Add results file to ArcGIS Pro  
-2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
-2E. Run required analysis steps including the ToxPi tool, symbolize the layer, and share resulting map to ArcGIS Online  
-  
-Output:  
-  * Toolbox generates an unsymbolized feature layer of ToxPi figures     
-  * Sharing provides a web URL for the public to view your map  
-
 Requirements: 
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
@@ -81,6 +70,17 @@ Requirements:
 * Source column will likely need to be split into two separate coordinate columns  
 * Windows Operating System  
 * Use of other tools for data manipulation and feature layer preparation. Example walkthrough is provided under Vignette 3 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) to help with this.  
+
+Steps:  
+2A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
+2B. Analyze data and output results file to a CSV  
+2C. Add results file to ArcGIS Pro  
+2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
+2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online(See [Map Creation Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) Vignette 3 for analysis steps)  
+  
+Output:  
+  * Toolbox generates an unsymbolized feature layer of ToxPi figures     
+  * Sharing provides a web URL for the public to view your map  
 
 General Troubleshooting:  
 * Error when running tool   
