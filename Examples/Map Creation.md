@@ -84,7 +84,7 @@ Description: Use this method from within ArcGIS Pro to integrate ToxPi figures i
     Input Coordinate System: GCS_WGS_1984  
     Output Feature Class: Vignette1_Displayed  
     Output Coordinate System: WGS_1984_Web_Mercator_Auxiliary_Sphere(Coordinate system needs to be projected, not geographic)  
-        Note: To do this, select the globe, search WGS 1984 Web Mercator, drop down projected coordinate systems, drop down world, select WGS 1984 Web Mercator
+        Note: To do this, select the globe, search WGS 1984 Web Mercator, drop down projected coordinate systems, drop down world, select WGS 1984 Web Mercator  
     Input Coordinate Format: DD2  
     X: Longitude  
     Y: Latitude  
