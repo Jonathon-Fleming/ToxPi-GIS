@@ -69,7 +69,7 @@ Colored slices based on ToxPi GUI choices
 Toggleable maximum score rings 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPSLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "450" height = "300" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "550" height = "300" />  
 </p>  
 
 # Vignette 3: Using the toolbox to generate feature layers
