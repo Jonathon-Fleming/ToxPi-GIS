@@ -66,6 +66,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG
 **Map Details:**  
 Interactive slices with custom popups  
 Colored slices based on ToxPi GUI choices  
+Toggleable maximum score rings 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPSLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "450" height = "300" />  
