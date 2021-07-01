@@ -100,27 +100,6 @@ This folder contains python scripts that may be useful for data manipulation and
 (Discuss paths here, need to finalize what these are and the best way to present these)
 
 **Temporary Stuff that was left in case its useful for other sections, will be deleted when done or used elsewhere**  
-**Sharing Instructions:**   
-* Using ArcGIS Pro:  
-  * Open lyrx file in ArcGIS Pro  
-    * Double click (or right click and open with) from file explorer  
-    * Alternatively:  
-      * Open ArcGIS Pro  
-      * New Map  
-      * Add Data  
-      * Data From Path  
-      * Insert the path location\outfile.lyrx  
-  * Click share in top toolbar  
-  * WebMap  
-  * Populate with desired parameters and click share  
-    * Note: To share with those who do not have ArcGIS accounts, set Share With to Everyone  
-* From [ArcGIS Online:](https://www.arcgis.com/home/index.html)   
-  * Sign in to Account  
-  * Select Content  
-  * Select the shared web map  
-  * Obtain web URL  
-    * Ex: [https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=9d1dd6fa6a4844cea8dc94e17232ffe2](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=9d1dd6fa6a4844cea8dc94e17232ffe2)  
-  * Sharing this with anyone allows them to view the map via opening in web viewer  
 
 **Viewing Options:**  
 ArcGIS Viewing Path:  
