@@ -23,7 +23,7 @@ Description: Use this method with county or census tract data to automatically g
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png">
 </p>  
 
-* Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=9d1dd6fa6a4844cea8dc94e17232ffe2)  
+* Obtain web link from ArcGIS Online via selecting the map in My Content and copying the URL or [view previously hosted map](https://ncsu.maps.arcgis.com/home/item.html?id=e524bb8f06984c36b325b4614d66f748)  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG">   
