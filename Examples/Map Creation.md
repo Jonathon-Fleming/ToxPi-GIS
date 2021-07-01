@@ -32,7 +32,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG"
   
 **Map Details:**  
 Multilayer visualization  
-State median statistics
+State median statistics  
 Choropleth colored by ToxPi score  
 Interactive slices with custom popups  
 Colored slices based on ToxPi GUI choices  
