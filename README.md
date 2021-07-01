@@ -12,7 +12,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationW
 </p>  
   
 **Script Instructions(Path 1):**   
-Use the script to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input.  
+Use the script to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input, primarily used for county or census tract data.  
 
 Requirements: 
 * ArcGIS Pro licensing  
