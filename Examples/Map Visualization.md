@@ -7,8 +7,8 @@ Map Viewing Functionality:
 * Feature Selection  
 <p align = "center"> 
 Slices For Factor Scores<br>  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" width = "500" height = "300" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" width = "500" height = "300" />  
 </p>  
 
 <p align = "center"> 
