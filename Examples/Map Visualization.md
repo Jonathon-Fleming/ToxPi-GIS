@@ -8,13 +8,13 @@ Map Viewing Functionality:
 <p align = "center"> 
 Slices For Factor Scores<br>  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" width = "500" height = "300" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" width = "500" height = "350" />  
 </p>  
 
 <p align = "center"> 
 Center Dot or Background For Overall Score<br>  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/BackgroundSelection.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "300" width = "500" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "350" width = "500" />  
 </p>  
 
 * Filtering  
