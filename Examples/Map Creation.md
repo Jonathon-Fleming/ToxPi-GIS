@@ -73,7 +73,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG"
 </p>  
 
 # Vignette 3: Using the toolbox to generate feature layers
-Description: Use this method from within ArcGIS Pro to integrate ToxPi figures into your own analysis procedures that do not fit the above examples, as well as to allow custom ToxPi figure sizing on the map  
+Description: Use this method from within ArcGIS Pro to integrate ToxPi figures into your own analysis procedures that do not fit the above examples, as well as to allow custom ToxPi figure sizing or to draw only a subset of slices  
 
 **Steps:**
 * Split the source column for vignette 1 into latitude and longitude. Any preferred method will work, but split_coordinates.py was provided in the utilities folder for this and only requires changing the file paths in the script before running  
