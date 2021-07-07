@@ -42,7 +42,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" height = "300" width = "500" /> 
 </p>  
 
-* Layer Visibility Toggling  
+* Layer Visibility Toggling Including Maximum Score Rings  
 <p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" height = "325" width = "650" />
