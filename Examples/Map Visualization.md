@@ -34,7 +34,7 @@ State Median Layer<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State" height = "300" width = "500" />  
 <br> 
-Two Different Sized Local Layers<br>
+Two Different Sized Local Layers for Varying Density<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" height = "300" width = "500" /> 
 <br>
