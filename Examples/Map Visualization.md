@@ -36,10 +36,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State" heigh
 <br> 
 Two Different Sized Local Layers for Varying Density<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" height = "300" width = "500" /> 
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" height = "400" width = "500" /> 
 <br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" height = "300" width = "500" /> 
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" height = "400" width = "500" /> 
 </p>  
 
 * Layer Visibility Toggling Including Maximum Score Rings  
