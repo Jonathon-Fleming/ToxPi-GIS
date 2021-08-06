@@ -7,7 +7,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInfo.pn
 
 Although the demos use Model 12.4, these methods are compatible with any results file produced by the ToxPi GUI. Current results files for the PVI Dashboard can be found at the [PVI Dashboard data repository](https://github.com/COVID19PVI/data) which can be used in place of the practice files, or custom made results using the ToxPi GUI can be used.   
 
-# Vignette 1: Using county or census tract data with FIPS
+# Vignette 1: Creating a ToxPi Feature Layer Using Python  
 Description: Use this method with county or census tract data to automatically generate a layer file containing multiple layers that follow the predefined template and symbology shown in the example images below, as well as provide both state and local statistics   
 **Steps:**
 * Download the root repository  
