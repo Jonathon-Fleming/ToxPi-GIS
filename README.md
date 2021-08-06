@@ -47,8 +47,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
 1E. Share resulting map to ArcGIS Online  
 
 Output:  
-  * Script makes a geodatabase in the location folder called ToxPiAuto.gdb  
-  * Script outputs a layer file at location\outfile.lyrx  
+  * Script makes a geodatabase in the location folder called ToxPiAuto.gdb containing necessary information for the layer file as well as intermediate feature layers 
+  * Script outputs a layer file at outputfile.lyrx  
   * Sharing provides a web URL for the public to view your map  
 
 General Troubleshooting:  
@@ -56,35 +56,37 @@ General Troubleshooting:
   * Make sure quotes are included  
   * The location to the proenv may be different if you did a custom installation location of ArcGIS Pro  
 * Error when running script  
-  * If location is your current directory, replace the location with a .  
+  * If location is your current directory, use .\ to reference the location   
   * Make sure .lyrx is present on outfile   
   * Make sure you are logged into ArcGIS Portal and have required ArcGIS Pro licensing  
   * Make sure nonessential columns are not present in data  
+  * Make sure name column is present  
 * Mapping Incorrect
   * Ensure source is formatted latitude, longitude. [swap_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Swap_Coordinates.py) is provided in Utilities folder if coordinates need to be swapped  
   * Each time script is run to generate a map a different directory should be used unless overwriting a previous map     
-  
-  
-**ArcToolBox Instructions(Path 2):**  
-The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of layers for specific data, and the toolbox allows for more customization than the script, including size of ToxPi figures. This, along with a walkthrough example, are described under Vignette 3 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md).  
+
+**ArcToolBox Instructions(Path 2): ToxPiToolbox.tbx**  
+The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of layers for specific data, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under Vignette 2 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md).  
 
 Requirements: 
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
 * Basic knowledge of ArcGIS tools    
-* Source column will likely need to be split into two separate coordinate columns  
+* Source column will likely need to be split into two separate coordinate columns  (See utilities folder for help formatting if needed)  
+* Slice names must not contain a special character followed by a number 
+  * Note: Special characters will be replaced by underscores in the output due to ArcGIS formatting  
 * Windows Operating System  
 * Use of other tools for data manipulation and feature layer preparation. Example walkthrough is provided under Vignette 3 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) to help with this.  
 
 Steps:  
 2A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
-2B. Analyze data and output results file to a CSV  
+2B. Analyze data and output results file to a CSV, and split the coordinates into two separate columns  
 2C. Add results file to ArcGIS Pro  
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
 2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online(See [Map Creation Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) Vignette 3 for analysis steps)  
   
 Output:  
-  * Toolbox generates an unsymbolized feature layer of ToxPi figures     
+  * Toolbox generates an symbolized feature layer of ToxPi figures     
   * Sharing provides a web URL for the public to view your map  
 
 General Troubleshooting:  
@@ -96,26 +98,29 @@ General Troubleshooting:
 * Mapping Incorrect  
   * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Split_Coordinates.py) is provided in Utilities folder to help with splitting coordinates  
   * Ensure slices and weights are in proper corresponding order   
-  * Ensure an equidistant coordinate system is used and basemap coordinate is set properly, else ToxPi figures may be skewed  
+  * Ensure basemap coordinate is set to the same coordinate as the output feature layer for the toolbox, else ToxPi figures may be skewed  
+
+**Script Instructions(Path 1): ToxPiModel.py**   
+ToxPiModel.py is a demonstration of how ToxPiCreation.py can be further developed for advanced analysis and map creation customized to specific data. Use this to generate a predesigned map for county or census tract data.  
+
+Requirements:  
+* Same as ToxPiCreation.py  
+* Additionally, requires a column named FIPS with the corresponding identifiers  
+
+Steps:
+* Same as ToxPiCreation.py, except change script name and there is no scale parameter.  
+
+Output:  
+* Same as ToxPiCreation.py  
+
+Troubleshooting:  
+* Same as ToxPiCreation.py, except ensure FIPS column is also present  
 
 **Utilities Folder:**  
 This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the input and output file path within the script to reference the file to be altered and then running the script. A possible path to edit these files consists of opening notepad(or another text editor) and navigating to the file location for the script. Ensure all files is selected if the file can't be seen, and then open the file in notepad and edit the two file paths present.  
 
 **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
-
-**Temporary Stuff that was left in case its useful for other sections, will be deleted when done or used elsewhere**  
-
-**Viewing Options:**  
-ArcGIS Viewing Path:  
-* Go to shared web link  
-* Select Open in Map Viewer  
-
-ToxPi Viewing Path: https://toxpi.org/gis/webapp/  
-  * Select Map  
-  * Select Web Map  
-  * Insert id at end of shared web url  
-  * Change Map  
 
 
 
