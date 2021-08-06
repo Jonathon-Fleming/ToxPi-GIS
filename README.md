@@ -29,7 +29,7 @@ Steps:
 1C. Run [ToxPiCreation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPiCreation.py) from windows command prompt using the following commands and parameters
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
-python location\ToxPiCreation.py inputfile outputfile.lyrx scale(Used to run script, replace location with path to file)  
+python location\ToxPiCreation.py inputfile outputfile.lyrx scale (Used to run script, replace location with path to file)  
 
 Parameters:
 * inputfile - The ToxPi GUI results file to draw ToxPi features from  
