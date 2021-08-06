@@ -8,13 +8,13 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInfo.pn
 Although the demos use Model 12.4, these methods are compatible with any results file produced by the ToxPi GUI. Current results files for the PVI Dashboard can be found at the [PVI Dashboard data repository](https://github.com/COVID19PVI/data) which can be used in place of the practice files, or custom made results using the ToxPi GUI can be used.   
 
 # Vignette 1: Creating a ToxPi Feature Layer Using Python  
-Description: Use this method with county or census tract data to automatically generate a layer file containing multiple layers that follow the predefined template and symbology shown in the example images below, as well as provide both state and local statistics   
+Description: Use the script ToxPiCreation.py to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox.
 **Steps:**
 * Download the root repository  
 * Load the ArcGIS Pro environment using the following commmand  
     "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"
-* Run the script using the vignette 1 subset test data(partial dataset will take roughly 5 minutes whereas entire dataset will be over an hour)  
-    python ToxPi_Model.py Examples\PracticeData\Vignette1_Subset_NC.csv C:\Users\InputUser\Documents\Examples\Vignette1\Vignette1.lyrx  
+* Run the script using the vignette 1 subset test data(partial dataset will take roughly a few minutes whereas entire dataset will be about 20 minutes)  
+    python ToxPiCreation.py Examples\PracticeData\Vignette1_Subset_NC.csv C:\Users\InputUser\Documents\Examples\Vignette1\Vignette1.lyrx 1.5
     
     Note: Script will produce ouput folder and vignette1 folder if they are not present  
 * Open Vignette1.lyrx in ArcGIS Pro and share as a web map to ArcGIS Online
@@ -31,12 +31,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG"
 * Optionally, edit descriptive elements and metadata for public viewing  
   
 **Map Details:**  
-Multilayer visualization  
-State median statistics  
-Choropleth colored by ToxPi score  
 Interactive slices with custom popups  
 Colored slices based on ToxPi GUI choices  
 Toggleable maximum score rings  
+Sizing based on script parameters
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" width = "650" height = "300" />
@@ -44,7 +42,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.P
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CountyLayer.PNG" width = "500" height = "300" />  
 </p>  
 
-# Vignette 2: Using other geographic data
+# Vignette 2: Creating a ToxPi Feature Layer Using The ArcGIS Toolbox
 Description: Use this method to generate a single layer automatically that has symbolized ToxPi figures for local statistics with predetermined size, as shown below  
 
 **Steps:**  
@@ -67,6 +65,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink2.PNG
 Interactive slices with custom popups  
 Colored slices based on ToxPi GUI choices  
 Toggleable maximum score rings 
+Sizing based on input parameters  
+Note: Special characters in slice names will be replaced by underscores  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPSLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/NonFIPS.PNG" width = "550" height = "300" />  
