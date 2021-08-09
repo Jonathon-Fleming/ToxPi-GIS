@@ -5,6 +5,7 @@ import os
 import json
 import pandas as pd
 import re
+import sys
 
 def convertLength(radiusUnits):
     if radiusUnits.upper() == "MAGNIFY":
@@ -222,6 +223,24 @@ def GetSymbology(colors, infields):
     renderer = renderer + rendererend
     return renderer
 
+def GetPopupInfo():
+    name = '{Name}'
+    title = '"title" : "' + name + '",'
+    text = '"text" : "<div><p><span style=\\\"font-weight:bold;\\\">Slice Statistics</span></p><p><span>Name: ' + name + '</span></p><p><span>SliceName: {SliceName}</span></p><p><span>Weight: {Weight}</span></p><p><span>Score: {Score}</span></p>"'
+    popupstring = '''{
+        "type" : "CIMPopupInfo",
+        ''' + title + '''
+        "mediaInfos" : [
+          {
+            "type" : "CIMTextMediaInfo",
+            "row" : 1,
+            "column" : 1,
+            "refreshRateUnit" : "esriTimeUnitsSeconds",
+            ''' + text + '''
+          }
+        ]
+    }'''
+    return popupstring
 def adjustinput(infile, outfile):
     #prep csv file for input into functions and get required parameters
 
@@ -244,6 +263,7 @@ def adjustinput(infile, outfile):
     colors = []
     weights = []
     infields = []
+    infieldsrevised = []
     keywords = ["ToxPi Score", "HClust Group", "KMeans Group", "Name", "Longitude","Latitude","FIPS", "Tract","casrn"]
     for name in df.columns:
         weightstartpos = 0
@@ -257,18 +277,19 @@ def adjustinput(infile, outfile):
                 else:
                     if weightstartpos == 0:
                         weightstartpos = i
-                        infields.append(re.sub('\W+','_', name[:weightstartpos]))
-                        if infields[-1][0].isdigit(): 
-                            infields[-1] = "F" + infields[-1]
+                        infields.append(name[:weightstartpos])
+                        infieldsrevised.append(re.sub('\W+','_', name[:weightstartpos]))
+                        if infieldsrevised[-1][0].isdigit(): 
+                            infieldsrevised[-1] = "F" + infieldsrevised[-1]
                         df.rename(columns = {name:name[:weightstartpos]}, inplace = True) 
                     else:
                         weightendpos = i
                         weights.append(float(name[weightstartpos + 1: weightendpos]))   
     df.columns = [re.sub('\W+','_', header) for header in df.columns]             
     df.to_csv(outfile, index=False)
-    return weights, colors, infields
+    return weights, colors, infields, infieldsrevised
 
-def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights):
+def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, inFieldsrename):
     try:
         # Temp for testing
         arcpy.env.overwriteOutput = True
@@ -298,6 +319,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
         # Add fields to store bearings and radius.
         arcpy.AddField_management(tmpFeatures, "Score", "DOUBLE")
         arcpy.AddField_management(tmpFeatures, "SliceName", "TEXT")
+        arcpy.AddField_management(tmpFeatures, "Weight", "TEXT")
         arcpy.AddField_management(tmpFeatures, "CLASS_", "LONG")
         arcpy.AddField_management(tmpFeatures, "BEARING_a", "FLOAT")
         arcpy.AddField_management(tmpFeatures, "BEARING_b", "FLOAT")
@@ -310,10 +332,11 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
                 x1,y1 = row[0]
                 id_ = row[1]
                 for j, f in enumerate(inFields):
+                    weight = str(round(inputWeights[count]*100/360, 3)) + "%"
                     v = row[count+2]
                     count = count + 1
-                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"Score","SliceName","CLASS_")) as poly_cursor:
-                        poly_cursor.insertRow(([x1,y1],id_,v,inFields[j],count))
+                    with arcpy.da.InsertCursor(tmpFeatures, ('Shape@', uniqueID,"Score","SliceName","Weight","CLASS_")) as poly_cursor:
+                        poly_cursor.insertRow(([x1,y1],id_,v,inFieldsrename[j],weight,count))
 
         # Find the max values to scale the output features
         if inputRadius == "" or inputRadius == 0:
@@ -415,7 +438,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
 
     #adjust input file for required parameters and get required information
     outfilecsv = outpathtmp + "\ToxPiResultsAdjusted.csv"
-    inweights, colors, infields = adjustinput(inFeatures, outfilecsv)
+    inweights, colors, infields, infieldsrevised = adjustinput(inFeatures, outfilecsv)
 
     uniqueid = "Name"
     #adjust weights to fit a circle (360 deg)
@@ -428,7 +451,8 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
     #append info for adding a center dot with overall score
     inweights.append(360)
     colors.append("FFFFFF")
-    infields.append("ToxPi_Score")
+    infields.append("ToxPi Score")
+    infieldsrevised.append("ToxPi_Score")
     
     #get color rgb codes from hex codes
     for j in range(len(colors)):
@@ -439,7 +463,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
     arcpy.ConvertCoordinateNotation_management(in_table=outfilecsv, out_featureclass=tmpfileremapped, x_field="Longitude", y_field="Latitude", input_coordinate_format="DD_2", output_coordinate_format="DD_2", spatial_reference="PROJCS['WGS_1984_Web_Mercator_Auxiliary_Sphere',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator_Auxiliary_Sphere'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],PARAMETER['Auxiliary_Sphere_Type',0.0],UNIT['Meter',1.0]];-20037700 -30241100 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision", in_coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]", id_field="", exclude_invalid_records="INCLUDE_INVALID")
 
     #remove quotes used to force identifier to a string
-    with arcpy.da.UpdateCursor(tmpfileremapped, [uniqueid] + infields) as scur:
+    with arcpy.da.UpdateCursor(tmpfileremapped, [uniqueid] + infieldsrevised) as scur:
         for row in scur:
           row[0] = row[0].replace("\"","")
           n = len(row)
@@ -449,7 +473,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
 
     tmpfileToxPi = geopath + "\ToxPifeature"
 
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = "Name", inFields=infields, inputRadius=float(inputRadius), radiusUnits="Magnify", inputWeights=inweights)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = "Name", inFields=infieldsrevised, inputRadius=float(inputRadius), radiusUnits="Magnify", inputWeights=inweights, inFieldsrename = infields)
     
     countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "ToxPi Features")
     arcpy.management.SaveToLayerFile(countytoxpilyr, outFeatures)
@@ -461,7 +485,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
 
     #alter symbology for toxpi feature layer
     y["layerDefinitions"][0]["renderer"] = json.loads(GetSymbology(colors, infields))
-
+    y["layerDefinitions"][0]["popupInfo"] = json.loads(GetPopupInfo())
     #write the edits to the county toxpi layer file
     mainlyr = json.dumps(y)
     fh.close()
