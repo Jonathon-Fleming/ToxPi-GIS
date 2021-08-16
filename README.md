@@ -11,72 +11,20 @@ The following methods are used for the production and visualization of shareable
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
   
-**Script Instructions(Method 1): ToxPi_creation.py & ToxPi_creation_customized.py**   
-Use the script ToxPi_creation.py to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. ToxPi_creation_customized.py can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data.   
-
-Requirements: 
-* ArcGIS Pro licensing  
-* Source column for data must be formatted Latitude, Longitude(See Utilites Folder section for help if coordinate format needs to be swapped)
-* Requires being logged into ArcGIS Portal  
-* Column labeled Name with unique identifiers must be present in data  
-* Slice names must not contain a special character followed by a number  
-* Windows Operating System  
-* Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
+**Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
+Use the script [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1.md). 
+</br>
+[ToxPi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data. An example walkthrough is shown in [Vignette 3](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette3.md).  
 
 Steps:  
 1A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
-1B. Analyze data and output results file to a CSV, and make sure file meets requirements above  
-1C. Run [ToxPiCreation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPiCreation.py) from windows command prompt using the following commands and parameters
-```
-"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
-python location\ToxPiCreation.py inputfile outputfile.lyrx scale (Used to run script, replace location with path to file)  
-
-Parameters:
-* inputfile - The ToxPi GUI results file to draw ToxPi features from  
-* outputfile.lyrx - The location for the result lyrx file output by the script. Please use full file path and add .lyrx  
-* scale - Optionally scales the size of the ToxPi features. The default is 1  
-```
-
-Example:  
-<p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="70" />  
-</p>  
-
+1B. Analyze data and output results file to a CSV, and make sure file meets data requirements    
+1C. Run python script from windows command prompt using the required parameters  
 1D. Open output layer file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
 
-Output:  
-  * Script makes a geodatabase in the location folder called ToxPiAuto.gdb containing necessary information for the layer file as well as intermediate feature layers 
-  * Script outputs a layer file at outputfile.lyrx  
-  * Sharing provides a web URL for the public to view your map  
-
-General Troubleshooting:  
-* Error when accessing environment  
-  * Make sure quotes are included  
-  * The location to the proenv may be different if you did a custom installation location of ArcGIS Pro  
-* Error when running script  
-  * If location is your current directory, use .\ to reference the location   
-  * Make sure .lyrx is present on outfile   
-  * Make sure you are logged into ArcGIS Portal and have required ArcGIS Pro licensing  
-  * Make sure nonessential columns are not present in data  
-  * Make sure name column is present  
-* Mapping Incorrect
-  * Ensure source is formatted latitude, longitude. [swap_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Swap_Coordinates.py) is provided in Utilities folder if coordinates need to be swapped  
-  * Each time script is run to generate a map a different directory should be used unless overwriting a previous map     
-
-**ArcToolBox Instructions(Path 2): ToxPiToolbox.tbx**  
-The ToxPiToolbox.tbx file contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of map creation, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under Vignette 2 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md).  
-
-Requirements: 
-* ArcGIS Pro licensing  
-* Requires being logged into ArcGIS Portal  
-* Basic knowledge of ArcGIS tools    
-* Source column will likely need to be split into two separate coordinate columns  (See utilities folder for help formatting if needed)  
-* Slice names must not contain a special character followed by a number 
-  * Note: Special characters will be replaced by underscores in the output due to ArcGIS formatting  
-* Windows Operating System  
-* Use of other tools for data manipulation and feature layer preparation. Example walkthrough is provided under Vignette 3 located within the [Example Folder Map Creation file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) to help with this.  
+**Method 2: ToxPiToolbox.tbx**  
+The ToxPiToolbox.tbx file is an ArcToolbox that contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of map creation, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under [Vignette 2](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette2.md).  
 
 Steps:  
 2A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
@@ -84,40 +32,9 @@ Steps:
 2C. Add results file to ArcGIS Pro  
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
 2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online(See [Map Creation Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) Vignette 3 for analysis steps)  
-  
-Output:  
-  * Toolbox generates an symbolized feature layer of ToxPi figures     
-  * Sharing provides a web URL for the public to view your map  
-
-General Troubleshooting:  
-* Error when running tool   
-  * Ensure input feature layer is in a projected coordinate system  
-  * Ensure a proper unique identifier is referenced  
-  * Ensure the number of slice categories and number of weights provided correspond   
-  * Make sure slice names do not contain a special character followed by a number(ArcGIS Pro Tools do not support special characters in fields).
-* Mapping Incorrect  
-  * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Split_Coordinates.py) is provided in Utilities folder to help with splitting coordinates  
-  * Ensure slices and weights are in proper corresponding order   
-  * Ensure basemap coordinate is set to the same coordinate as the output feature layer for the toolbox, else ToxPi figures may be skewed  
-
-**Script Instructions(Path 1): ToxPiModel.py**   
-ToxPiModel.py is a demonstration of how ToxPiCreation.py can be further developed for advanced analysis and map creation customized to specific data. Use this to generate a predesigned map for county or census tract data.  
-
-Requirements:  
-* Same as ToxPiCreation.py  
-* Additionally, requires a column named FIPS with the corresponding identifiers  
-
-Steps:
-* Same as ToxPiCreation.py, except change script name and there is no scale parameter.  
-
-Output:  
-* Same as ToxPiCreation.py  
-
-Troubleshooting:  
-* Same as ToxPiCreation.py, except ensure FIPS column is also present  
 
 **Utilities Folder:**  
-This folder contains python scripts that may be useful for data manipulation and formatting requirements. They can be run by changing the input and output file path within the script to reference the file to be altered and then running the script. A possible path to edit these files consists of opening notepad(or another text editor) and navigating to the file location for the script. Ensure all files is selected if the file can't be seen, and then open the file in notepad and edit the two file paths present.  
+This folder contains python scripts that may be useful for data manipulation and formatting requirements and can be run from the command line. None of the scripts are part of the pipeline; however, they may be useful if your data does not meet a methods requirements.  
 
 **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
