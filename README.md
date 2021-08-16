@@ -11,8 +11,8 @@ The following methods are used for the production and visualization of shareable
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
   
-**Script Instructions(Path 1): ToxPiCreation.py**   
-Use the script ToxPiCreation.py to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox.
+**Script Instructions(Method 1): ToxPi_creation.py & ToxPi_creation_customized.py**   
+Use the script ToxPi_creation.py to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. ToxPi_creation_customized.py can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data.   
 
 Requirements: 
 * ArcGIS Pro licensing  
