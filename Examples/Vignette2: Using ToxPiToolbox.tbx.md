@@ -9,7 +9,37 @@ Requirements:
   * Note: Special characters will be replaced by underscores in the output due to ArcGIS formatting  
 * Windows Operating System   
 
-Output:  
-  * Toolbox generates a symbolized feature layer of ToxPi figures     
-  * Sharing provides a web URL for the public to view your map  
+**Steps:**
+* Download Vignette2 test data(Was obtained by using split_coordinates.py on Vignette1 test data to separate Latitiude and Longitude into separate columns)
+* Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
+* Add Vignette2 test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
+* Display data on the map using a projected coordinate system via the following tool and parameters:  
+    Tool: Convert Coordinate Notation  
+    Input Table: Vignette2_Subset_NC.csv  
+    Input Coordinate System: GCS_WGS_1984  
+    Output Feature Class: Vignette2_Displayed  
+    Output Coordinate System: WGS_1984_Web_Mercator_Auxiliary_Sphere(Coordinate system needs to be projected, not geographic)  
+        Note: To do this, select the globe, search WGS 1984 Web Mercator, drop down projected coordinate systems, drop down world, select WGS 1984 Web Mercator  
+    Input Coordinate Format: DD2  
+    X: Longitude  
+    Y: Latitude  
+    Output Coordinate Format: DD2  
+* Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
+* Turn on catalog pane(View, Catalog Pane)  
+* Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below: 
+<p align = "center"> 
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "350" height = "500" />  
+</p>   
+<p align = "center">  
+    inFeatures: Input feature layer to draw ToxPi figures from  <br>
+    outFeatures: The desired name for the output ToxPi feature layer  <br>
+    uniqueID: The column name for the unique identifier for locations  <br>
+    inFields: The list of all desired fields to be included as slices  <br>
+    inputWeights: A string of weights for determining each slices radial width in order, separated by ;  <br>
+    inputRadius: A numerical value for determining the size of the drawn figures. The default is 1  <br>
+    outFeaturesRings: The desired name for the max radius ring feature layer(optional) <br>
+    </p>   
+ * Complete further analysis or share your map to ArcGIS Online  
+
 
