@@ -28,9 +28,11 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
 2C. Load results file into an ArcGIS Pro map   
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
+
 2D. Load ToxPiToolbox into ArcGIS project  
 * Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
 * Insert image here  
+
 2E. Run required geoprocessing steps, including ToxPiToolbox, and share to ArcGIS Online  
 * Open tool pane to search for tools(Analysis, Tools, Search for tool)  
 * Add image here  
