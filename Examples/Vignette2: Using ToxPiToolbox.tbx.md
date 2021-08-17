@@ -9,10 +9,18 @@ Requirements:
   * Note: Special characters will be replaced by underscores in the output due to ArcGIS formatting  
 * Windows Operating System   
 
-**Steps:**
-2A, 2B: Already done  
-2C:  
-* Download test data  
+**Steps:**  
+2A. Already done  
+2B. CSV file already generated, but coordinates need to be split into two columns using any preferred method  
+   * Split source column using [split_coordinates.py]() and the following command:
+     ```
+     python location\split_coordinates.py inputfile
+     
+     Parameters:
+     * inputfile - The ToxPi GUI results file that has concatenated coordinates to be split  
+     ````
+     
+2C.   
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
 * Display data on the map using a projected coordinate system via the following tool and parameters:  
