@@ -10,6 +10,8 @@ Requirements:
 * Windows Operating System   
 
 **Steps:**
+2A, 2B: Already done  
+2C:  
 * Download test data  
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
