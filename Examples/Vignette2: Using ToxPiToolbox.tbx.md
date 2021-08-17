@@ -28,6 +28,12 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
 2C. Load results file into an ArcGIS Pro map   
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
+2D. Load ToxPiToolbox into ArcGIS project  
+* Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
+* Insert image here  
+2E. Run required geoprocessing steps, including ToxPiToolbox, and share to ArcGIS Online  
+* Open tool pane to search for tools(Analysis, Tools, Search for tool)  
+* Add image here  
 * Display data on the map using a projected coordinate system via the following tool and parameters:  
     Tool: Convert Coordinate Notation  
     Input Table: Vignette2_Subset_NC.csv  
@@ -39,9 +45,11 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
     X: Longitude  
     Y: Latitude  
     Output Coordinate Format: DD2  
-* Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
+    * Insert image here  
+ 
 * Turn on catalog pane(View, Catalog Pane)  
-* Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below: 
+  * Insert image here  
+* Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below:  
 <p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" width = "350" height = "500" />  
@@ -56,6 +64,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
     outFeaturesRings: The desired name for the max radius ring feature layer(optional) <br>
     </p>   
  * Complete further analysis or share your map to ArcGIS Online  
+ * Insert image here  
 
 Output:  
   * Toolbox generates a symbolized feature layer of ToxPi figures     
