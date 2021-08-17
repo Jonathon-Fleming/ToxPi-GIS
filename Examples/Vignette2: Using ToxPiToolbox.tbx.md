@@ -19,7 +19,11 @@ Requirements:
      Parameters:
      * inputfile - The ToxPi GUI results file that has concatenated coordinates to be split  
      ````
-     
+   * Example: 
+     <p align = "center">
+    <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-       canonical-  
+    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900"     height="70" />  
+    </p>  
 2C.   
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
