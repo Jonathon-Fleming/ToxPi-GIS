@@ -1,17 +1,17 @@
 # ToxPi-GIS
-**GitHub Description:**  
+# **GitHub Description:**  
 The following methods are used for the production and visualization of shareable, interactive feature layers containing ToxPi figures using ArcGIS Pro. Two methods are provided for production, labeled as 1 and 2 in the [Map Creation Workflow](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/#Map%20Creation%20Workflow.PNG) located below. Method 1 uses a customized python script that can be run on the Windows Command Prompt to automatically produce a predesigned layer file of ToxPi features symbolized based on the ToxPi GUI output that can be opened within ArcGIS Pro and is ready to be shared to ArcGIS Online for visualization. This is the suggested method unless you are integrating the ToxPi features into a fully automated ArcGIS model. Examples of this process can be seen under [Vignette 1](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1:%20Using%20ToxPi_creation.py.md) and [Vignette 3](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1:%20Using%20ToxPi_creation_customized.py.md) in the Examples folder. For users looking to integrate ToxPi feature layers into already existing workflows or ArcGIS models, method 2 is provided which uses a custom ArcToolbox that can be added to ArcGIS Pro and used to produce symbolized ToxPi features. Use this method if you want to develop your own pipeline within ArcGIS Pro, your data does not fit the formatting required for use of the python script, or you only want to use a subset of the slices in your data. Examples of this process can be seen under [Vignette 2](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1:%20Using%20ToxPiToolbox.tbx.md) in the Examples folder. If you are a user looking only to visualize maps created by other users, please see the Visualization section below and the examples within the [Example Folder Map Visualization file](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Visualization.md). Practice data can be found within the [Example Folder Practice Data Folder](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data).  
   
-**ToxPi Description:**  
+# **ToxPi Description:**  
 (insert description and images of ToxPi Figures and statistics here).  
   
-**Map Creation Workflow:**  
+# **Map Creation Workflow:**  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
   
-**Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
+# **Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
 Use the script [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1:%20Using%20ToxPi_creation.py.md). 
 </br>
 [ToxPi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data. An example walkthrough is shown in [Vignette 3](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette3.md).  
@@ -23,7 +23,7 @@ Steps:
 1D. Open output layer file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
 
-**Method 2: ToxPiToolbox.tbx**  
+# **Method 2: ToxPiToolbox.tbx**  
 The ToxPiToolbox.tbx file is an ArcToolbox that contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of map creation, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under [Vignette 2](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette2.md).  
 
 Steps:  
@@ -33,10 +33,10 @@ Steps:
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
 2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online(See [Map Creation Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) Vignette 3 for analysis steps)  
 
-**Utilities Folder:**  
+# **Utilities Folder:**  
 This folder contains python scripts that may be useful for data manipulation and formatting requirements and can be run from the command line. None of the scripts are part of the pipeline; however, they may be useful if your data does not meet a methods requirements.  
 
-**Visualization Instructions:**  
+# **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
 
 
