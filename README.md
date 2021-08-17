@@ -31,7 +31,7 @@ Steps:
 2B. Analyze data and output results file to a CSV, and split the coordinates into two separate columns  
 2C. Add results file to ArcGIS Pro  
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
-2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online(See [Map Creation Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Map%20Creation.md) Vignette 3 for analysis steps)  
+2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online  
 
 # **Utilities Folder:**  
 This folder contains python scripts that may be useful for data manipulation and formatting requirements and can be run from the command line. None of the scripts are part of the pipeline; however, they may be useful if your data does not meet a methods requirements.  
