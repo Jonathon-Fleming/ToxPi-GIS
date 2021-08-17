@@ -5,7 +5,7 @@ The following methods are used for the production and visualization of shareable
 **ToxPi Description:**  
 (insert description and images of ToxPi Figures and statistics here).  
   
-**Map Creation Workflow:**  
+#**Map Creation Workflow:**  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationWorkflow.PNG" width="600" height="300" />  
