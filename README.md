@@ -12,7 +12,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapCreationW
 </p>  
   
 **Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
-Use the script [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1.md). 
+Use the script [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette1:%20Using%20ToxPi_creation.py.md). 
 </br>
 [ToxPi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data. An example walkthrough is shown in [Vignette 3](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Vignette3.md).  
 
