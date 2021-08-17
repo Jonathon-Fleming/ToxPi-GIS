@@ -1,1 +1,1 @@
-
+Vignette 2 is a demonstration of method 2 in the map creation workflow using [ToxpiToolbox.tbx]() and Covid-19 vulnerability data. The resulting map visually matches Vignette 1, the output of ToxPi_creation.py. The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](). A further description of the data can be found [here](). 
