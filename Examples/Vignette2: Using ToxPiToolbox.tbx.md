@@ -11,7 +11,7 @@ Requirements:
 
 **Steps:**  
 2A. Already done  
-2B. CSV file already generated, but coordinates need to be split into two columns using any preferred method  
+2B. CSV file already generated [here](), but coordinates need to be split into two columns using any preferred method  
    * Split source column using [split_coordinates.py]() and the following command:
      ```
      python location\split_coordinates.py inputfile
@@ -24,7 +24,7 @@ Requirements:
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-       canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900"     height="70" />  
 </p>  
-2C.   
+2C. Load results file into an ArcGIS Pro map  
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
 * Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
 * Display data on the map using a projected coordinate system via the following tool and parameters:  
