@@ -23,7 +23,7 @@ Parameters:
 * scale - Optionally scales the size of the ToxPi features. The default is 1  
 ```
 
-Example:  
+* Example:  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="70" />  
