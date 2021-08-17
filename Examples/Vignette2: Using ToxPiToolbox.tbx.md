@@ -10,9 +10,9 @@ Requirements:
 * Windows Operating System   
 
 **Steps:**
-* Download Vignette2 test data(Was obtained by using split_coordinates.py on Vignette1 test data to separate Latitiude and Longitude into separate columns)
+* Download test data  
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
-* Add Vignette2 test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
+* Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
 * Display data on the map using a projected coordinate system via the following tool and parameters:  
     Tool: Convert Coordinate Notation  
     Input Table: Vignette2_Subset_NC.csv  
@@ -42,4 +42,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
     </p>   
  * Complete further analysis or share your map to ArcGIS Online  
 
+Output:  
+  * Toolbox generates a symbolized feature layer of ToxPi figures     
+  * Sharing provides a web URL for the public to view your map  
 
