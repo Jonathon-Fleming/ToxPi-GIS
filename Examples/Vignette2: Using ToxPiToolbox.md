@@ -27,8 +27,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PN
      ````
    * Example: 
 <p align = "center">  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-       canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="70" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit.PNG" data- canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit.PNG" width="900" height="70" />  
 </p>  
 
 2C. Load results file into an ArcGIS Pro map   
