@@ -18,7 +18,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PN
 * Column names other than the [ToxPi Score, HClust Group, KMeans Group, Name, Longitude, Latitude, FIPS, Tract, casrn] should not be included unless they are slices  
 
 ## Steps:  
-1A, 1B. Already done, download repository and results data are [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data)     
+1A, 1B. Already done, download entire repository, results data are [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository     
 1C. Run [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py) from windows command prompt using the following commands and parameters
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
