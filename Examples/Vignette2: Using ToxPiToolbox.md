@@ -40,10 +40,9 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit
 
 2E. Run required geoprocessing steps, including ToxPiToolbox, and share to ArcGIS Online  
 * Open tool pane to search for tools(Analysis, Tools, Search for tool)  
-* Add image here  
 * Display data on the map using a projected coordinate system via the following tool and parameters:  
     Tool: Convert Coordinate Notation  
-    Input Table: Vignette2_Subset_NC.csv  
+    Input Table: PracticeData_Subset_NC.csv  
     Input Coordinate System: GCS_WGS_1984  
     Output Feature Class: Vignette2_Displayed  
     Output Coordinate System: WGS_1984_Web_Mercator_Auxiliary_Sphere(Coordinate system needs to be projected, not geographic)  
@@ -52,10 +51,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit
     X: Longitude  
     Y: Latitude  
     Output Coordinate Format: DD2  
-    * Insert image here  
  
-* Turn on catalog pane(View, Catalog Pane)  
-  * Insert image here  
+* Turn on catalog pane(View, Catalog Pane)   
 * Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below:  
 <p align = "center"> 
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterface.PNG" data-canonical-  
