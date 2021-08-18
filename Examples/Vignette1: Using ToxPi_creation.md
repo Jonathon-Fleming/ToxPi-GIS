@@ -31,8 +31,12 @@ Parameters:
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="70" />  
 </p>  
 
-1D. Open output layer file in ArcGIS Pro  
+1D. Open .lyrx file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="70" />  
+</p>  
 
 ## Output:  
   * Script makes a geodatabase in the location folder called ToxPiAuto.gdb containing necessary information for the layer file as well as intermediate feature layers 
