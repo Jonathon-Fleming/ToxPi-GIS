@@ -5,6 +5,7 @@ Vignette 2 is a demonstration of method 2 in the map creation workflow using [To
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" width="600" height="300" />  
 </p>  
+
 ## **Requirements:**  
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
