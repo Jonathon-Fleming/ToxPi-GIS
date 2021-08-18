@@ -4,7 +4,7 @@ Vignette 1 is a demonstration of method 1 in the map creation workflow using [To
 ## Requirements:  
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
-* Source column for data must be formatted Latitude, Longitude(See [Utilites]() for help if needed)    
+* Source column for data must be formatted Latitude, Longitude(See [Utilites](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Utilities) for help if needed)    
 * Column labeled Name with unique identifiers must be present in data  
 * Slice names must not contain a special character followed by a number  
 * Windows Operating System  
