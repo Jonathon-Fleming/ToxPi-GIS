@@ -1,10 +1,11 @@
+# Vignette 2: Generating a ToxPi feature layer of COVID-19 vulnerability using ToxPiToolbox.tbx  
 Vignette 2 is a demonstration of method 2 in the map creation workflow using [ToxpiToolbox.tbx](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPiToolbox.tbx) and Covid-19 vulnerability data. The resulting map visually matches Vignette 1, the output of ToxPi_creation.py. The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data). It is suggested to use the subset as it will significantly reduce running time(Full ~ 30min, Subset ~ 5min). A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" width="600" height="300" />  
 </p>  
-Requirements: 
+## **Requirements:**  
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
 * Basic knowledge of ArcGIS tools    
@@ -13,7 +14,7 @@ Requirements:
   * Note: Special characters will be replaced by underscores in the output due to ArcGIS formatting  
 * Windows Operating System   
 
-**Steps:**  
+## **Steps:**  
 2A. Already done  
 2B. CSV file already generated [here](), but coordinates need to be split into two columns using any preferred method  
    * Split source column using [split_coordinates.py]() and the following command:
@@ -72,11 +73,11 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
  * Complete further analysis or share your map to ArcGIS Online  
  * Insert image here  
 
-Output:  
+## **Output:**    
   * Toolbox generates a symbolized feature layer of ToxPi figures     
   * Sharing provides a web URL for the public to view your map  
 
-General Troubleshooting:  
+## **General Troubleshooting:**   
 * Error when running tool   
   * Ensure input feature layer is in a projected coordinate system  
   * Ensure a proper unique identifier is referenced  
