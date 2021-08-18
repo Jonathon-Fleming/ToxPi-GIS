@@ -65,7 +65,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Tools.PNG" w
 * Turn on catalog pane(View, Catalog Pane)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CatalogPane.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CatalogPane.PNG" width="600" height="70" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CatalogPane.PNG" width="600" height="100" />  
 </p>  
 * Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below:  
 <p align = "center"> 
