@@ -66,9 +66,13 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
     inputWeights: A string of weights for determining each slices radial width in order, separated by ;  <br>
     inputRadius: A numerical value for determining the size of the drawn figures. The default is 1  <br>
     outFeaturesRings: The desired name for the max radius ring feature layer(optional) <br>
-    </p>   
+</p>   
+    
  * Complete further analysis or share your map to ArcGIS Online  
- * Insert image here  
+<p align = "center">  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.PNG" data- canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.PNG" width="900" height="35" />  
+</p>   
 
 ## **Output:**    
   * Toolbox generates a symbolized feature layer of ToxPi figures     
