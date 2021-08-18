@@ -36,7 +36,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit
 * Add test data to the map(Map, Add Data, PracticeData_Subset_NC.csv)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.PNG" width="600" height="70" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.PNG" width="600" height="100" />  
 </p> 
 2D. Load ToxPiToolbox into ArcGIS project  
 * Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
