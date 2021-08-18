@@ -71,7 +71,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
  * Complete further analysis or share your map to ArcGIS Online  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="900" height="35" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="900" height="80" />  
 </p>   
 
 ## **Output:**    
@@ -88,4 +88,4 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png
   * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/split_coordinates.py) is provided in Utilities folder to help with splitting coordinates  
   * Ensure slices and weights are in proper corresponding order   
   * Ensure basemap coordinate is set to the same coordinate as the output feature layer for the toolbox, else ToxPi figures may be skewed  
-  * Say something here about renaming slices   
+  * Slices may need to be renamed due to replacement of special characters with underscores. This can be done using find and replace within an attribute table, however, doing so will cause the symbology to need to be redone. It is suggested just to rename the legend aliases for slices to their proper names     
