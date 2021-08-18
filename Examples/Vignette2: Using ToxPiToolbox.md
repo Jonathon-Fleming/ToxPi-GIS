@@ -18,13 +18,13 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PN
 ## **Steps:**  
 2A. Already done, download entire repository to get data and scripts     
 2B. CSV file already generated [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository, but coordinates need to be split into two columns using any preferred method  
-   * Split source column using [split_coordinates.py]() and the following command:
+   * Split source column using [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/split_coordinates.py) and the following command:
      ```
      python location\split_coordinates.py inputfile
      
      Parameters:
      * inputfile - The ToxPi GUI results file that has concatenated coordinates to be split  
-     ````
+     ```
    * Example: 
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit.PNG" data- canonical-  
@@ -33,11 +33,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit
 
 2C. Load results file into an ArcGIS Pro map   
 * Open a new project in ArcGIS Pro(Project, New, Map, Change Name, Okay)  
-* Add test data to the map(Map, Add Data, Vignette2_Subset_NC.csv)  
+* Add test data to the map(Map, Add Data, PracticeData_Subset_NC.csv)  
 
 2D. Load ToxPiToolbox into ArcGIS project  
 * Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
-* Insert image here  
 
 2E. Run required geoprocessing steps, including ToxPiToolbox, and share to ArcGIS Online  
 * Open tool pane to search for tools(Analysis, Tools, Search for tool)  
@@ -85,7 +84,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
   * Ensure the number of slice categories and number of weights provided correspond   
   * Make sure slice names do not contain a special character followed by a number(ArcGIS Pro Tools do not support special characters in fields).
 * Mapping Incorrect  
-  * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Split_Coordinates.py) is provided in Utilities folder to help with splitting coordinates  
+  * Ensure latitude and longitude have been referenced properly in the previous analysis steps. Using concatenated coordinates can lead to issues, thus it is suggested that the coordinates be split into latitude and longitude individually. [split_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/split_coordinates.py) is provided in Utilities folder to help with splitting coordinates  
   * Ensure slices and weights are in proper corresponding order   
   * Ensure basemap coordinate is set to the same coordinate as the output feature layer for the toolbox, else ToxPi figures may be skewed  
   * Say something here about renaming slices   
