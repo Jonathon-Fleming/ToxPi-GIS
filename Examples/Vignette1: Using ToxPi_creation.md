@@ -1,5 +1,5 @@
 # **Vignette 1: Generating a ToxPi feature layer of COVID-19 vulnerability using ToxPi_creation.py**  
-Vignette 1 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation.py]() and Covid-19 vulnerability data. The resulting map can be found [here](). The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](). A further description of the data can be found [here]().  
+Vignette 1 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py) and Covid-19 vulnerability data. The resulting map can be found [here](https://ncsu.maps.arcgis.com/home/item.html?id=7c0365b3f75949369b46c07ae4ecf10c). The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](). A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
 
 ## Requirements:  
 * ArcGIS Pro licensing  
