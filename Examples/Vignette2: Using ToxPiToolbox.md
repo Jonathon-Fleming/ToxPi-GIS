@@ -42,7 +42,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.
 * Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddToolbox.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddToolbox.PNG" width="600" height="70" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddToolbox.PNG" width="800" height="100" />  
 </p> 
 2E. Run required geoprocessing steps, including ToxPiToolbox, and share to ArcGIS Online  
 * Open tool pane to search for tools(Analysis, Tools, Search for tool)  
