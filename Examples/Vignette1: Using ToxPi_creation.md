@@ -3,7 +3,7 @@ Vignette 1 is a demonstration of method 1 in the map creation workflow using [To
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" width="600" height="400" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PNG" width="600" height="300" />  
 </p>  
 
 ## Requirements:  
