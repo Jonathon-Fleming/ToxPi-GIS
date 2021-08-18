@@ -32,10 +32,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
 </p>  
 
 1D. Open .lyrx file in ArcGIS Pro  
-1E. Share resulting map to ArcGIS Online  
+1E. Share as a web map to ArcGIS Online  
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="900" height="70" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="900" height="70" />  
 </p>  
 
 ## Output:  
