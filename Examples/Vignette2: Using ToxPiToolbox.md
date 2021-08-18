@@ -16,7 +16,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PN
 * Windows Operating System   
 
 ## **Steps:**  
-Note: These are just the steps to create a plain map of ToxPi figures. This methodology should be integrated into modelbuilder or used with extra geoprocessing steps, otherwise use Method 1.  
+Note: These are just the steps to create a plain map of ToxPi figures. This methodology should be integrated into modelbuilder, used with extra geoprocessing steps, or used for subsetting of slices, otherwise Method 1 is quicker and produces better results.  
 <br>
 2A. Already done, download entire repository to get data and scripts     
 2B. CSV file already generated [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository, but coordinates need to be split into two columns using any preferred method  
