@@ -36,19 +36,19 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CommandSplit
 * Add test data to the map(Map, Add Data, PracticeData_Subset_NC.csv)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.PNG" width="600" height="200" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddDataTool.PNG" width="600" height="70" />  
 </p> 
 2D. Load ToxPiToolbox into ArcGIS project  
 * Add ToxPiToolbox to project(Insert, Toolbox, Add Toolbox, ToxPiToolbox.tbx)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddToolbox.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddToolbox.PNG" width="600" height="200" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddToolbox.PNG" width="600" height="70" />  
 </p> 
 2E. Run required geoprocessing steps, including ToxPiToolbox, and share to ArcGIS Online  
 * Open tool pane to search for tools(Analysis, Tools, Search for tool)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Tools.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Tools.PNG" width="600" height="200" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Tools.PNG" width="600" height="70" />  
 </p> 
 * Display data on the map using a projected coordinate system via the following tool and parameters:  
     Tool: Convert Coordinate Notation  
@@ -65,7 +65,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Tools.PNG" w
 * Turn on catalog pane(View, Catalog Pane)  
 <p align = "center">  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CatalogPane.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CatalogPane.PNG" width="600" height="200" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CatalogPane.PNG" width="600" height="70" />  
 </p>  
 * Open custom script called ToxPi Construction from within ToxPiToolbox and run with desired parameters. The interface and parameter descriptions are shown below:  
 <p align = "center"> 
