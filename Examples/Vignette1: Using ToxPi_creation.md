@@ -10,6 +10,7 @@ Vignette 1 is a demonstration of method 1 in the map creation workflow using [To
 * Windows Operating System  
 * Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
 * Slice names must be formatted from the output of the ToxPi GUI for proper symbology  
+* Column names other than the [ToxPi Score, HClust Group, KMeans Group, Name, Longitude, Latitude, FIPS, Tract, casrn] should not be included unless they are slices  
 
 ## Steps:  
 1A, 1B. Already done, download results data [here]()     
