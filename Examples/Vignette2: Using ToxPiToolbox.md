@@ -16,7 +16,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette1.PN
 * Windows Operating System   
 
 ## **Steps:**  
-2A. Already done, download repository if not already done    
+2A. Already done, download entire repository to get data and scripts     
 2B. CSV file already generated [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository, but coordinates need to be split into two columns using any preferred method  
    * Split source column using [split_coordinates.py]() and the following command:
      ```
