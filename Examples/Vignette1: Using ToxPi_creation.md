@@ -35,7 +35,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
 1E. Share as a web map to ArcGIS Online  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="500" height="100" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="600" height="100" />  
 </p>  
 
 ## Output:  
