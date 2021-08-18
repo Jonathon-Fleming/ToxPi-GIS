@@ -70,8 +70,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToolInterfac
     
  * Complete further analysis or share your map to ArcGIS Online  
 <p align = "center">  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.PNG" data- canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.PNG" width="900" height="35" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data- canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="900" height="35" />  
 </p>   
 
 ## **Output:**    
