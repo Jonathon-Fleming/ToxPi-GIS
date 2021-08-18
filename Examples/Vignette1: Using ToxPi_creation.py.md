@@ -1,6 +1,7 @@
+# **Vignette 1: Generating a ToxPi feature layer of COVID-19 vulnerability using ToxPi_creation.py**  
 Vignette 1 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation.py]() and Covid-19 vulnerability data. The resulting map can be found [here](). The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](). A further description of the data can be found [here]().  
 
-Requirements:  
+## Requirements:  
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
 * Source column for data must be formatted Latitude, Longitude(See Utilites Folder section for help if coordinate format needs to be swapped)  
@@ -10,7 +11,7 @@ Requirements:
 * Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
 * Slice names must be formatted from the output of the ToxPi GUI for proper symbology  
 
-Steps:  
+## Steps:  
 1A, 1B. Already done, download results data [here]()     
 1C. Run [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py) from windows command prompt using the following commands and parameters
 ```
@@ -32,13 +33,13 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleComma
 1D. Open output layer file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
 
-Output:  
+## Output:  
   * Script makes a geodatabase in the location folder called ToxPiAuto.gdb containing necessary information for the layer file as well as intermediate feature layers 
   * Script outputs a layer file at outputfile.lyrx  
   * Sharing provides a web URL for the public to view your map  
 
 
-General Troubleshooting:  
+## General Troubleshooting:  
 * Error when accessing environment  
   * Make sure quotes are included  
   * The location to the proenv may be different if you did a custom installation location of ArcGIS Pro 
