@@ -2,8 +2,8 @@
 Vignette 3 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) and Covid-19 vulnerability data for counties across the United States. The resulting map can be found [here](https://ncsu.maps.arcgis.com/home/item.html?id=1518637a0b454036a3d0d2fc8239ff08). The practice data used in this demonstration was already processed through steps 1A and 1B and can be found [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data). It is suggested to use the subset as it will significantly reduce running time(Full ~ 1hour, Subset ~ 15min). A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
 
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.PNG" width="600" height="300" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" width="600" height="300" />  
 </p>  
 
 ## Requirements:  
@@ -12,6 +12,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.PN
 * Source column for data must be formatted Latitude, Longitude(See [Utilities](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Utilities) for help if needed)    
 * Column labeled Name with unique identifiers must be present in data  
 * Slice names must not contain a special character followed by a number  
+* FIPS column must be present  
 * Windows Operating System  
 * Lyrx file must be output to a separate location folder for new maps, else it will overwrite the previous map layers within the geodatabase  
 * Slice names must be formatted from the output of the ToxPi GUI for proper symbology  
@@ -19,15 +20,14 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.PN
 
 ## Steps:  
 1A, 1B. Already done, download entire repository, results data are [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository     
-1C. Run [ToxPi_creation.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation.py) from windows command prompt using the following commands and parameters
+1C. Run [ToxPi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) from windows command prompt using the following commands and parameters
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
-python location\ToxPi_creation.py inputfile outputfile.lyrx scale (Used to run script, replace location with path to file)  
+python location\ToxPi_creation.py inputfile outputfile.lyrx (Used to run script, replace location with path to file)  
 
 Parameters:
 * inputfile - The ToxPi GUI results file to draw ToxPi features from  
-* outputfile.lyrx - The location for the result lyrx file output by the script. Please add .lyrx  
-* scale - Optionally scales the size of the ToxPi features. The default is 1  
+* outputfile.lyrx - The location for the result lyrx file output by the script. Please add .lyrx   
 ```
 
 * Example:  
