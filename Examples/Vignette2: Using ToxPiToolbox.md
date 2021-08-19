@@ -99,6 +99,7 @@ Interactive slices with custom popups
 Colored slices based on ToxPi GUI choices  
 Toggleable maximum score rings  
 Sizing based on script parameters  
+Note: Special characters will be replaced with underscores in slice names  
 
 ## **General Troubleshooting:**   
 * Error when running tool   
