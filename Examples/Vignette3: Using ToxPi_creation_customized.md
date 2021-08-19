@@ -21,6 +21,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.pn
 ## Steps:  
 1A, 1B. Already done, download entire repository, results data are [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository     
 1C. Run [ToxPi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) from windows command prompt using the following commands and parameters
+Note: If you previosuly ran Vignette2, make sure to redownload the data file as it was altered in Vignette2
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
 python location\ToxPi_creation.py inputfile outputfile.lyrx (Used to run script, replace location with path to file)  
