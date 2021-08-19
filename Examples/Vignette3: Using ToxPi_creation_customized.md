@@ -3,7 +3,7 @@ Vignette 3 is a demonstration of method 1 in the map creation workflow using [To
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" width="600" height="300" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" width="600" height="600" />  
 </p>  
 
 ## Requirements:  
@@ -32,8 +32,8 @@ Parameters:
 
 * Example:  
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommand.PNG" width="1000" height="70" />  
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" width="1000" height="70" />  
 </p>  
 
 1D. Open .lyrx file in ArcGIS Pro  
