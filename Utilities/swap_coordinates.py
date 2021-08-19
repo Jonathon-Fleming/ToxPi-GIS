@@ -8,5 +8,6 @@ def swap_coordinates(path):
     del df["Latitude"]
     del df["Longitude"]
     df.to_csv(path, index = False)
+    
 if __name__ == '__main__':
     swap_coordinates(sys.argv[1])
