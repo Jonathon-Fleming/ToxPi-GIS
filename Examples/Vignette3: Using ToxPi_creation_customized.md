@@ -33,7 +33,7 @@ Parameters:
 * Example:  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" width="1000" height="80" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" width="1000" height="70" />  
 </p>  
 
 1D. Open .lyrx file in ArcGIS Pro  
