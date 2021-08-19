@@ -23,11 +23,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/WebLink.PNG"
 </p>  
 * Optionally, edit descriptive elements and metadata for public viewing  
 
-**Map Details:**  
-Interactive slices with custom popups  
-Colored slices based on ToxPi GUI choices  
-Toggleable maximum score rings  
-Sizing based on script parameters
+
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/StateLayer.PNG" width = "650" height = "300" />
