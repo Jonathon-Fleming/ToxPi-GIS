@@ -49,6 +49,13 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png
   * Script outputs a layer file at outputfile.lyrx  
   * Sharing provides a web URL for the public to view your map  
 
+## Map Details:    
+Choropleth based on ToxPi Score  
+Local and state level statistics  
+Layer visibility based on zoom extent  
+Interactive slices with custom popups  
+Colored slices based on ToxPi GUI choices    
+Toggleable maximum score rings  
 
 ## General Troubleshooting:  
 * Error when accessing environment  
