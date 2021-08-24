@@ -18,3 +18,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PN
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/OptimizedHotspotTool.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/OptimizedHotspotTool.PNG" width="300" height="350" />  
 </p>  
+5. Join the Hotspot result layer with the local boundary layer using SourceID and FID to obtain any desired fields  
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldTool.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldTool.PNG" width="300" height="700" />  
+</p>  
