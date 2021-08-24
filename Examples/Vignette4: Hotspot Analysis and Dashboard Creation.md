@@ -53,10 +53,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateFie
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinRaw.PNG" width="300" height="400" />  
 </p>  
 
-11. Delete FIPSLong column  
-12. Edit symbology of hotspot layer to black for no significance  
-13. Reorder ToxPi layer and ring layer to be above hotspot layer  
-14. Configure Popups  
+11. Delete FIPSLong column(Right-click in the attribute table and select delete)  
+12. Edit symbology of hotspot layer to black for no significance(Double click the feature in the Table of Contents, Properties, and then change color)   
+13. Reorder ToxPi layer and ring layer to be above hotspot layer(Drag within table of contents)  
+14. Configure Hotspot layer popups(Right-click layer, configure popups, edit fields, deselect fields of no interest and reorder fields)   
 15. Share to ArcGIS Online  
 
 ## Dashboard Creation Steps:  
