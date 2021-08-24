@@ -8,3 +8,10 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/hotspotcompa
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PNG" width="600" height="300" />  
 </p>  
 
+
+## Steps:  
+1. Generate ToxPi and choropleth feature layers using ToxPi_creation_customized.py and the full dataset(See Vignette 3 for help)  
+2. Open layer file in ArcGIS Pro  
+3. Delete excess layers (state and mid layers)  
+4. Run Optimized Hot Spot Analysis Tool on local boundary layer with a distance band of 50 miles    
+*  
