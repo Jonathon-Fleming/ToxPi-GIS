@@ -31,5 +31,5 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldToo
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTable.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTable.PNG" width="300" height="350" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTable.PNG" width="300" height="200" />  
 </p>  
