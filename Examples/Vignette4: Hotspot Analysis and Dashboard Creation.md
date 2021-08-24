@@ -35,4 +35,15 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTab
 </p>  
 
 8. Calculate FIPSLong field by setting it equal it to the FIPS column(This step allows for joining to raw data since it reads in as type Long)  
-9. Use Join Field Tool to join the Hotspot result layer with the raw data using FIPSLong and FIPS to obtain any desired fields  
+
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Calculate.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Calculate.PNG" width="300" height="200" />  
+</p>  
+
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateField.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateField.PNG" width="300" height="500" />  
+</p>  
+
+10. Use Join Field Tool to join the Hotspot result layer with the raw data using FIPSLong and FIPS to obtain any desired fields  
