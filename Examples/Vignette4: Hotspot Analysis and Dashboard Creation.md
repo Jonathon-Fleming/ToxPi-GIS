@@ -43,7 +43,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Calculate.PN
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateField.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateField.PNG" width="300" height="500" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateField.PNG" width="300" height="400" />  
 </p>  
 
 10. Use Join Field Tool to join the Hotspot result layer with the raw data using FIPSLong and FIPS to obtain any desired fields  
