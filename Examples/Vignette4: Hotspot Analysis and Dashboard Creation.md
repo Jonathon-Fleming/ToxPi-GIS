@@ -3,8 +3,8 @@ Vignette 4 is a demonstration of one of the many analysis methods that can be do
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/hotspotcomparetransparent.png" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/hotspotcomparetransparent.png" width="500" height="300" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/hotspotcomparetransparent.png" width="400" height="300" />  
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PNG" width="500" height="300" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PNG" width="600" height="300" />  
 </p>  
 
