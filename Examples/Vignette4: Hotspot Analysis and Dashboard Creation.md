@@ -9,7 +9,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PN
 </p>  
 
 
-## Steps:  
+## Hotspot Analysis Steps:  
 1. Generate ToxPi and choropleth feature layers using ToxPi_creation_customized.py and the full dataset(See Vignette 3 for help)  
 2. Open layer file in ArcGIS Pro  
 3. Delete excess layers (state and mid layers)  
@@ -52,3 +52,11 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CalculateFie
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinRaw.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinRaw.PNG" width="300" height="400" />  
 </p>  
+
+11. Delete FIPSLong column  
+12. Edit symbology of hotspot layer to black for no significance  
+13. Reorder ToxPi layer and ring layer to be above hotspot layer  
+14. Configure Popups  
+15. Share to ArcGIS Online  
+
+## Dashboard Creation Steps:  
