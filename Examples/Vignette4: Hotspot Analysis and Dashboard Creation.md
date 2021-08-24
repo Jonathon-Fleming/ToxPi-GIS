@@ -25,3 +25,6 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/OptimizedHot
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldTool.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldTool.PNG" width="300" height="700" />  
 </p>  
+
+6. Add raw data containing cases and deaths to the project  
+7. Add field of type long 
