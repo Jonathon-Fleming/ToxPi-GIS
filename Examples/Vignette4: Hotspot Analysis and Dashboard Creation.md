@@ -27,9 +27,12 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldToo
 </p>  
 
 6. Add raw data containing cases and deaths to the project  
-7. Open hotspot layer attribute table and add field named FIPS of data type long    
+7. Open hotspot layer attribute table and add field named FIPSLong of data type long    
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTable.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTable.PNG" width="300" height="200" />  
 </p>  
+
+8. Calculate FIPSLong field by setting it equal it to the FIPS column(This step allows for joining to raw data since it reads in as type Long)  
+9. Use Join Field Tool to join the Hotspot result layer with the raw data using FIPSLong and FIPS to obtain any desired fields  
