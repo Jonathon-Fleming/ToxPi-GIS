@@ -27,7 +27,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinFieldToo
 </p>  
 
 6. Add raw data containing cases and deaths to the project  
-7. Add field named FIPS of type long to Hot spot analysis layer  
+7. Open hotspot layer attribute table and add field named FIPS of data type long    
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AttributeTable.PNG" data-canonical-  
