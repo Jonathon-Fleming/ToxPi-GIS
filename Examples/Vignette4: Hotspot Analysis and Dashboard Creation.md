@@ -14,4 +14,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Dashboard.PN
 2. Open layer file in ArcGIS Pro  
 3. Delete excess layers (state and mid layers)  
 4. Run Optimized Hot Spot Analysis Tool on local boundary layer with a distance band of 50 miles    
-*  
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/OptimizedHotspotTool.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/OptimizedHotspotTool.PNG" width="300" height="500" />  
+</p>  
