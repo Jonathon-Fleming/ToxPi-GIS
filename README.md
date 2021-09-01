@@ -16,6 +16,8 @@ The following methods are used for the production and visualization of shareable
 ## **ToxPi Description:** 
 **Definition**  
 The ToxPi framework provides a method for transparently integrating and visualizing data across disparate information domains and is often used to determine risk values for the data being analyzed.  
+<br>
+
 **Calculation**  
 Data that are not normally compared from various locations are combined into a data matrix comprising various data domains, or slice categories, with varying weights that represent the different data categories. Each slice category, represented by a color scheme, can then be separated into subdomains. The data matrix is then analyzed to produce a score ranging from 0 to 1 for each slice category that represents a data record’s (e.g., a county’s) risk (e.g., vulnerability to COVID-19) due to that category (e.g., population concentration), as well as a corresponding overall score that represents the record’s total risk from all categories. These scores are displayed in a ToxPi diagram (shown at the top of Figure 1) for each record. 
 
