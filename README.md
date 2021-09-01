@@ -7,7 +7,7 @@ The following methods are used for the production and visualization of shareable
 
 * For users looking to use an ArcGIS Toolbox(e.g., for integration into existing ArcGIS workflows), see [Method 2](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#method-2-toxpitoolboxtbx).  
 
-* For users looking to see example walkthroughs, see [Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples).  
+* For users looking to see example walkthroughs, see the vignettes in [Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples).  
 
 * For users looking to visualize existing maps, see [Visualization Instructions](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#Visualization-Instructions).  
 
