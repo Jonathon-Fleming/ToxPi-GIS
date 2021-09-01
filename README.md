@@ -1,5 +1,5 @@
 # ToxPi\*GIS Toolkit
-## **GitHub Description:** 
+## **GitHub Directory:** 
 The following methods are used for the production and visualization of shareable, interactive feature layers containing ToxPi figures using ArcGIS Pro. To learn more about ToxPi, see [ToxPi Description](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#ToxPi-Description) below.  
 <br>
 
