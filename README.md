@@ -16,12 +16,14 @@ The following methods are used for the production and visualization of shareable
 ## **ToxPi Description:**  
 <p align = "center">
 **Calculation**  
+<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" width="550" height="400" />  
 </p>  
  
 <p align = "center">
 **Interpretation**  
+<br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" width="550" height="400" />  
 </p>  
