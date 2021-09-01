@@ -7,12 +7,12 @@ The following methods are used for the production and visualization of shareable
 
 * For users looking to use an ArcGIS Toolbox(e.g., for integration into existing ArcGIS workflows), see [Method 2](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#method-2-toxpitoolboxtbx).  
 
-* For users looking to visualize existing maps, see [Visualization Instructions](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#Visualization-Instructions).   
-
-* For users requiring help with data manipulation ad formatting requirements, see [Utilities](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities).  
-
 * For users looking to see example walkthroughs, see [Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples).  
-  
+
+* For users looking to visualize existing maps, see [Visualization Instructions](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#Visualization-Instructions).  
+
+* For users requiring help with data manipulation and formatting requirements, see [Utilities](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities).  
+
 ## **ToxPi Description:**  
 (insert description and images of ToxPi Figures and statistics here).  
   
@@ -47,7 +47,8 @@ Steps:
 ## **Visualization Instructions:**  
 (Discuss paths here, need to finalize what these are and the best way to present these)
 
-## **References:**  
+## **Acknowledgements/References:**  
+We thank the PVI project team for data provision, the Motsinger-Reif Lab at NIH for consulting and software testing, and the Baker Lab at NCSU for software testing. This work was supported by intramural funds from the National Institute of Environmental Health Sciences and the National Institute for Allergy and Infectious Diseases. Portions of the code for drawing slices were adapted from the Coxcomb tool for ArcGIS Pro. 
 
     
     
