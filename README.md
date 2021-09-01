@@ -9,7 +9,7 @@ The following methods are used for the production and visualization of shareable
 
 * For users looking to see example walkthroughs, see the vignettes in [Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples).  
 
-* For users looking to visualize existing maps, see [Visualization Instructions](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/README.md#Visualization-Instructions).  
+* For users looking to visualize existing maps, see [Visualizations](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Visualizations.md).  
 
 * For users requiring help with data manipulation and formatting requirements, see [Utilities](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities).  
 
@@ -61,9 +61,6 @@ Steps:
 2C. Add results file to ArcGIS Pro  
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
 2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online   
-
-## **Visualization Instructions:**  
-(Discuss paths here, need to finalize what these are and the best way to present these)
 
 ## **Acknowledgements/References:**  
 We thank the PVI project team for data provision, the Motsinger-Reif Lab at NIH for consulting and software testing, and the Baker Lab at NCSU for software testing. This work was supported by intramural funds from the National Institute of Environmental Health Sciences and the National Institute for Allergy and Infectious Diseases. Portions of the code for drawing slices were adapted from the Coxcomb tool for ArcGIS Pro. 
