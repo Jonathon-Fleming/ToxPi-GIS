@@ -17,11 +17,11 @@ The following methods are used for the production and visualization of shareable
 (insert description and images of ToxPi Figures and statistics here).
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" width="500" height="400" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" width="525" height="400" />  
 </p>  
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" width="500" height="400" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" width="525" height="400" />  
 </p>  
   
 ## **Map Creation Workflow:**  
