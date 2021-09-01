@@ -1,7 +1,8 @@
-# Links to Visualizations  
+# Option 1: Visualizing Maps With ArcGIS Online Map Viewer  
 
-# Option 1: Visualizing Maps With ArcGIS Online Map Viewer
+## Links to Visualizations hosted on ArcGIS  
 
+## Map viewing functionality  
 Accessing Map:  
 * Go to a shared [map link](https://ncsu.maps.arcgis.com/home/item.html?id=e524bb8f06984c36b325b4614d66f748) and if necessary open in map viewer  
 
