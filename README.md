@@ -9,7 +9,7 @@ The following methods are used for the production and visualization of shareable
 
 * For users looking to see example walkthroughs, see the vignettes in [Examples](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples).  
 
-* For users looking to visualize existing maps, see [Visualizations](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Visualizations.md).  
+* For users looking to visualize existing maps, see [Visualizations](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Examples/Visualizations.md).  
 
 * For users requiring help with data manipulation and formatting requirements, see [Utilities](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities).  
 
