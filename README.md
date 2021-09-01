@@ -19,14 +19,15 @@ The ToxPi framework provides a method for transparently integrating and visualiz
 <br>
 
 **Calculation**  
-Data that are not normally compared are combined into a data matrix comprising various data domains, or slice categories, with varying weights that represent the different data categories. Each slice category, represented by a color scheme, can then be separated into subdomains. The data matrix is then analyzed to produce a score ranging from 0 to 1 for each slice category that represents a data record’s risk due to that category, as well as a corresponding overall score that represents the record’s total risk from all categories. These scores are determined via a rank system for easy comparison between different data points. These scores are displayed in a ToxPi diagram for each record. 
+Data that are not normally compared are combined into a data matrix comprising various data domains, or slice categories, with varying weights that represent the different data categories. Each slice category, represented by a color scheme, can then be separated into subdomains. The data matrix is then analyzed to produce a risk score ranging from 0 to 1 for each slice category, as well as a corresponding overall score that represents the record’s total risk from all categories. These scores are determined via a rank system for easy comparison between different data points and are displayed in a ToxPi diagram for each record. If the data record's are locations, the figures can be mapped geographically. This process is visualized below.   
 
 <p align = "center">
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" data-canonical-  
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescription.PNG" width="550" height="400" />  
 </p>  
  
-**Interpreation**  
+**Interpretation**  
+
 <p align = "center">
 <br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" data-canonical-  
