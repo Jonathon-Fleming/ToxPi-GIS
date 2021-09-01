@@ -31,7 +31,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiDescrip
 Interpretation
 <br>
 <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" width="550" height="400" />  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ToxPiInterpretation.PNG" width="550" height="425" />  
 </p>  
 
 ## **Map Creation Workflow:**  
