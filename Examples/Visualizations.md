@@ -66,7 +66,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG
 
 Accessing Map:  
 * Go to [toxpi.org/gis/webapp](https://toxpi.org/gis/webapp/)  
-* Upload output from ToxPi GUI(Vignette1_Full.csv)  
+* Upload output from ToxPi GUI(PracticeData_Full.csv)  
 
 Functionality:  
 * Currently at limited interactive capability compared to ArcGIS methodology  
