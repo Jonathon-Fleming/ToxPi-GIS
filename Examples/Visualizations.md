@@ -1,11 +1,11 @@
 # Option 1: Visualizing Maps With ArcGIS Online Map Viewer  
 
 ## Links to Visualizations hosted on ArcGIS  
-* Vignette 1: 
-* Vignette 2: 
-* Vignette 3: 
-* Vignette 4: 
-* Vignette 5: 
+* Vignette 1: Using ToxPi_creation.py(https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=7c0365b3f75949369b46c07ae4ecf10c)   
+* Vignette 2: Using ToxPiToolbox.tbx(https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=7c0365b3f75949369b46c07ae4ecf10c)(Same results as Vignette 1)  
+* Vignette 3: Using ToxPi_creation_customized.py(https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=1518637a0b454036a3d0d2fc8239ff08)  
+* Vignette 4: Hotspot Analysis and Dashboard Creation(https://ncsu.maps.arcgis.com/apps/dashboards/022416cbc74d430691ad7d2a4cbec229)  
+* Vignette 5: Analyzing Spatiotemporal PFAS in Pine Needles(https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=759b6d5b101e4904846ad98c4ca50c7c)  
 
 ## Map viewing functionality  
 Accessing Map:  
