@@ -60,3 +60,33 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/JoinRaw.PNG"
 15. Share to ArcGIS Online  
 
 ## Dashboard Creation Steps:  
+1. Go to shared description page for map on ArcGIS Online under "Content"  
+2. Select dashboard under "Create Web App"  
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CreateDashboard.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CreateDashboard.PNG" width="300" height="400" />  
+</p>  
+
+4. Fill out dashboard information and select "Create Dashboard"  
+5. Add elements to the dashboard using the plus in the header and selecting the desired element  
+<p align = "center">
+<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddElements.PNG" data-canonical-  
+src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddElements.PNG" width="300" height="400" />  
+</p>  
+ 
+* Add and customize indicators for data display upon feature selection for a desired layer, the demonstration has 7 indicator panels on the left for HotSpot layer  
+  * Customizing an indicator:
+    * In the data tab, select Feature and the desired field to show under "Value Field", and set "Maximum Features Displayed" to 1.   
+    <p align = "center">
+    <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomName.PNG" data-canonical-  
+    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomName.PNG" width="300" height="400" />  
+    </p> 
+    
+    * In the indicator tab, populate text positions with desired info. To denote a field value, use {} or select from the "Fields" pull down. The value option references the "Value Field" selected earlier  
+    <p align = "center">
+    <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomName2.PNG" data-canonical-  
+    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomName2.PNG" width="300" height="400" />  
+    </p> 
+    
+    * Play with other options within both these tabs; indicators provide significant customizability, filtering, analysis, and provision of reference data for comparison  
+
