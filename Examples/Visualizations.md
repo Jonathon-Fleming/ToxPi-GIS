@@ -9,7 +9,7 @@
 
 ## Map viewing functionality  
 Accessing Map:  
-* Go to a shared [map link](https://ncsu.maps.arcgis.com/home/item.html?id=e524bb8f06984c36b325b4614d66f748) and if necessary open in map viewer  
+* Go to a shared [map link](https://ncsu.maps.arcgis.com/home/webmap/viewer.html?webmap=1518637a0b454036a3d0d2fc8239ff08) and if necessary open in map viewer  
 
 Map Viewing Functionality:  
 * Feature Selection  
