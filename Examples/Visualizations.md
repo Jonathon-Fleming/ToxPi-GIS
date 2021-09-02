@@ -62,11 +62,13 @@ Data Analysis options exist for users with ArcGIS accounts and proper licensing
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG">
 </p>
 
-# Option 2: Visualizing Maps With ToxPi-GIS Website
+# Option 2: Visualizing Maps With ToxPi-GIS Website  
 
 Accessing Map:  
-* Go to [toxpi.org/gis/webapp](https://toxpi.org/gis/webapp/)
-* Upload output from ToxPi GUI(Vignette1.csv)
+* Go to [toxpi.org/gis/webapp](https://toxpi.org/gis/webapp/)  
+* Upload output from ToxPi GUI(Vignette1_Full.csv)  
 
-Map Viewing Functions:  
+Functionality:  
+* Currently at limited interactive capability compared to ArcGIS methodology  
+* Will be updated with increased functionality coming soon  
 
