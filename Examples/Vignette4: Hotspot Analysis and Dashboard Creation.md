@@ -118,3 +118,4 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddElements.
 * Relocate panels as desired
   * To move a panel, hover the top left of it and hold the drag item icon while moving the panel to the desired location  
   * To resize a panel, hover over the edge of a panel and drag it to the desired size  
+* Save the dashboard  
