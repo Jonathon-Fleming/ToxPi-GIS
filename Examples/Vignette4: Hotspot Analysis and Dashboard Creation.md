@@ -95,19 +95,19 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddElements.
     * In the Data tab, set the maximum number of features displayed and how to sort the list (a smaller list size leads to faster loading)  
     <p align = "center">
     <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList.PNG" data-canonical-  
-    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList.PNG" width="345" height="375" />  
+    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList.PNG" width="345" height="300" />  
     </p> 
     
     * In the List tab, set the line item template to {Name} and turn Line item icon off, this is what determines how features are displayed in the list  
     <p align = "center">
     <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList2.PNG" data-canonical-  
-    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList2.PNG" width="345" height="375" />  
+    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList2.PNG" width="345" height="300" />  
     </p> 
     
     * In the Actions tab, select add action and add both a filter and a zoom. For filter, add the seven indicators as targets(filters indicators on list selection). For zoom add the HotSpot map as a target(zooms the map to the selected feature)  
     <p align = "center">
     <img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList3.PNG" data-canonical-  
-    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList3.PNG" width="345" height="375" />  
+    src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CustomList3.PNG" width="345" height="300" />  
     </p> 
     
 * Add and customize a rich text element to describe the dashboard and fill in with necessary info  
