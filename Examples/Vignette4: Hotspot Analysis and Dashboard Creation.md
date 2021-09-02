@@ -74,7 +74,7 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/CreateDashbo
 src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddElements.PNG" width="750" height="40" />  
 </p>  
  
-* Add and customize indicators for data display upon feature selection for a desired layer, the demonstration has 7 indicator panels on the left for HotSpot layer  
+* Add and customize indicator elements for data display upon feature selection for a desired layer, the demonstration has 7 indicator panels on the left for HotSpot layer  
   * Customizing an indicator:
     * In the data tab, select Feature and the desired field to show under "Value Field", and set "Maximum Features Displayed" to 1.   
     <p align = "center">
@@ -90,3 +90,16 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/AddElements.
     
     * Play with other options within both these tabs; indicators provide significant customizability, filtering, analysis, and provision of reference data for comparison  
 
+* Add and customize a list element for selecting features (counties)  
+  * Customizing a list: 
+    * In the Data tab, set the maximum number of features displayed and how to sort the list (a smaller list size leads to faster loading)  
+    * In the List tab, set the line item template to {Name} and turn Line item icon off, this is what determines how features are displayed in the list  
+    * In the Actions tab, select add action and add both a filter and a zoom. For filter, add the seven indicators as targets(filters indicators on list selection). For zoom add the HotSpot map as a target(zooms the map to the selected feature)  
+* Add and customize a rich text element to describe the dashboard and fill in with necessary info  
+* Add a legend element to the dashboard 
+* Configure map to filter list based on map extent  
+  * Hover top left of the map, select the gear, go to Map Actions, and choose the list as target of the filter action  
+  * Check out other map customizability options in separate tabs  
+* Relocate panels as desired
+  * To move a panel, hover the top left of it and hold the drag item icon while moving the panel to the desired location  
+  * To resize a panel, hover over the edge of a panel and drag it to the desired size  
