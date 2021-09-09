@@ -1,27 +1,25 @@
 # .github/workflows/convert-to-pdf.yml
 
-name: Docs to PDF
+name: Examples to PDF
 # This workflow is triggered on pushes to the repository.
 on:
   workflow_dispatch:
 
+
 jobs:
-  converttopdf:
-    name: Build PDF
+  convertviapandoc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_dir: Examples
-          output_dir: pdfs
-          images_dir: Images
-          # for example <img src="./images/file-name.png">
-          image_import: ./images
-          # Default is true, can set to false to only get PDF files
-          build_html: false
-      - uses: actions/upload-artifact@v1
-        with:
-          name: Examples
-          path: pdfs
 
+      - name: create file list
+        id: files_list
+        run: |
+          echo "Lorem ipsum" > lorem_1.md  # create two example files
+          echo "dolor sit amet" > lorem_2.md
+          mkdir pdf  # create output dir
+          # this will also include README.md
+          echo "::set-output name=files::$(printf '"%s" ' *.md)"
+      - uses: docker://pandoc/latex:2.9
+        with:
+         args: --output=pdf/result.pdf
