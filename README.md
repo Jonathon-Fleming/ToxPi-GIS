@@ -23,25 +23,25 @@ Data that are not normally compared are combined into a data matrix comprising v
 <p align = "center">
 Calculation
 <br>
-<img src="/Images/ToxPiDescription.PNG" data-canonical-  
-src="/Images/ToxPiDescription.PNG" width="550" height="400" />  
+<img src="./Images/ToxPiDescription.PNG" data-canonical-  
+src="./Images/ToxPiDescription.PNG" width="550" height="400" />  
 </p>  
 
 <p align = "center">
 Interpretation
 <br>
-<img src="/Images/ToxPiInterpretation.PNG" data-canonical-  
-src="/Images/ToxPiInterpretation.PNG" width="550" height="425" />  
+<img src="./Images/ToxPiInterpretation.PNG" data-canonical-  
+src="./Images/ToxPiInterpretation.PNG" width="550" height="425" />  
 </p>  
 
 ## **Map Creation Workflow:**  
 <p align = "center">
-<img src="/Images/MapCreationWorkflow.PNG" data-canonical-  
-src="/Images/MapCreationWorkflow.PNG" width="600" height="300" />  
+<img src="./Images/MapCreationWorkflow.PNG" data-canonical-  
+src="./Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
   
 ## **Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
-Use the script [ToxPi_creation.py](ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](/Examples/Vignette1-%20Using%20ToxPi_creation.md). 
+Use the script [ToxPi_creation.py](ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](./Examples/Vignette1-%20Using%20ToxPi_creation.md). 
 <br></br>
 [ToxPi_creation_customized.py](ToxPi_creation_customized.py) can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data. An example walkthrough is shown in [Vignette 3](/Examples/Vignette3-%20Using%20ToxPi_creation_customized.md).  
 
