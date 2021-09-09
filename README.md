@@ -23,7 +23,7 @@ Data that are not normally compared are combined into a data matrix comprising v
 
 Calculation  
 
-![](./Images/ToxPiDescription.PNG)  
+![](./Images/ToxPiDescription.PNG | width = 100)  
 
 
 <p align = "center">
