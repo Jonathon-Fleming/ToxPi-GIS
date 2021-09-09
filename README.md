@@ -9,7 +9,7 @@ The following methods are used for the production and visualization of shareable
 
 * For users looking to see example walkthroughs, see the vignettes in [Examples](./Examples/).  
 
-* For users looking to visualize existing maps, see [Visualizations](./Examples/Visualizations).  
+* For users looking to visualize existing maps, see [Visualizations](./Examples/Visualizations.py).  
 
 * For users requiring help with data manipulation and formatting requirements, see [Utilities](./Utilities/).  
 
