@@ -3,15 +3,15 @@
 The following methods are used for the production and visualization of shareable, interactive feature layers containing ToxPi figures using ArcGIS Pro. To learn more about ToxPi, see [ToxPi Description](#ToxPi-Description) below.  
 <br>
 
-* For users looking to generate a predesigned layer file of ToxPi features with Python, or users who are unsure, see [Method 1](#method-1-toxpi_creationpy--toxpi_creation_customizedpy).  
+* For users looking to generate a predesigned layer file of ToxPi features with Python, or users who are unsure, see [Method 1](./#method-1-toxpi_creationpy--toxpi_creation_customizedpy).  
 
-* For users looking to use an ArcGIS Toolbox(e.g., for integration into existing ArcGIS workflows), see [Method 2](#method-2-toxpitoolboxtbx).  
+* For users looking to use an ArcGIS Toolbox(e.g., for integration into existing ArcGIS workflows), see [Method 2](./#method-2-toxpitoolboxtbx).  
 
-* For users looking to see example walkthroughs, see the vignettes in [Examples](/Examples/).  
+* For users looking to see example walkthroughs, see the vignettes in [Examples](./Examples/).  
 
-* For users looking to visualize existing maps, see [Visualizations](/Examples/Visualizations.md).  
+* For users looking to visualize existing maps, see [Visualizations](./Examples/Visualizations.md).  
 
-* For users requiring help with data manipulation and formatting requirements, see [Utilities](/Utilities/).  
+* For users requiring help with data manipulation and formatting requirements, see [Utilities](./Utilities/).  
 
 ## **ToxPi Description:** 
 **Definition**  
