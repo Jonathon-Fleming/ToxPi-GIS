@@ -67,4 +67,4 @@ Sizing based on script parameters
   * Make sure name column is present  
 * Mapping Incorrect  
   * Ensure source is formatted latitude, longitude. [swap_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Swap_Coordinates.py) is provided in Utilities folder if coordinates need to be swapped  
-  * Each time script is run to generate a map a different directory should be used unless overwriting a previous map.       
+  * Each time script is run to generate a map a different directory should be used unless overwriting a previous map   
