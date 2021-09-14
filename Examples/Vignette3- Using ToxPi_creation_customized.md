@@ -1,15 +1,15 @@
 # **Vignette 3: Generating a ToxPi feature layer of COVID-19 vulnerability using ToxPi_creation_customized.py**  
-Vignette 3 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) and Covid-19 vulnerability data for counties across the United States. The resulting map can be found [here](https://ncsu.maps.arcgis.com/home/item.html?id=1518637a0b454036a3d0d2fc8239ff08). The practice data used in this demonstration was already processed through steps 1A and 1B and can be found [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data). It is suggested to use the subset as it will significantly reduce running time(Full ~ 1hour, Subset ~ 15min); however, if you would like to replicate Vignette 4 as well use the full dataset here as it is used in the hot spot analysis. A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
+Vignette 3 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation_customized.py](../ToxPi_creation_customized.py) and Covid-19 vulnerability data for counties across the United States. The resulting map can be found [here](https://ncsu.maps.arcgis.com/home/item.html?id=1518637a0b454036a3d0d2fc8239ff08). The practice data used in this demonstration was already processed through steps 1A and 1B and can be found [here](../Examples/Practice%20Data). It is suggested to use the subset as it will significantly reduce running time(Full ~ 1hour, Subset ~ 15min); however, if you would like to replicate Vignette 4 as well use the full dataset here as it is used in the hot spot analysis. A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
 
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.png" width="600" height="500" />  
+<img src="../Images/Vignette3.png" data-canonical-  
+src="../Images/Vignette3.png" width="600" height="500" />  
 </p>  
 
 ## Requirements:  
 * ArcGIS Pro licensing  
 * Requires being logged into ArcGIS Portal  
-* Source column for data must be formatted Latitude, Longitude(See [Utilities](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Utilities) for help if needed)    
+* Source column for data must be formatted Latitude, Longitude(See [Utilities](../Utilities) for help if needed)    
 * Column labeled Name with unique identifiers must be present in data  
 * Slice names must not contain a special character followed by a number  
 * FIPS column must be present  
@@ -19,8 +19,8 @@ src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Vignette3.pn
 * Column names other than the [ToxPi Score, HClust Group, KMeans Group, Name, Longitude, Latitude, FIPS, Tract, casrn] should not be included unless they are slices  
 
 ## Steps:  
-1A, 1B. Already done, download entire repository, results data are [here](https://github.com/Jonathon-Fleming/ToxPi-GIS/tree/main/Examples/Practice%20Data) in repository     
-1C. Run [ToxPi_creation_customized.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/ToxPi_creation_customized.py) from windows command prompt using the following commands and parameters  
+1A, 1B. Already done, download entire repository, results data are [here](../Examples/Practice%20Data) in repository     
+1C. Run [ToxPi_creation_customized.py](../ToxPi_creation_customized.py) from windows command prompt using the following commands and parameters  
 Note: If you previosuly ran Vignette2, make sure to redownload the data file as it was altered in Vignette2
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
@@ -33,15 +33,15 @@ Parameters:
 
 * Example:  
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/ExampleCommandVignette3.PNG" width="1000" height="70" />  
+<img src="../Images/ExampleCommandVignette3.PNG" data-canonical-  
+src="../Images/ExampleCommandVignette3.PNG" width="1000" height="70" />  
 </p>  
 
 1D. Open .lyrx file in ArcGIS Pro  
 1E. Share as a web map to ArcGIS Online  
 <p align = "center">
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MapShare.png" width="600" height="100" />  
+<img src="../Images/MapShare.png" data-canonical-  
+src="../Images/MapShare.png" width="600" height="100" />  
 </p>  
 
 ## Output:  
@@ -70,6 +70,6 @@ Toggleable maximum score rings
   * Make sure name column is present  
   * Make sure FIPS column is present  
 * Mapping Incorrect  
-  * Ensure source is formatted latitude, longitude. [swap_coordinates.py](https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Utilities/Swap_Coordinates.py) is provided in Utilities folder if coordinates need to be swapped  
+  * Ensure source is formatted latitude, longitude. [swap_coordinates.py](../Utilities/Swap_Coordinates.py) is provided in Utilities folder if coordinates need to be swapped  
   * Each time script is run to generate a map a different directory should be used unless overwriting a previous map     
 
