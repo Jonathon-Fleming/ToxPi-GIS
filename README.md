@@ -12,7 +12,7 @@ The following methods are used for the production and visualization of shareable
 * For users looking to visualize existing maps, see [Visualizations](./Examples/Visualizations.md).  
 
 * For users requiring help with data manipulation and formatting requirements, see [Utilities](./Utilities/).  
-* 
+
 <a id="ToxPi-Description"></a>
 
 ## **ToxPi Description:** 
@@ -38,11 +38,15 @@ Interpretation
 src="./Images/ToxPiInterpretation.PNG" width="550" height="425" />  
 </p>  
 
+<a id="Map-Creation-Workflow"></a>
+
 ## **Map Creation Workflow:**  
 <p align = "center">
 <img src="./Images/MapCreationWorkflow.PNG" data-canonical-  
 src="./Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
+  
+<a id="Method-1:-ToxPi_creation.py-&-ToxPi_creation_customized.py"></a>
   
 ## **Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
 Use the script [ToxPi_creation.py](ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](./Examples/Vignette1-%20Using%20ToxPi_creation.md). 
@@ -56,6 +60,8 @@ Steps:
 1D. Open output layer file in ArcGIS Pro  
 1E. Share resulting map to ArcGIS Online  
 
+<a id="Method-2:-ToxPiToolbox.tbx"></a>
+
 ## **Method 2: ToxPiToolbox.tbx**  
 The ToxPiToolbox.tbx file is an ArcToolbox that contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of map creation, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under [Vignette 2](/Examples/Vignette2-%20Using%20ToxPiToolbox.md).  
 
@@ -65,6 +71,8 @@ Steps:
 2C. Add results file to ArcGIS Pro  
 2D. Add ToxPiToolbox.tbx to ArcGIS Pro  
 2E. Run required analysis steps including the ToxPi tool and share resulting map to ArcGIS Online   
+
+<a id="Acknowledgements/References:"></a>
 
 ## **Acknowledgements/References:**  
 We thank the PVI project team for data provision, the Motsinger-Reif Lab at NIH for consulting and software testing, and the Baker Lab at NCSU for software testing. This work was supported by intramural funds from the National Institute of Environmental Health Sciences and the National Institute for Allergy and Infectious Diseases. Portions of the code for drawing slices were adapted from the Coxcomb tool for ArcGIS Pro. 
