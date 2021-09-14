@@ -15,51 +15,51 @@ Map Viewing Functionality:
 * Feature Selection  
 <p align = "center"> 
 Slices For Factor Scores<br>  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/FeatureSelection.PNG" width = "500" height = "350" />  
+<img src="../Images/FeatureSelection.PNG" data-canonical-  
+src="../Images/FeatureSelection.PNG" width = "500" height = "350" />  
 </p>  
 
 <p align = "center"> 
 Center Dot or Background For Overall Score<br>  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/BackgroundSelection.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Backroundselection.PNG" height = "350" width = "500" />  
+<img src="../Images/BackgroundSelection.PNG" data-canonical-  
+src="../Images/Backroundselection.PNG" height = "350" width = "500" />  
 </p>  
 
 * Filtering  
 <p align = "center"> 
 Filtering UI<br>
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filter.PNG" height = "325" width = "450" />
+<img src="../Images/Filter.PNG" data-canonical-  
+src="../Images/Filter.PNG" height = "325" width = "450" />
 <br>
 Example Result<br>
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Filtered.PNG" height = "325" width = "450" />
+<img src="../Images/Filtered.PNG" data-canonical-  
+src="../Images/Filtered.PNG" height = "325" width = "450" />
 </p>  
 
 * Extent Based Visibility  
 <p align = "center"> 
 State Median Layer<br>  
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/State" height = "300" width = "500" />  
+<img src="../Images/State.PNG" data-canonical-  
+src="../Images/State" height = "300" width = "500" />  
 <br> 
 Two Different Sized Local Layers for Varying Density<br>
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/MidLayer.PNG" height = "400" width = "500" /> 
+<img src="../Images/MidLayer.PNG" data-canonical-  
+src="../Images/MidLayer.PNG" height = "400" width = "500" /> 
 <br>
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LocalLayer.PNG" height = "400" width = "500" /> 
+<img src="../Images/LocalLayer.PNG" data-canonical-  
+src="../Images/LocalLayer.PNG" height = "400" width = "500" /> 
 </p>  
 
 * Layer Visibility Toggling Including Maximum Score Rings  
 <p align = "center"> 
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/LayerToggle.PNG" height = "325" width = "650" />
+<img src="../Images/LayerToggle.PNG" data-canonical-  
+src="../Images/LayerToggle.PNG" height = "325" width = "650" />
 </p>
 
 Data Analysis options exist for users with ArcGIS accounts and proper licensing  
 <p align = "center"> 
-<img src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG" data-canonical-  
-src="https://github.com/Jonathon-Fleming/ToxPi-GIS/blob/main/Images/Analysis.PNG">
+<img src="../Images/Analysis.PNG" data-canonical-  
+src="../Images/Analysis.PNG">
 </p>
 
 # Option 2: Visualizing Maps With ToxPi-GIS Website  
