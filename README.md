@@ -50,7 +50,7 @@ src="./Images/MapCreationWorkflow.PNG" width="600" height="300" />
 ## **Method 1: ToxPi_creation.py & ToxPi_creation_customized.py**   
 Use the script [ToxPi_creation.py](ToxPi_creation.py)  to automatically produce predesigned feature layers containing interactive ToxPi features using the output of the ToxPi GUI as input. This is the suggested method, unless you are skilled with ArcGIS Pro and have a specific need for a Toolbox. An example walkthrough is shown in [Vignette 1](./Examples/Vignette1-%20Using%20ToxPi_creation.md). 
 <br></br>
-[ToxPi_creation_customized.py](ToxPi_creation_customized.py) can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data. An example walkthrough is shown in [Vignette 3](/Examples/Vignette3-%20Using%20ToxPi_creation_customized.md).  
+[ToxPi_creation_customized.py](ToxPi_creation_customized.py) can be used with county or census tract data for a more data rich map and acts as an example of how ToxPi_creation.py can be customized with further geoprocessing steps to create more advanced maps for specific data. An example walkthrough is shown in [Vignette 3](./Examples/Vignette3-%20Using%20ToxPi_creation_customized.md).  
 
 Steps:  
 1A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
@@ -62,7 +62,7 @@ Steps:
 <a id="method-2-toxpitoolboxtbx"></a>
 
 ## **Method 2: ToxPiToolbox.tbx**  
-The ToxPiToolbox.tbx file is an ArcToolbox that contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of map creation, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under [Vignette 2](/Examples/Vignette2-%20Using%20ToxPiToolbox.md).  
+The ToxPiToolbox.tbx file is an ArcToolbox that contains a custom tool called ToxPi Construction for drawing the polygons that make up ToxPi figures. It requires more manual steps than the script; however, a model can be created for the automation of map creation, and the toolbox allows for more customization than the script, including drawing a subset of slices for ToxPi features. This, along with a walkthrough example, are described under [Vignette 2](./Examples/Vignette2-%20Using%20ToxPiToolbox.md).  
 
 Steps:  
 2A. Load raw data into the [ToxPi GUI](https://toxpi.org/)  
