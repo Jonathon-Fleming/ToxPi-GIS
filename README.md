@@ -30,16 +30,12 @@ Calculation
 src="./Images/ToxPiDescription.PNG" width="550" height="425" />  
 </p>  
 
-![Calculation](./Images/ToxPiDescription.PNG)
-
 <p align = "center">
 Interpretation
 <br>
 <img src="./Images/ToxPiInterpretation.PNG" data-canonical-  
 src="./Images/ToxPiInterpretation.PNG" width="550" height="425" />  
 </p>  
-
-![Interpretation](./Images/ToxPiInterpretation.PNG)
 
 <a id="Map-Creation-Workflow"></a>
 
