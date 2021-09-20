@@ -23,31 +23,13 @@ The ToxPi framework provides a method for transparently integrating and visualiz
 **Description**  
 Data that are not normally compared are combined into a data matrix comprising various data domains, or slice categories, with varying weights that represent the different data categories. Each slice category, represented by a color scheme, can then be separated into subdomains. The data matrix is then analyzed to produce a risk score ranging from 0 to 1 for each slice category, as well as a corresponding overall score that represents the record’s total risk from all categories. These scores are determined via a rank system for easy comparison between different data points and are displayed in a ToxPi diagram for each record. If the data record's are locations, the figures can be mapped geographically. The calculation process, as well as ToxPi figure interpretation for Covid-19 data, are depicted below. For a more in depth look at the ToxPi framework, visit www.toxpi.org
 
-<p align = "center">
-Calculation  
-<br>
-<img src="./Images/ToxPiDescription.PNG" data-canonical-  
-src="./Images/ToxPiDescription.PNG" width="550" height="425" />  
-</p>  
-
-![Description](./Images/ToxPiDescription.PNG)
-
-<p align = "center">
-Interpretation
-<br>
-<img src="./Images/ToxPiInterpretation.PNG" data-canonical-  
-src="./Images/ToxPiInterpretation.PNG" width="550" height="425" />  
-</p>  
+![Description](./Images/ToxPiDescription.PNG) 
 
 ![Interpretation](./Images/ToxPiInterpretation.PNG)
 
 <a id="Map-Creation-Workflow"></a>
 
 ## **Map Creation Workflow:**  
-<p align = "center">
-<img src="./Images/MapCreationWorkflow.PNG" data-canonical-  
-src="./Images/MapCreationWorkflow.PNG" width="600" height="300" />  
-</p>  
   
 ![Map Creation Workflow](./Images/MapCreationWorkflow.PNG)
 
