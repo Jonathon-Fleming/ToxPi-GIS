@@ -44,8 +44,6 @@ src="./Images/ToxPiInterpretation.PNG" width="550" height="425" />
 <img src="./Images/MapCreationWorkflow.PNG" data-canonical-  
 src="./Images/MapCreationWorkflow.PNG" width="600" height="300" />  
 </p>  
-
-![Interpretation](./Images/MapCreationWorkflow.PNG)
   
 <a id="method-1-toxpi_creationpy--toxpi_creation_customizedpy"></a>
   
