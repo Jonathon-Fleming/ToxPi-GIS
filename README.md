@@ -26,10 +26,11 @@ Data that are not normally compared are combined into a data matrix comprising v
 <p align = "center">
 Calculation  
 <br>
-![Calculation](./Images/ToxPiDescription.PNG)
 <img src="./Images/ToxPiDescription.PNG" data-canonical-  
 src="./Images/ToxPiDescription.PNG" width="550" height="425" />  
 </p>  
+
+![Calculation](./Images/ToxPiDescription.PNG)
 
 <p align = "center">
 Interpretation
