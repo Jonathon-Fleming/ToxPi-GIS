@@ -1,5 +1,5 @@
 # Vignette 2: Generating a ToxPi feature layer of COVID-19 vulnerability using ToxPiToolbox.tbx  
-Vignette 2 is a demonstration of method 2 in the map creation workflow using [ToxpiToolbox.tbx](../ToxPiToolbox.tbx) and Covid-19 vulnerability data. The resulting map visually matches Vignette 1, the output of ToxPi_creation.py. The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](../Examples/PracticeData). It is suggested to use the subset as it will significantly reduce running time(Full ~ 30min, Subset ~ 5min). A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
+Vignette 2 is a demonstration of method 2 in the map creation workflow using [ToxpiToolbox.tbx](../ToxPiToolbox.tbx) and Covid-19 vulnerability data. The resulting map visually matches Vignette 1, the output of ToxPi_creation.py. The data used in this demonstration was already processed through steps 1A and 1B and can be found [here](../Examples/PracticeData/). It is suggested to use the subset as it will significantly reduce running time(Full ~ 30min, Subset ~ 5min). A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
 
 <p align = "center">
 <img src="../Images/Vignette1.PNG" data-canonical-  
@@ -19,7 +19,7 @@ src="../Images/Vignette1.PNG" width="600" height="300" />
 Note: These are just the steps to create a plain map of ToxPi figures. This methodology should be integrated into modelbuilder, used with extra geoprocessing steps, or used for subsetting of slices, otherwise Method 1 is quicker and produces better results.  
 <br>
 2A. Already done, download entire repository to get data and scripts     
-2B. CSV file already generated [here](../Examples/PracticeData) in repository, but coordinates need to be split into two columns using any preferred method  
+2B. CSV file already generated [here](../Examples/PracticeData/) in repository, but coordinates need to be split into two columns using any preferred method  
    * Split source column using [split_coordinates.py](../Utilities/split_coordinates.py) and the following command:
      ```
      python location\split_coordinates.py inputfile
