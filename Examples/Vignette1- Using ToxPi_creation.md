@@ -2,8 +2,8 @@
 Vignette 1 is a demonstration of method 1 in the map creation workflow using [Toxpi_creation.py](../ToxPi_creation.py) and Covid-19 vulnerability data. The resulting map can be found [here](https://ncsu.maps.arcgis.com/home/item.html?id=7c0365b3f75949369b46c07ae4ecf10c). The practice data used in this demonstration was already processed through steps 1A and 1B and can be found [here](./PracticeData/). It is suggested to use the subset as it will significantly reduce running time(Full ~ 30min, Subset ~ 5min). A further description of the data can be found [here](https://www.niehs.nih.gov/research/programs/coronavirus/covid19pvi/details/).  
 
 <p align = "center">
-<img src="/Images/Vignette1.PNG" data-canonical-  
-src="/Images/Vignette1.PNG" width="600" height="300" />  
+<img src="../Images/Vignette1.PNG" data-canonical-  
+src="../Images/Vignette1.PNG" width="600" height="300" />  
 </p>  
 
 ## Requirements:  
