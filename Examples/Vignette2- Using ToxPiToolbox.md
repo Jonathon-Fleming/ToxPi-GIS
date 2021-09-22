@@ -74,7 +74,7 @@ src="../Images/CatalogPane.PNG" width="600" height="100" />
 <img src="../Images/ToolInterface.PNG" data-canonical-  
 src="../Images/ToolInterface.PNG" width = "350" height = "500" />  
 </p>   
-<p align = "center">  
+<p>  
     inFeatures: Input feature layer to draw ToxPi figures from  <br>
     outFeatures: The desired name for the output ToxPi feature layer  <br>
     uniqueID: The column name for the unique identifier for locations  <br>
