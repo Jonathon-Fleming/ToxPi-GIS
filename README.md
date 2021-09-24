@@ -75,7 +75,7 @@ Steps:
 <a id="Acknowledgements/References:"></a>
 
 ## **Acknowledgements/References:**  
-We thank the PVI project team for data provision, the Motsinger-Reif Lab at NIH for consulting and software testing, and the Baker Lab at NCSU for software testing. This work was supported by intramural funds from the National Institute of Environmental Health Sciences and the National Institute for Allergy and Infectious Diseases. Portions of the code for drawing slices were adapted from the Coxcomb tool for ArcGIS Pro. 
+We thank the PVI project team for data provision, the Motsinger-Reif Lab at NIH for consulting and software testing, the Baker Lab at NCSU for software testing, Dan Schmitt for providing programming expertise, and Logan Wenzel for providing programming expertise. This work was supported by intramural funds from the National Institute of Environmental Health Sciences and the National Institute for Allergy and Infectious Diseases. Portions of the code for drawing slices were adapted from the Coxcomb tool for ArcGIS Pro. 
 
     
     
