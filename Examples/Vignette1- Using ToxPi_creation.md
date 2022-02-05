@@ -59,6 +59,7 @@ Interactive slices with custom popups
 Colored slices based on ToxPi GUI choices  
 Toggleable maximum score rings  
 Sizing based on script parameters  
+Boundary layer based on data extent  
 
 ## General Troubleshooting:  
 * Error when accessing environment  
