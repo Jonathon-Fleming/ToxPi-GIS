@@ -42,7 +42,7 @@ Parameters:
 src="../Images/ExampleCommand.PNG" width="1000" height="70" />  
 </p>  
 
-1D. Open .lyrx file in ArcGIS Pro  
+1D. Open .lyrx file in ArcGIS Pro, add Basemap if desired  
 1E. Share as a web map to ArcGIS Online  
 <p align = "center">
 <img src="../Images/MapShare.png" data-canonical-  
