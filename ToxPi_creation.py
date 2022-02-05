@@ -241,6 +241,7 @@ def GetPopupInfo():
         ]
     }'''
     return popupstring
+
 def adjustinput(infile, outfile):
     #prep csv file for input into functions and get required parameters
 
@@ -254,10 +255,11 @@ def adjustinput(infile, outfile):
         print("Error: Name column is not present in the input data. Please add column labeled Name with desired point names.")
         sys.exit()
     uniqueid = "Name"
+    uniqueid_index = df.columns.get_loc('Name')
 
     #add quotes to Name to make sure column reads in as string
     for i in range(len(df["Name"])):
-        df.at[i, uniqueid] = "\"" + str(df.at[i, uniqueid]) + "\"" 
+        df.iloc[i, uniqueid_index] = "\"" + str(df.iloc[i, uniqueid_index]) + "\"" 
 
     #get required symbology parameters and slices from column headers
     colors = []
@@ -288,6 +290,32 @@ def adjustinput(infile, outfile):
     df.columns = [re.sub('\W+','_', header) for header in df.columns]             
     df.to_csv(outfile, index=False)
     return weights, colors, infields, infieldsrevised
+
+def getBoundaryLayer(extent, geopath):
+  #if extent == "censusBlock":
+  #  link = ""
+  #if extent == "blockGroup":
+  #  link = ""
+  if extent == "censusTract":
+    link = "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/USA_Census_Tract_Boundaries/FeatureServer/0"
+  elif extent == "county":
+    link = "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Counties_Generalized/FeatureServer/0"
+  elif extent == "state":
+    link = "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_States_Generalized/FeatureServer/0"
+  elif extent == "division":
+    link = "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/USA_Divisions_2018/FeatureServer/0"
+  elif extent == "region":
+    link = "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/USA_Regions_2018/FeatureServer/0"
+  #if extent == "nation":
+  #  link = ""
+  else:
+    print(extent, " is an invalid boundary layer or is not supported.")
+    return ""
+
+  boundaries = arcpy.management.CopyFeatures(link, geopath + r"\boundarylayer")
+
+  return boundaries
+  
 
 def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, inFieldsrename):
     try:
@@ -420,7 +448,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
     except arcpy.ExecuteError:
         print (arcpy.GetMessages(2))
 
-def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
+def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
     #import toolboxes for use
     arcpy.ImportToolbox(r"c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Conversion Tools.tbx")
     arcpy.ImportToolbox(r"c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Data Management Tools.tbx")
@@ -515,6 +543,32 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1):
  
     countyrings = arcpy.mp.LayerFile(outpathtmp + r"\rings.lyrx")
     finallyr.addLayer(countyrings, "BOTTOM")
+    
+    if extent != "":
+      boundaries = getBoundaryLayer(extent, geopath)
+      if boundaries !="":
+        boundarylyr= arcpy.management.MakeFeatureLayer(boundaries, "BoundaryLayer")
+        arcpy.management.SaveToLayerFile(boundarylyr, outpathtmp + r"\BoundaryLyr.lyrx")
+        
+        fh = open(outpathtmp + r"\BoundaryLyr.lyrx", "r")
+        data = fh.read()
+        y = json.loads(data)
+
+        y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][1]["color"]["values"][0] = "156"
+        y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][1]["color"]["values"][1] = "156"
+        y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][1]["color"]["values"][2] = "156"
+        y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][1]["color"]["values"][3] = "50"  
+        #write the edits to the county toxpi layer file
+        mainlyr = json.dumps(y)
+        fh.close()
+        fh = open(outpathtmp + r"\BoundaryLyr.lyrx", "w")
+        fh.write(mainlyr)
+        fh.close()
+
+        boundaryobject = arcpy.mp.LayerFile(outpathtmp + r"\BoundaryLyr.lyrx")
+        finallyr.addLayer(boundaryobject, "TOP")
+
+        os.remove(outpathtmp + r"\BoundaryLyr.lyrx")
     
     finallyr.save()
     os.remove(outpathtmp + r"\ToxPiResultsAdjusted.csv")
