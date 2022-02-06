@@ -38,8 +38,8 @@ Parameters:
 
 * Example:  
 <p align = "center">
-<img src="../Images/ExampleCommand.PNG" data-canonical-  
-src="../Images/ExampleCommand.PNG" width="1000" height="70" />  
+<img src="../Images/ExampleCommand_Updated.PNG" data-canonical-  
+src="../Images/ExampleCommand_Updated.PNG" width="1200" height="70" />  
 </p>  
 
 1D. Open .lyrx file in ArcGIS Pro, add Basemap if desired  
