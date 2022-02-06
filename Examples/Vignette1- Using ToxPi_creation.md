@@ -3,7 +3,7 @@ Vignette 1 is a demonstration of method 1 in the map creation workflow using [To
 
 <p align = "center">
 <img src="../Images/Vignette1_Updated.PNG" data-canonical-  
-src="../Images/Vignette1_Ipdated.PNG" width="600" height="300" />  
+src="../Images/Vignette1_Ipdated.PNG" width="650" height="300" />  
 </p>  
 
 ## Requirements:  
