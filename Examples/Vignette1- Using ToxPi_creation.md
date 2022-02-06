@@ -43,6 +43,10 @@ src="../Images/ExampleCommand_Updated.PNG" width="1200" height="70" />
 </p>  
 
 1D. Open .lyrx file in ArcGIS Pro, add Basemap if desired  
+<p align = "center">
+<img src="../Images/AddBasemap.png" data-canonical-  
+src="../Images/AddBasemap.png" width="600" height="100" />  
+</p>  
 1E. Share as a web map to ArcGIS Online  
 <p align = "center">
 <img src="../Images/MapShare.png" data-canonical-  
