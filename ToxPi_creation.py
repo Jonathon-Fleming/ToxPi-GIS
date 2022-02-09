@@ -6,6 +6,7 @@ import json
 import pandas as pd
 import re
 import sys
+import argparse
 
 def convertLength(radiusUnits):
     if radiusUnits.upper() == "MAGNIFY":
@@ -448,7 +449,14 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
     except arcpy.ExecuteError:
         print (arcpy.GetMessages(2))
 
-def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
+def ToxPiCreation(args):
+
+    inFeatures = args.inFeatures
+    outFeatures = args.outFeatures
+    inputRadius = args.scaler
+    extent = args.extent
+    labels = args.labels
+
     #import toolboxes for use
     arcpy.ImportToolbox(r"c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Conversion Tools.tbx")
     arcpy.ImportToolbox(r"c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Data Management Tools.tbx")
@@ -465,6 +473,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
         arcpy.CreateFileGDB_management(str(outpathtmp), "ToxPiAuto.gdb")
 
     #adjust input file for required parameters and get required information
+    print("Preprocessing Data...")
     outfilecsv = outpathtmp + "\ToxPiResultsAdjusted.csv"
     inweights, colors, infields, infieldsrevised = adjustinput(inFeatures, outfilecsv)
 
@@ -487,6 +496,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
         colors[j] = tuple(int(colors[j][i:i+2], 16) for i in (0, 2, 4))
 
     #Convert coordinates to projected instead of geographic and output to a feature layer
+    print("Mapping Coordinates...")
     tmpfileremapped = geopath + "\pointfeatureremapped"
     arcpy.ConvertCoordinateNotation_management(in_table=outfilecsv, out_featureclass=tmpfileremapped, x_field="Longitude", y_field="Latitude", input_coordinate_format="DD_2", output_coordinate_format="DD_2", spatial_reference="PROJCS['WGS_1984_Web_Mercator_Auxiliary_Sphere',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator_Auxiliary_Sphere'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],PARAMETER['Auxiliary_Sphere_Type',0.0],UNIT['Meter',1.0]];-20037700 -30241100 10000;-100000 10000;-100000 10000;0.001;0.001;0.001;IsHighPrecision", in_coor_system="GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]", id_field="", exclude_invalid_records="INCLUDE_INVALID")
 
@@ -500,13 +510,14 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
           scur.updateRow(row)
 
     tmpfileToxPi = geopath + "\ToxPifeature"
-
+    print("Drawing ToxPi Profiles...")
     ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = "Name", inFields=infieldsrevised, inputRadius=float(inputRadius), radiusUnits="Magnify", inputWeights=inweights, inFieldsrename = infields)
     
     countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "ToxPi Features")
     arcpy.management.SaveToLayerFile(countytoxpilyr, outFeatures)
     
     #open county toxpi feature layer file for editing
+    print("Symbolizing ToxPi Profiles...")
     fh = open(outFeatures, "r")
     data = fh.read()
     y = json.loads(data)
@@ -534,6 +545,7 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
     y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][1] = "0"
     y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][2] = "0"
     y["layerDefinitions"][0]["renderer"]["symbol"]["symbol"]["symbolLayers"][0]["color"]["values"][3] = "100"  
+
     #write the edits to the county toxpi layer file
     mainlyr = json.dumps(y)
     fh.close()
@@ -547,9 +559,11 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
     if extent != "":
       boundaries = getBoundaryLayer(extent, geopath)
       if boundaries !="":
+        print("Downloading Boundary Layer...")
         boundarylyr= arcpy.management.MakeFeatureLayer(boundaries, "BoundaryLayer")
         arcpy.management.SaveToLayerFile(boundarylyr, outpathtmp + r"\BoundaryLyr.lyrx")
         
+        print("Symbolizing Boundary Layer...")
         fh = open(outpathtmp + r"\BoundaryLyr.lyrx", "r")
         data = fh.read()
         y = json.loads(data)
@@ -574,6 +588,31 @@ def ToxPiCreation(inFeatures, outFeatures, inputRadius=1, extent = ""):
     os.remove(outpathtmp + r"\ToxPiResultsAdjusted.csv")
     os.remove(outpathtmp + r"\rings.lyrx")
 
+    if labels == "True":
+      print("Adding Labels...")
+      fh = open(outFeatures, "r")
+      data = fh.read()
+      y = json.loads(data)
+
+      y["layerDefinitions"][-1]["labelClasses"][0]["maplexLabelPlacementProperties"]["constrainOffset"] = "LeftOfLine"
+      y["layerDefinitions"][-1]["labelClasses"][0]["maplexLabelPlacementProperties"]["linePlacementMethod"] = "OffsetCurvedFromLine"
+      y["layerDefinitions"][-1]["labelClasses"][0]["maplexLabelPlacementProperties"]["primaryOffset"] = "3"
+      y["layerDefinitions"][-1]["labelClasses"][0]["maplexLabelPlacementProperties"]["allowStraddleStacking"] = "true"
+      y["layerDefinitions"][-1]["labelVisibility"] = "true"
+
+      #write the edits to the county toxpi layer file
+      mainlyr = json.dumps(y)
+      fh.close()
+      fh = open(outFeatures, "w")
+      fh.write(mainlyr)
+      fh.close()
+
 if __name__ == '__main__':
-  args = sys.argv[1:]
-  ToxPiCreation(*args)
+  parser = argparse.ArgumentParser(description='Make ToxPi Layer Files')
+  parser.add_argument('inFeatures', type = str, help = 'Path for input feature excel file')
+  parser.add_argument('outFeatures', type = str, help = 'Path for output layer file')
+  parser.add_argument('--scaler', default = 1.0, help = 'Provide a scaler value to resize ToxPi profiles(default = 1.0)')
+  parser.add_argument('--extent', default = "", help = 'Provide a name for a boundary layer to include')
+  parser.add_argument('--labels', default = False, help = 'Set to True if labels are desired on ToxPi Profiles')
+  args = parser.parse_args()
+  ToxPiCreation(args)
