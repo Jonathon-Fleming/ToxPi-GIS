@@ -275,6 +275,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, uniqueidtype, inFields, inp
         
     except arcpy.ExecuteError:
         print (arcpy.GetMessages(2))
+        sys.exit()
   
 def adjustinput(infile, outfile):
     #prep csv file for input into functions and get required parameters
@@ -1169,7 +1170,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
     # Process: ToxPi construction (ToxPi construction)     
     radius = 1
     tmpfileToxPi = geopath + "\ToxPifeature"
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = uniqueid, uniqueidtype = uniqueidtype, inFields=infieldsrevised, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, inFieldsrename = infields, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = uniqueid, uniqueidtype = uniqueidtype, inFields=infieldsrevised, inputRadius=int(radius)*0.1, radiusUnits="MILES", inputWeights=inweights, inFieldsrename = infields, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
 
     #make toxpifeatures into feature layer
     countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "County ToxPi")
@@ -1228,7 +1229,7 @@ def ToxPiCreation(inputdata, outpath):  # ToxPi_Model
 
     #Construct medium county toxpi figures 
     tmpfileToxPi = geopath + "\ToxPifeaturemid"
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID=uniqueid, uniqueidtype = uniqueidtype, inFields=infieldsrevised, inputRadius=int(radius)*5, radiusUnits="MILES", inputWeights=inweights, inFieldsrename = infields, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID=uniqueid, uniqueidtype = uniqueidtype, inFields=infieldsrevised, inputRadius=int(radius), radiusUnits="MILES", inputWeights=inweights, inFieldsrename = infields, ranks = countyrankslist, medians = countyUSAmedians, statemedians = countyStatemedians, stateranks = stateranklist)
 
     #make toxpifeatures into feature layer
     countytoxpilyrmid = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "County ToxPi Mid")
