@@ -318,7 +318,7 @@ def getBoundaryLayer(extent, geopath):
   return boundaries
   
 
-def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, inFieldsrename):
+def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radiusUnits, inputWeights, inFieldsrename, geopath):
     try:
         # Temp for testing
         arcpy.env.overwriteOutput = True
@@ -332,11 +332,10 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
         # Process: Copy Features to output feature class.
         # Create a temp feature class.
         outTmp = "TempFeatures"
-        tmpFeatures = arcpy.management.CreateFeatureclass(arcpy.env.scratchGDB,
+        tmpFeatures = arcpy.management.CreateFeatureclass(geopath,
                                                           outTmp,
                                                           'POINT',
                                                           spatial_reference=sr)
-
         # Add field selected as the unique identifier.
         field_obj = arcpy.ListFields(inFeatures, uniqueID)
         arcpy.AddField_management(tmpFeatures,
@@ -448,6 +447,7 @@ def ToxPiFeatures(inFeatures, outFeatures, uniqueID, inFields, inputRadius, radi
         
     except arcpy.ExecuteError:
         print (arcpy.GetMessages(2))
+        sys.exit()
 
 def ToxPiCreation(args):
 
@@ -511,7 +511,7 @@ def ToxPiCreation(args):
 
     tmpfileToxPi = geopath + "\ToxPifeature"
     print("Drawing ToxPi Profiles...")
-    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = "Name", inFields=infieldsrevised, inputRadius=float(inputRadius), radiusUnits="Magnify", inputWeights=inweights, inFieldsrename = infields)
+    ToxPiFeatures(inFeatures=tmpfileremapped, outFeatures=tmpfileToxPi, uniqueID = "Name", inFields=infieldsrevised, inputRadius=float(inputRadius), radiusUnits="Magnify", inputWeights=inweights, inFieldsrename = infields, geopath = geopath)
     
     countytoxpilyr = arcpy.management.MakeFeatureLayer(tmpfileToxPi, "ToxPi Features")
     arcpy.management.SaveToLayerFile(countytoxpilyr, outFeatures)
@@ -560,7 +560,10 @@ def ToxPiCreation(args):
       boundaries = getBoundaryLayer(extent, geopath)
       if boundaries !="":
         print("Downloading Boundary Layer...")
-        boundarylyr= arcpy.management.MakeFeatureLayer(boundaries, "BoundaryLayer")
+        #boundarylyr= arcpy.management.MakeFeatureLayer(boundaries, "BoundaryLayer")
+        boundarylyr_partial = arcpy.management.SelectLayerByLocation(boundaries, overlap_type = "CONTAINS", select_features = countytoxpilyr)
+        arcpy.management.CopyFeatures(boundarylyr_partial, geopath + r"\boundaries")
+        boundarylyr=arcpy.management.MakeFeatureLayer(geopath + r"\boundaries","Boundaries")
         arcpy.management.SaveToLayerFile(boundarylyr, outpathtmp + r"\BoundaryLyr.lyrx")
         
         print("Symbolizing Boundary Layer...")
