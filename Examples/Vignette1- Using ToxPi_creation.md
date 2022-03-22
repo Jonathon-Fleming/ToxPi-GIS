@@ -26,7 +26,7 @@ python location\ToxPi_creation.py inputfile outputfile.lyrx --scale=1 --extent="
 
 Parameters:
 * inputfile - The ToxPi GUI results file to draw ToxPi profiles from  
-* outputfile.lyrx - The location for the result lyrx file output by the script. Please add .lyrx  
+* outputfolder\outputfile.lyrx - The location for the result lyrx file output by the script. Please add folder and .lyrx  
 * scale - Optionally scales the size of the ToxPi profiles. The default is 1  
 * extent - Optionally provides an administrative boundary layer. Options are:  
     * censusTract
@@ -71,6 +71,8 @@ Profile labels based on sample names
 * Error when accessing environment  
   * Make sure quotes are included  
   * The location to the proenv may be different if you did a custom installation location of ArcGIS Pro 
+    *  Change path to proenv within quotes
+    *  Change lines 461 and 462 of the code for the path to the toolboxes
 * Error when running script  
   * If a file not found error is given, try using the full file path for outputfile.lyrx instead of the current directory  
   * If location is your current directory, use .\ to reference the location   
