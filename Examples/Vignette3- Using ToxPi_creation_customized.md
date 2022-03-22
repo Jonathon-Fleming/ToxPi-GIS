@@ -23,12 +23,12 @@ src="../Images/Vignette3.png" width="600" height="500" />
 1C. Run [ToxPi_creation_customized.py](../ToxPi_creation_customized.py) from windows command prompt using the following commands and parameters  
 Note: If you previosuly ran Vignette2, make sure to redownload the data file as it was altered in Vignette2
 ```
-"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
-python location\ToxPi_creation.py inputfile outputfile.lyrx (Used to run script, replace location with path to file)  
+"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment, see troubleshooting if a custom installation was done)  
+python location\ToxPi_creation.py inputfile outputfolder\outputfile.lyrx (Used to run script, replace location with path to file)  
 
 Parameters:
 * inputfile - The ToxPi GUI results file to draw ToxPi features from  
-* outputfile.lyrx - The location for the result lyrx file output by the script. Please add .lyrx   
+* outputfolder\outputfile.lyrx - The location for the result lyrx file output by the script. Please add folder and .lyrx   
 ```
 
 * Example:  
@@ -60,7 +60,9 @@ Toggleable maximum score rings
 ## General Troubleshooting:  
 * Error when accessing environment  
   * Make sure quotes are included  
-  * The location to the proenv may be different if you did a custom installation location of ArcGIS Pro 
+  * The location to the proenv may be different if you did a custom installation location of ArcGIS Pro
+    *  Path to proenv must be changed within quotes  
+    *  Path to toolboxes in script at Lines 990 and 991 must be changed  
 * Error when running script  
   * If a file not found error is given, try using the full file path for outputfile.lyrx instead of the current directory  
   * If location is your current directory, use .\ to reference the location   
