@@ -21,7 +21,7 @@ src="../Images/Figure1_Updated_Labels.png" width="700" height="400" />
 1A, 1B. Already done, download entire repository, results data are [here](../Examples/PracticeData/) in repository     
 1C. Run [ToxPi_creation.py](../ToxPi_creation.py) from windows command prompt using the following commands and parameters
 ```
-"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment)  
+"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment, see troubleshooting if custom installation was done)  
 python location\ToxPi_creation.py inputfile outputfile.lyrx --scale=1 --extent="" --labels=False (Used to run script, replace location with path to file)  
 
 Parameters:
