@@ -78,6 +78,8 @@ Steps:
 We thank the PVI project team for data provision and the Baker Lab at NCSU for software testing. We also thank Dan Schmitt and Logan Wenzel for their expertise in implementation. This research was supported by the National Institutes of Health (NIH) grant awards ES030007 and ES025128, and by intramural funds from the National Institute of Environmental Health Sciences and the National Institute for Allergy and Infectious Diseases. Portions of the code for drawing slices were adapted from the Coxcomb tool for ArcGIS Pro. 
 
 ## Citation:
-https://doi.org/10.1101/2021.10.08.21264756 [*medRxiv* pre-print; Accepted article in-press at [*JESEE*](https://www.nature.com/jes/)]
+Fleming J, Marvel SW, Supak S, Motsinger-Reif AA, Reif DM. ToxPi*GIS Toolkit: creating, viewing, and sharing integrative visualizations for geospatial data using ArcGIS. J Expo Sci Environ Epidemiol. 2022 Apr 26. doi: 10.1038/s41370-022-00433-w. PMID: 35474345. [https://www.nature.com/articles/s41370-022-00433-w](https://www.nature.com/articles/s41370-022-00433-w). 
+
+
 
     
