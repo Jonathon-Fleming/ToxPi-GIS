@@ -80,7 +80,7 @@ We thank the PVI project team for data provision and the Baker Lab at NCSU for s
 ## Citation:
 Fleming J, Marvel SW, Supak S, Motsinger-Reif AA, Reif DM. ToxPi*GIS Toolkit: creating, viewing, and sharing integrative visualizations for geospatial data using ArcGIS. J Expo Sci Environ Epidemiol. 2022 Apr 26. doi: 10.1038/s41370-022-00433-w. PMID: 35474345.
 
-Open-access link to full-text article: [https://www.nature.com/articles/s41370-022-00433-w](https://www.nature.com/articles/s41370-022-00433-w). 
+Open-access link to full-text article: [https://www.nature.com/articles/s41370-022-00433-w](https://www.nature.com/articles/s41370-022-00433-w) 
 
 
 
