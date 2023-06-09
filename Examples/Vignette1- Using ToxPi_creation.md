@@ -22,12 +22,12 @@ src="../Images/Figure1_Updated_Labels.png" width="700" height="400" />
 1C. Run [ToxPi_creation.py](../ToxPi_creation.py) from windows command prompt using the following commands and parameters
 ```
 "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv" (Used to load ArcGIS Pro environment, see troubleshooting if custom installation was done)  
-python location\ToxPi_creation.py inputfile outputfile.lyrx --scale=1 --extent="" --labels=False (Used to run script, replace location with path to file)  
+python location\ToxPi_creation.py inputfile outputfile.lyrx --scaler=1 --extent="" --labels=False (Used to run script, replace location with path to file)  
 
 Parameters:
 * inputfile - The ToxPi GUI results file to draw ToxPi profiles from  
 * outputfolder\outputfile.lyrx - The location for the result lyrx file output by the script. Please add folder and .lyrx  
-* scale - Optionally scales the size of the ToxPi profiles. The default is 1  
+* scaler - Optionally scales the size of the ToxPi profiles. The default is 1  
 * extent - Optionally provides an administrative boundary layer. Options are:  
     * censusTract
     * county
